@@ -44,7 +44,7 @@ import junit.framework.TestCase;
  * <dl>  Class Description
  *  <dd> 项目名称：springmvc
  *  <dd> 类名称：Test0
- *  <dd> 类描述：概述类的作用
+ *  <dd> 类描述：概述类的作用 
  *  <dd> 创建人：王鹏程
  *  <dd> 创建时间：2016年4月29日 下午4:29:21
  *  <dd> 修改人：无
