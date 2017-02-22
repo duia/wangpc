@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpc.admin.dao.AuthFileDao" >
+  	<resultMap id="BaseResultMap" type="com.wpc.admin.entity.AuthFile" >
+    	<id column="id" property="id" />
+	    <result column="file_name" property="fileName" />
+	    <result column="file_path" property="filePath" />
+  	</resultMap>
+  
+  	<sql id="table_columns" >
+	    id,
+	    file_name,
+	    file_path
+  	</sql>
+  	<sql id="entity_properties">
+	  	#{id},
+	  	#{fileName},
+	  	#{filePath}
+  	</sql>
+  
+  	<insert id="save" parameterType="com.wpc.admin.entity.AuthFile">
+	  	INSERT INTO auth_file ( <include refid="table_columns" /> ) 
+	  	VALUES ( <include refid="entity_properties" /> )
+  	</insert>
+  
+  	<delete id="delete" parameterType="Integer">
+  		DELETE FROM auth_file 
+  		WHERE id=#{id}
+  	</delete>
+  
+  	<delete id="deleteByIds">
+		DELETE FROM auth_file
+		WHERE id IN
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+  	</delete>
+  
+  	<update id="update" parameterType="com.wpc.admin.entity.AuthFile">
+	  	UPDATE auth_file 
+	  	<trim prefix="set" suffixOverrides=",">
+		  	<if test="fileName != null and fileName != ''">file_name = #{fileName},</if>
+		  	<if test="filePath != null and filePath != ''">file_path = #{filePath},</if>
+	  	</trim>
+	  	<where>id=#{id}</where>
+  	</update>
+  
+  	<select id="findById" resultMap="BaseResultMap" parameterType="Integer">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_file 
+  		WHERE id=#{id}
+  	</select>
+  	
+  	<select id="queryAll" resultMap="BaseResultMap">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_file 
+  	</select>
+  	
+  	<sql id="sel_where">
+	  	<trim prefix="where" prefixOverrides="and |or ">
+		  	<if test="fileName != null and fileName != ''">and file_name = #{fileName}</if>
+		  	<if test="filePath != null and filePath != ''">and file_path = #{filePath}</if>
+	  	</trim>
+  	</sql>
+  	
+  	<select id="search" resultMap="BaseResultMap" parameterType="com.wpc.admin.entity.AuthFile">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_file
+  		<include refid="sel_where" />
+  	</select>
+  	
+  	<select id="count" resultType="int" parameterType="com.wpc.admin.entity.AuthFile">
+	  	SELECT COUNT(id) 
+	  	FROM auth_file
+	  	<include refid="sel_where" />
+  	</select>
+  	
+  	<!-- 分页查询条件，供datatables插件查询使用 -->
+  	<sql id="page_where">
+  		<if test="condition != null">
+		  	<trim prefix="where" prefixOverrides="and |or ">
+			  	<if test="condition.fileName != null and condition.fileName != ''">and file_name = #{condition.fileName}</if>
+			  	<if test="condition.filePath != null and condition.filePath != ''">and file_path = #{condition.filePath}</if>
+		  	</trim>
+	  	</if>
+  	</sql>
+  	
+  	<!-- 查询条数，供datatables插件查询使用 -->
+  	<select id="countPage" resultType="int">
+	  	SELECT COUNT(id) 
+	  	FROM auth_file
+	  	<include refid="page_where" />
+  	</select>
+  
+  	<!-- 分页查询，供datatables插件查询使用 -->
+  	<select id="searchPage" resultMap="BaseResultMap">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_file
+  		<include refid="page_where" />
+  		<include refid="order"/>
+  		<include refid="limit"/>
+  	</select>
+  	
+  	<!-- 排序，供datatables插件查询使用 -->
+  	<sql id="order">
+  		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
+  	</sql>
+  	
+  	<!-- 分页，供datatables插件查询使用  -->
+  	<sql id="limit">
+  		LIMIT #{start}, #{length}
+  	</sql>
+  	
+  	<!-- 其他自定义SQL -->
+  	
+</mapper>

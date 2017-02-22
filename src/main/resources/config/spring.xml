@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+     	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+     	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     	http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+	
+   <import resource="spring-mybatis.xml"/>
+   <import resource="spring-shiro.xml"/>
+   <!-- <import resource="spring-redis.xml"/> -->
+
+	<!-- 配置定时执行计划  -->
+	<!-- <bean id="app" class="com.wpc.app.App" />
+	<bean id="ktrTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="app"/>
+		<property name="targetMethod" value="ktrRun"/>
+	</bean>
+	<bean id="ktrTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="ktrTask"/>
+		<property name="cronExpression" value="0 0/1 * * * ?"/>
+	</bean>
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="ktrTaskTrigger" />
+			</list>
+		</property>
+	</bean> -->
+	
+	
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
+	<!-- <bean class="com.wpc.times.JobTest">
+		<property name="scheduler" ref="schedulerFactoryBean"></property>
+	</bean> -->
+	
+</beans>
+	
+	

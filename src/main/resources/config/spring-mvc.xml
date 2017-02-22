@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     	http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+		
+	<!-- 注册4个 BeanPostProcessor，相关注解的后处理器。有了context:component-scan就不需要这个了 -->
+	<!-- <context:annotation-config/> -->
+
+	<!-- 注入两个拦截器bean：DefaultAnnotationHandlerMapping AnnotationMethodHandlerAdapter -->
+	<mvc:annotation-driven/>
+
+	<!-- 开启自动扫描包 -->
+	<!-- <context:component-scan base-package="com.wpc" /> -->
+	<!-- 添加事务后，springmvc的扫描包要排除Service -->
+	<context:component-scan base-package="com.wpc"> 
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+    </context:component-scan>
+
+	<!-- rest json related... start -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<!-- rest json related... end -->
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<!-- 配置文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		<!-- 上面配置是固定的，下面是配置上传文件的最大大小 --> 
+		<property name="maxUploadSize" value="104857600"/>
+		<property name="maxInMemorySize" value="4096" />
+     	<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	
+	<!-- 在地址栏访问 "网站根路径 + /404",所跳转到的页面404.jsp -->
+	<!-- <mvc:view-controller path="/404" view-name="404"/> <mvc:view-controller 
+		path="/500" view-name="500"/> -->
+
+	<!-- <mvc:resources mapping="/static/images/**" location="/static/images/" cache-period="10"/>
+	<mvc:resources mapping="/static/css/**" location="/static/css/" />
+	<mvc:resources mapping="/static/js/**" location="/static/js/" />
+	<mvc:resources mapping="/static/data/**" location="/static/data/" />
+	<mvc:resources mapping="/static/other/**" location="/static/other/" />
+	<mvc:resources mapping="/static/plugins/**" location="/static/plugins/" />
+	<mvc:resources mapping="/static/html/**" location="/static/html/" />
+	<mvc:resources mapping="/ueditor/**" location="/ueditor/" /> -->
+	
+	<!-- 配置了上传图片的测试路径，与配置的上传路径一致 -->
+	<!-- <mvc:resources mapping="/uploadfiles/**" location="file:E:/upload/" /> -->
+	
+	<!-- 拦截器: 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/test/**"/>
+			<bean class="com.wpc.inteceptor.MyInteceptor" /> 
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+	
+    <!-- 无权限 控制后台不报错 -->  
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+        <property name="exceptionMappings">  
+            <props>  
+                <!-- 处理其它异常(包括Controller抛出的) -->
+                <prop key="org.apache.shiro.authz.UnauthorizedException">redirect:/shiro/401</prop>
+            </props>  
+        </property>  
+    </bean>
+    
+    <!-- 开启Shiro的注解(如@RequiresRoles,@RequiresPermissions),需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证 -->  
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">  
+        <property name="proxyTargetClass" value="true" />  
+    </bean>  
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">  
+        <property name="securityManager" ref="securityManager" />  
+    </bean>
+  
+
+</beans>

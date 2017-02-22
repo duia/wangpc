@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 全局映射器启用缓存 -->
+        <setting name="cacheEnabled" value="false"/>
+        <!-- 查询时，关闭关联对象即时加载以提高性能 -->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <!-- 数据库列的名称a_column按驼峰式命名规则和java属性名称列自动映射。 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 数据库超过25000秒仍未响应则超时 -->
+        <!-- <setting name="defaultStatementTimeout" value="25000" /> -->
+     </settings>
+</configuration>

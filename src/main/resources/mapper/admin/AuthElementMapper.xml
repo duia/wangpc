@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wpc.admin.dao.AuthElementDao" >
+  	<resultMap id="BaseResultMap" type="com.wpc.admin.entity.AuthElement" >
+    	<id column="id" property="id" />
+	    <result column="menu_id" property="menuId" />
+	    <result column="element_name" property="elementName" />
+	    <result column="element_code" property="elementCode" />
+	    <result column="element_desc" property="elementDesc" />
+  	</resultMap>
+  
+  	<sql id="table_columns" >
+	    id,
+	    menu_id,
+	    element_name,
+	    element_code,
+	    element_desc
+  	</sql>
+  	<sql id="entity_properties">
+	  	#{id},
+	  	#{menuId},
+	  	#{elementName},
+	  	#{elementCode},
+	  	#{elementDesc}
+  	</sql>
+  
+  	<insert id="save" parameterType="com.wpc.admin.entity.AuthElement" keyProperty="id" useGeneratedKeys="true">
+	  	INSERT INTO auth_element ( <include refid="table_columns" /> ) 
+	  	VALUES ( <include refid="entity_properties" /> )
+  	</insert>
+  
+  	<delete id="delete" parameterType="Integer">
+  		DELETE FROM auth_element 
+  		WHERE id=#{id}
+  	</delete>
+  
+  	<delete id="deleteByIds">
+		DELETE FROM auth_element
+		WHERE id IN
+		<foreach item="item" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+  	</delete>
+  
+  	<update id="update" parameterType="com.wpc.admin.entity.AuthElement">
+	  	UPDATE auth_element 
+	  	<trim prefix="set" suffixOverrides=",">
+		  	<if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
+		  	<if test="elementName != null and elementName != ''">element_name = #{elementName},</if>
+		  	<if test="elementCode != null and elementCode != ''">element_code = #{elementCode},</if>
+		  	<if test="elementDesc != null and elementDesc != ''">element_desc = #{elementDesc},</if>
+	  	</trim>
+	  	<where>id=#{id}</where>
+  	</update>
+  
+  	<select id="findById" resultMap="BaseResultMap" parameterType="Integer">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_element 
+  		WHERE id=#{id}
+  	</select>
+  	
+  	<select id="queryAll" resultMap="BaseResultMap">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_element 
+  	</select>
+  	
+  	<sql id="sel_where">
+	  	<trim prefix="where" prefixOverrides="and |or ">
+		  	<if test="menuId != null and menuId != ''">and menu_id = #{menuId}</if>
+		  	<if test="elementName != null and elementName != ''">and element_name = #{elementName}</if>
+		  	<if test="elementCode != null and elementCode != ''">and element_code = #{elementCode}</if>
+		  	<if test="elementDesc != null and elementDesc != ''">and element_desc = #{elementDesc}</if>
+	  	</trim>
+  	</sql>
+  	
+  	<select id="search" resultMap="BaseResultMap" parameterType="com.wpc.admin.entity.AuthElement">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_element
+  		<include refid="sel_where" />
+  	</select>
+  	
+  	<select id="count" resultType="int" parameterType="com.wpc.admin.entity.AuthElement">
+	  	SELECT COUNT(id) 
+	  	FROM auth_element
+	  	<include refid="sel_where" />
+  	</select>
+  	
+  	<!-- 分页查询条件，供datatables插件查询使用 -->
+  	<sql id="page_where">
+  		<if test="condition != null">
+		  	<trim prefix="where" prefixOverrides="and |or ">
+			  	<if test="condition.menuId != null and condition.menuId != ''">and menu_id = #{condition.menuId}</if>
+			  	<if test="condition.elementName != null and condition.elementName != ''">and element_name = #{condition.elementName}</if>
+			  	<if test="condition.elementCode != null and condition.elementCode != ''">and element_code = #{condition.elementCode}</if>
+			  	<if test="condition.elementDesc != null and condition.elementDesc != ''">and element_desc = #{condition.elementDesc}</if>
+		  	</trim>
+	  	</if>
+  	</sql>
+  	
+  	<!-- 查询条数，供datatables插件查询使用 -->
+  	<select id="countPage" resultType="int">
+	  	SELECT COUNT(id) 
+	  	FROM auth_element
+	  	<include refid="page_where" />
+  	</select>
+  
+  	<!-- 分页查询，供datatables插件查询使用 -->
+  	<select id="searchPage" resultMap="BaseResultMap">
+  		SELECT <include refid="table_columns"/> 
+  		FROM auth_element
+  		<include refid="page_where" />
+  		<include refid="order"/>
+  		<include refid="limit"/>
+  	</select>
+  	
+  	<!-- 排序，供datatables插件查询使用 -->
+  	<sql id="order">
+  		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
+  	</sql>
+  	
+  	<!-- 分页，供datatables插件查询使用  -->
+  	<sql id="limit">
+  		LIMIT #{start}, #{length}
+  	</sql>
+  	
+  	<!-- 其他自定义SQL -->
+  	<!-- 通过菜单id删除按钮 -->
+  	<delete id="deleteByMenuId" parameterType="Integer">
+  		DELETE FROM auth_element 
+  		WHERE menu_id = #{menuId}
+  	</delete>
+  	
+</mapper>
