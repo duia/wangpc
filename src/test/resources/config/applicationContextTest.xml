@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+     	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+     	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+     	http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+	
+	<aop:aspectj-autoproxy />
+	
+	<!-- 属性编辑器 -->
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="propertyEditorRegistrars">
+			<list>
+				<bean class="com.wpc.test.spring.DatePropertyEditor"></bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- BeanFactory后处理程序:
+		实现BeanFactoryPostProcessor接口的方法：postProcessBeanFactory 
+		区别于BeanPostProcessor（针对bean），对BeanFactory容器里 的所有bean起作用
+	-->
+	<!-- <bean id="bfpp" class="com.wpc.test.spring.MyBeanFactoryPostProcessor">
+		<property name="set">
+			<set>
+				<value>wpc122333</value>
+			</set>
+		</property>
+	</bean> -->
+	
+	<!-- 监听器 -->
+	<!-- <bean id="ml" class="com.wpc.test.spring.MyListener"></bean> -->
+	
+	<bean id="a" class="com.wpc.admin.entity.User">
+		<property name="updateTime" value="2016-11-03"/>
+		<property name="username" value="wpc"/>
+		<property name="password" value="wpc122333"/>
+	</bean>
+	
+	<bean class="com.wpc.test.spring.AspectJTest"></bean>
+	
+</beans>
+	
+	

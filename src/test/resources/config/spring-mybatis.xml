@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+     	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+     	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	
+	<context:annotation-config/>
+
+	<!-- 开启自动扫描包 -->
+	<context:component-scan base-package="com.wpc.admin" />
+	
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:config/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="properties" ref="configProperties" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+	</bean>
+	
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${driverClassName}" />
+		<property name="jdbcUrl" value="${url}" />
+		<property name="user" value="${username}" />
+		<property name="password" value="${password}" />
+		<!--连接池中保留的最小连接数。-->  
+		<property name="minPoolSize" value="10" />  
+		<!--连接池中保留的最大连接数。Default: 15 -->  
+		<property name="maxPoolSize" value="100" />  
+		<!--最大空闲时间,1800秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->  
+		<property name="maxIdleTime" value="1800" />  
+		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->  
+		<property name="acquireIncrement" value="3" />  
+		<property name="maxStatements" value="1000" />  
+		<property name="initialPoolSize" value="10" />  
+		<!--每60秒检查所有连接池中的空闲连接。Default: 0 -->  
+		<property name="idleConnectionTestPeriod" value="60" />  
+		<!--定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->  
+		<property name="acquireRetryAttempts" value="30" />  
+		<property name="breakAfterAcquireFailure" value="true" />  
+		<property name="testConnectionOnCheckout" value="false" />
+	</bean>
+ 	 
+    <!-- define the SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- 配置mybatis相关设置，可以省略，有默认 -->
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+        <!--dao接口对应的Mapper的xml文件位置，如果xml和dao路径相同该配置项可以省略 -->
+		<property name="mapperLocations" value="classpath*:mapper/**/*.xml" />
+    </bean>
+
+    <!-- scan for mappers and let them be autowired-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wpc.**.dao" />
+    </bean> 
+    
+    <!-- transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <!-- 5. 使用声明式事务  
+         transaction-manager：引用上面定义的事务管理器  
+     -->  
+    <tx:annotation-driven transaction-manager="txManager" />
+
+</beans>
