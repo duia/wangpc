@@ -79,11 +79,6 @@ public class IndexController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/test")
-	public String test(ModelMap model) {
-		return "test";
-	}
-	
 	@RequestMapping(value = "buttons")
 	public String index3(ModelMap model) {
 		return "ui_buttons";
@@ -103,11 +98,6 @@ public class IndexController {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
 		model.addAttribute("date", dateFormat.format(new java.util.Date()));
 		return "hello";
-	}
-
-	@RequestMapping(value = "dd", method = RequestMethod.GET)
-	public String a(ModelMap model) {
-		return "dragDrop/index";
 	}
 
 }

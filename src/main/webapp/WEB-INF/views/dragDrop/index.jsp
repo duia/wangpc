@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="/static/plugins/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet"/>
 <style>
 	.one,.two,.three {
-		border: 1px soild #ebccd1;
+		border: 1px solid #ebccd1;
 	}
 	#a,#b,#c {
 		height: 400px;
@@ -103,7 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  	<h3 class="panel-title">Panel title</h3>
 				</div>
 			  	<ul id="a" class="list-group">
-				  <li class="list-group-item" id="11"><span>Cras justo odio</span></li>
+				  <li class="list-group-item" id="11"><span>Cras justo odio</span><span class="pull-right"><i class="fa fa-arrow-up"></i><i class="fa fa-arrow-down"></i></span></li>
 				  <li class="list-group-item" id="12"><span>Dapibus ac facilisis in</span></li>
 				  <li class="list-group-item" id="13"><span>Morbi leo risus</span></li>
 				  <li class="list-group-item" id="14"><span>Porta ac consectetur ac</span></li>
@@ -183,7 +183,7 @@ $.extend({formatDate: function(date,format){if(!format)format="yyyy-MM-dd HH:mm:
 	};
 	var html = template('test', data);
 	$('#target').html(html);
-	
+
 	$('.two .list-group-item').draggable({
         containment: '.con',
         revert: "invalid",
