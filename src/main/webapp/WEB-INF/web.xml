@@ -32,6 +32,31 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+    <!-- 使用监听器启动和停止数据库 -->
+    <listener>
+        <listener-class>com.wpc.listener.H2DBServerStartListener</listener-class>
+    </listener>
+
+    <!-- 使用H2控制台的Servlet H2控制台是一个独立的应用程序，包括它自己的Web服务器，但它可以作为一个servlet作为-->
+    <servlet>
+        <servlet-name>H2Console</servlet-name>
+        <servlet-class>org.h2.server.web.WebServlet</servlet-class>
+        <init-param>
+            <param-name>webAllowOthers</param-name>
+            <param-value></param-value>
+        </init-param>
+        <init-param>
+            <param-name>trace</param-name>
+            <param-value></param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!-- 映射H2控制台的访问路径 -->
+    <servlet-mapping>
+        <servlet-name>H2Console</servlet-name>
+        <url-pattern>/h2</url-pattern>
+    </servlet-mapping>
+
 
 	<!--UTF8 编码过滤-->
     <filter>
@@ -53,7 +78,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-	<filter>    
+	<filter>
         <filter-name>shiroFilter</filter-name>    
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>    
         <init-param>    
