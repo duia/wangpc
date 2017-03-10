@@ -47,7 +47,8 @@
                 /favicon.ico = anon
                 <!-- anon 允许访问 -->  
                 /login = anon  
-                /dologin = anon  
+                /dologin = anon
+                /h2 = anon
                 <!-- authc需要授权 -->
                 /** = authc
             </value>  
