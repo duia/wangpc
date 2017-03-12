@@ -54,7 +54,7 @@
     <!-- 映射H2控制台的访问路径 -->
     <servlet-mapping>
         <servlet-name>H2Console</servlet-name>
-        <url-pattern>/h2</url-pattern>
+        <url-pattern>/console/*</url-pattern>
     </servlet-mapping>
 
 
@@ -107,9 +107,9 @@
 	</servlet-mapping>
 	
 	<!-- Session超时30分钟(零或负数表示会话永不超时) -->  
-    <session-config>  
+    <!--<session-config>
         <session-timeout>30</session-timeout>  
-    </session-config>  
+    </session-config>-->
     
 	
 	<welcome-file-list>

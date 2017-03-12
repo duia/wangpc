@@ -1,0 +1,6 @@
+#FileLock
+#Sun Mar 12 21:16:59 CST 2017
+hostName=wpc-pc
+id=15ac2aa3058ad47fabedebcc8fdd073301044ba2005
+method=file
+server=192.168.0.100\:60658

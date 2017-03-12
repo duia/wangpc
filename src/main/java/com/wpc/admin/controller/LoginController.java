@@ -45,7 +45,7 @@ public class LoginController {
         logger.info("======用户进入了ShiroController的/doLogin.html");
         String msg ;
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
-        token.setRememberMe(true);
+//        token.setRememberMe(true);
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);

@@ -1,0 +1,24 @@
+2017-03-10 23:19:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+SELECT  
+	    id,
+	    username,
+	    account,
+	    password,
+	    age,
+	    update_time
+  	  
+  		FROM user
+  		WHERE account = ? [42102-193]
+2017-03-10 23:26:23 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+SELECT  
+	    id,
+	    username,
+	    account,
+	    password,
+	    age,
+	    update_time
+  	  
+  		FROM user 
+  		WHERE id=? [42102-193]

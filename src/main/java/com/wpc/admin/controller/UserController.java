@@ -4,6 +4,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.authc.credential.PasswordService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,8 @@ public class UserController {
 	
 	@Resource(name=UserService.BEAN_ID)
 	private UserService userService;
+	@Resource
+	PasswordService passwordService;
 	
 	/**
 	 * 页面跳转
@@ -54,8 +57,10 @@ public class UserController {
 	@ResponseBody
 	public AjaxResult addOrUpdate(ModelMap model, User user) {
 		if(user.getId()!=null && user.getId()!=0){
+			user.setPassword(passwordService.encryptPassword(user.getPassword()));
 			userService.update(user);
 		}else{
+			user.setPassword(passwordService.encryptPassword(user.getPassword()));
 			userService.save(user);
 		}
 		return AjaxResult.success();
