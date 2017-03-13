@@ -41,11 +41,11 @@ public class LoginController {
     }
   
     @RequestMapping(value = "/dologin", method = RequestMethod.POST)  
-    public String doLogin(User user,HttpServletRequest request, Model model) {  
+    public String doLogin(HttpServletRequest request, Model model, User user, boolean rememberMe) {
         logger.info("======用户进入了ShiroController的/doLogin.html");
         String msg ;
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
-//        token.setRememberMe(true);
+        token.setRememberMe(rememberMe);
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);

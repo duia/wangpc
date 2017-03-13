@@ -70,7 +70,7 @@ public class IndexController {
 	public String index(ModelMap model) {
 		logger.info("1111111111111");
 		logger.debug("2222222222222");
-		System.out.println(userService.findById(1));
+//		System.out.println(userService.findById(1));
 		return "index";
 	}
 

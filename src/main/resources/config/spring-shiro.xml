@@ -47,7 +47,7 @@
                 /dologin = anon
                 /console/* = anon
                 <!-- authc 需要授权 -->
-                /** = authc
+                /** = user
             </value>
         </property>
     </bean>
@@ -86,12 +86,12 @@
         <property name="hashFormat" ref="hashFormat"/>
         <property name="hashFormatFactory" ref="hashFormatFactory"/>
     </bean>
-    <bean id="hashService" class="org.apache.shiro.crypto.hash.DefaultHashService"></bean>
-    <bean id="hashFormat" class="org.apache.shiro.crypto.hash.format.Shiro1CryptFormat"></bean>
-    <bean id="hashFormatFactory" class="org.apache.shiro.crypto.hash.format.DefaultHashFormatFactory"></bean>
+    <bean id="hashService" class="org.apache.shiro.crypto.hash.DefaultHashService"/>
+    <bean id="hashFormat" class="org.apache.shiro.crypto.hash.format.Shiro1CryptFormat"/>
+    <bean id="hashFormatFactory" class="org.apache.shiro.crypto.hash.format.DefaultHashFormatFactory"/>
 
     <!-- 定义Session ID生成管理器 -->
-    <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"></bean>
+    <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
     <!-- 配置Session DAO的操作处理 -->
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
         <!-- 设置session缓存的名字，这个名字可以任意 -->
@@ -106,7 +106,7 @@
         <!-- 保证该系统不会受到跨域的脚本操作供给 -->
         <property name="httpOnly" value="true"/>
         <!-- 定义Cookie的过期时间，单位为秒，如果设置为-1表示浏览器关闭，则Cookie消失 -->
-        <property name="maxAge" value="180000"/>
+        <property name="maxAge" value="-1"/>
     </bean>
     <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <constructor-arg value="rememberMe"/>
@@ -115,7 +115,7 @@
     </bean>
     <!-- rememberMe 管理器 -->
     <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
-        <property name="cipherKey" value=" #{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
         <property name="cookie" ref="rememberMeCookie"/>
     </bean>
     <!-- 定义会话管理器的操作 -->

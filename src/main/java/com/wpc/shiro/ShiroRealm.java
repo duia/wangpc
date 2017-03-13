@@ -6,11 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -43,8 +39,8 @@ public class ShiroRealm extends AuthorizingRealm {
     }
 
     /*
-     * 授权 
-     */
+         * 授权
+         */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         // 根据用户配置用户与权限  
@@ -87,17 +83,17 @@ public class ShiroRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         User user = userDao.getUserByAccount(token.getUsername());
         if (user == null) {
-            return null;
+            throw new UnknownAccountException();//没找到帐号
         }
-        SimpleAuthenticationInfo info = null;
-        if (user.getUsername().equals(token.getUsername())) {
-            info = new SimpleAuthenticationInfo(
-                    user.getUsername(),
-                    passwordService.encryptPassword(user.getPassword()),
-                    user.getUsername());
+//        if(Boolean.TRUE.equals(user.getLocked())) {
+//            throw new LockedAccountException(); //帐号锁定
+//        }
 //            this.setSession("user", user);
-        }
-        return info;
+        return new SimpleAuthenticationInfo(
+                user.getUsername(),
+//                passwordService.encryptPassword(user.getPassword()),
+                user.getPassword(),
+                getName());
     }
 
     /**
