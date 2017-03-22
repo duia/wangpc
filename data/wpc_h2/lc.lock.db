@@ -1,6 +1,6 @@
 #FileLock
-#Mon Mar 13 16:52:42 CST 2017
-hostName=duia-tsj-0155
-id=15ac6de94e2f0ebcf32779518ab428e50cdfa1ed613
+#Wed Mar 22 21:56:11 CST 2017
+hostName=wpc-pc
+id=15af64da9b8c0085802a8561c8f60d3b733c4128704
 method=file
-server=172.16.160.80\:57396
+server=192.168.0.103\:57058

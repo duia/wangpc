@@ -81,14 +81,7 @@
     <bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher">
         <property name="passwordService" ref="passwordService"/>
     </bean>
-    <bean id="passwordService" class="org.apache.shiro.authc.credential.DefaultPasswordService">
-        <property name="hashService" ref="hashService"/>
-        <property name="hashFormat" ref="hashFormat"/>
-        <property name="hashFormatFactory" ref="hashFormatFactory"/>
-    </bean>
-    <bean id="hashService" class="org.apache.shiro.crypto.hash.DefaultHashService"/>
-    <bean id="hashFormat" class="org.apache.shiro.crypto.hash.format.Shiro1CryptFormat"/>
-    <bean id="hashFormatFactory" class="org.apache.shiro.crypto.hash.format.DefaultHashFormatFactory"/>
+    <bean id="passwordService" class="org.apache.shiro.authc.credential.DefaultPasswordService"/>
 
     <!-- 定义Session ID生成管理器 -->
     <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>

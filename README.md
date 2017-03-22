@@ -1,5 +1,51 @@
 **************************************************************************************************
 
+2017-03-10
+
+将H2数据库集成到项目中，并将数据文件添加到项目的data文件夹下
+    |——java
+    |   |——listener
+    |       |——H2DBServerStartListener.java
+    |——resources
+    |   |——config
+    |       |——jdbc.properties（修改H2数据库连接参数）
+    |       |——spring-shiro.xml（/console/* = anon，访问h2控制面板）
+    |——webapp
+    |   |——WEB-INF
+    |       |——web.xml（监听器、H2Console）
+    |——pom.xml（com.h2database）
+
+**************************************************************************************************
+
+2016-12-30
+
+    |——java
+    |   |——util
+    |       |——*（工具类）
+    |——pom.xml（org.apache.poi下的一些jar）
+
+
+**************************************************************************************************
+
+2016-10-20
+
+    |——java
+    |   |——websocket
+    |   |   |——WebSocketConfig.java（简便方式配置websocket）
+    |   |——controller
+    |       |——SocketController2.java
+    |——webapp
+    |   |——js
+    |       |——sockjs-1.1.1.min.js
+    |       |——stomp.js
+    |——WEB-INF
+    |   |——socket
+    |       |——socket.jsp
+
+简便方式配置websocket
+
+**************************************************************************************************
+
 2016-09-14
 
 添加artTemplate插件：js模板引擎插件
