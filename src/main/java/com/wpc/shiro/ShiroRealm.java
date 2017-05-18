@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.wpc.common.HttpConstant;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.PasswordService;
@@ -92,7 +93,7 @@ public class ShiroRealm extends AuthorizingRealm {
 //        if(Boolean.TRUE.equals(user.getLocked())) {
 //            throw new LockedAccountException(); //帐号锁定
 //        }
-//            this.setSession("user", user);
+        this.setSession(HttpConstant.LOGIN_USER, user);
         return new SimpleAuthenticationInfo(
                 user.getUsername(),
 //                passwordService.encryptPassword(user.getPassword()),
@@ -109,7 +110,7 @@ public class ShiroRealm extends AuthorizingRealm {
         Subject currentUser = SecurityUtils.getSubject();
         if (null != currentUser) {
             Session session = currentUser.getSession();
-            System.out.println("Session默认超时时间为[" + session.getTimeout() + "]毫秒");
+//            System.out.println("Session默认超时时间为[" + session.getTimeout() + "]毫秒");
             if (null != session) {
                 session.setAttribute(key, value);
             }

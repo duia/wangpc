@@ -17,6 +17,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wpc.annotation.SystemLog;
+import com.wpc.enums.OperLevel;
+import com.wpc.enums.OperType;
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +57,7 @@ public class TimesController {
 	private Scheduler scheduler;
 
 	@RequestMapping
+	@SystemLog(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "查询")
 	public String index(ModelMap model) throws Exception {
 		return "times/times";
 	}

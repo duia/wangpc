@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.wpc.annotation.SystemLog;
+import com.wpc.enums.OperLevel;
+import com.wpc.enums.OperType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -38,10 +41,10 @@ public class AuthMenuServiceImpl extends BaseServiceImpl<AuthMenu, Integer> impl
 	private AuthElementService authElementService;
 	@Resource(name=AuthPermissionService.BEAN_ID)
 	private AuthPermissionService authPermissionService;
-	
+
+	@SystemLog(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "获取菜单")
 	@Override
 	public List<AuthMenu> getLeftMenu() {
-		// TODO Auto-generated method stub
 		return authMenuDao.getLeftMenu();
 	}
 
