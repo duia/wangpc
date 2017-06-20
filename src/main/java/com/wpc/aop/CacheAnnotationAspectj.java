@@ -1,11 +1,9 @@
 /**
- * 项目名：duia-tiku-api <br>
- * 包名：com.duia.tiku <br>
  * 文件名：CacheAnnotationAspectj.java <br>
  * 版本信息：TODO <br>
- * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599 weibo:http://weibo.com/zhaozengbin<br>
+ * 作者：王鹏程 E-mail：wpcfree@qq.com QQ:376205421
  * 日期：2017年5月8日-下午5:32:56<br>
- * Copyright (c) 2017 赵增斌-版权所有<br>
+ * Copyright (c) 2017 王鹏程-版权所有<br>
  *
  */
 package com.wpc.aop;
@@ -31,8 +29,8 @@ import java.util.Set;
  *
  * 类名称：CacheAnnotationAspectj <br>
  * 类描述：TODO <br>
- * 创建人：赵增斌 <br>
- * 修改人：赵增斌 <br>
+ * 创建人：王鹏程 <br>
+ * 修改人：王鹏程 <br>
  * 修改时间：2017年5月8日 下午5:32:56 <br>
  * 修改备注：TODO <br>
  *
@@ -57,8 +55,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 标题：构造器 <br>
 	 * 描述：TODO <br>
-	 * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail：wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年6月1日 上午10:19:57 <br>
 	 *
 	 * @param eCacheDataSource
@@ -67,9 +64,9 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	public void setCacheDataSource(ECacheDataSource eCacheDataSource) {
 		switch (eCacheDataSource) {
 			case WPC:
+				cache = wpcCache;
 				break;
 			default:
-				cache = wpcCache;
 				break;
 		}
 	}
@@ -77,15 +74,14 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 方法：around <br>
 	 * 描述： 配置环绕通知,使用在方法aspect()上注册的切入点 缓存公用拦截器 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月20日 上午11:52:33 <br>
 	 *
 	 * @param joinPoint
 	 * @param cacheAnnotation
 	 * @return
 	 */
-	@Around("execution(* com.duia..*.*(..)) and @annotation(cacheAnnotation))")
+	@Around("execution(* com.wpc..*.*(..)) and @annotation(cacheAnnotation))")
 	public Object around(ProceedingJoinPoint joinPoint, CacheAnn cacheAnnotation) {
 		try {
 
@@ -139,8 +135,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 方法：getGroupName <br>
 	 * 描述：处理组ID确认是否为动态组ID <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年5月23日 下午2:30:14 <br>
 	 *
 	 * @param groupName
@@ -162,8 +157,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 方法：execute <br>
 	 * 描述：执行缓存操作 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月23日 下午4:02:45 <br>
 	 *
 	 * @param joinPoint
@@ -217,8 +211,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 方法：filterKey <br>
 	 * 描述：获取指定字段作为KEY <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月23日 下午4:24:47 <br>
 	 *
 	 * @param joinPoint
@@ -256,8 +249,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 方法：encodeField <br>
 	 * 描述：获取编码后的field <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月23日 下午5:11:41 <br>
 	 *
 	 * @param field
@@ -270,8 +262,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 方法：assembleKey <br>
 	 * 描述：组装Key <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月23日 下午5:03:51 <br>
 	 *
 	 * @param key
@@ -285,8 +276,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	/**
 	 * 方法：set <br>
 	 * 描述：设置方法 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月23日 下午3:14:51 <br>
 	 *
 	 * @param key

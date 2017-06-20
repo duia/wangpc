@@ -20,7 +20,7 @@
 
    <import resource="spring-mybatis.xml"/>
    <import resource="spring-shiro.xml"/>
-   <!-- <import resource="spring-redis.xml"/> -->
+    <import resource="spring-redis.xml"/> 
 
 	<!-- 配置定时执行计划  -->
 	<!-- <bean id="app" class="com.wpc.app.App" />

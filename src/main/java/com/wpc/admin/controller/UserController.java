@@ -88,4 +88,17 @@ public class UserController {
 		return userService.query(query);
 	}
 
+	/**
+	 * 功能描述: 通过人员id获取人员信息
+	 * @Author: wangpengcheng
+	 * @Date: 2017-06-20 22:10:32
+	 */
+	@RequestMapping(value="/findById", method=RequestMethod.POST)
+	@ResponseBody
+	public AjaxResult findById(ModelMap model, Integer id) {
+		AjaxResult responseJsonModel = new AjaxResult();
+		responseJsonModel.setResult(userService.findById(id));
+		return responseJsonModel;
+	}
+
 }

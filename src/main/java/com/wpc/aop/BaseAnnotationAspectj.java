@@ -1,11 +1,9 @@
 /**
- * 项目名：duia-web-admin <br>
- * 包名：com.duia.common.aop <br>
- * 文件名：SubjectAnnotationAspectj.java <br>
+ * 文件名：BaseAnnotationAspectj.java <br>
  * 版本信息：TODO <br>
- * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599 weibo:http://weibo.com/zhaozengbin<br>
+ * 作者：王鹏程 E-mail：wpcfree@qq.com QQ:376205421
  * 日期：2017年3月15日-下午2:12:49<br>
- * Copyright (c) 2017 赵增斌-版权所有<br>
+ * Copyright (c) 2017 王鹏程-版权所有<br>
  *
  */
 package com.wpc.aop;
@@ -33,10 +31,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  *
- * 类名称：SubjectAnnotationAspectj <br>
+ * 类名称：BaseAnnotationAspectj <br>
  * 类描述：自定义SKU注解拦截器 <br>
- * 创建人：赵增斌 <br>
- * 修改人：赵增斌 <br>
+ * 创建人：王鹏程 <br>
+ * 修改人：王鹏程 <br>
  * 修改时间：2017年3月15日 下午2:12:49 <br>
  * 修改备注：TODO <br>
  *
@@ -58,8 +56,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：setRequest <br>
 	 * 描述：设置request <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年5月26日 下午6:50:31 <br>
 	 */
 	protected void setRequest() {
@@ -71,8 +68,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：setParams <br>
 	 * 描述：TODO <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年5月23日 下午2:17:51 <br>
 	 *
 	 * @param joinPoint
@@ -86,8 +82,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：getValue <br>
 	 * 描述：获取值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月20日 下午12:19:24 <br>
 	 *
 	 * @param paramNames
@@ -110,8 +105,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：handleJson <br>
 	 * 描述：处理json <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年5月31日 下午6:00:28 <br>
 	 *
 	 * @param result
@@ -133,8 +127,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：getFieldsName <br>
 	 * 描述：得到方法参数的名称 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月15日 下午5:32:15 <br>
 	 *
 	 * @param cls
@@ -174,8 +167,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：getFieldsValue <br>
 	 * 描述：如果参数是对象得到参数的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月15日 下午5:31:46 <br>
 	 *
 	 * @param obj
@@ -214,8 +206,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：getReqeust <br>
 	 * 描述：获取request <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月15日 下午6:25:15 <br>
 	 *
 	 * @return
@@ -230,8 +221,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：judgeBasicType <br>
 	 * 描述：判断基本类型 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月21日 上午10:35:11 <br>
 	 *
 	 * @return
@@ -243,8 +233,7 @@ public class BaseAnnotationAspectj {
 	/**
 	 * 方法：judgeType <br>
 	 * 描述：判断基本类型 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月21日 上午9:33:51 <br>
 	 *
 	 * @param result

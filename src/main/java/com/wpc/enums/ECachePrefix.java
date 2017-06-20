@@ -1,11 +1,9 @@
 /**
- * 项目名：duia-tiku-api <br>
- * 包名：com.duia.tiku.enums <br>
  * 文件名：ECachePrefix.java <br>
  * 版本信息：TODO <br>
- * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599 weibo:http://weibo.com/zhaozengbin<br>
+ * 作者：王鹏程 E-mail：wpcfree@qq.com QQ:376205421
  * 日期：2017年5月23日-下午3:21:42<br>
- * Copyright (c) 2017 赵增斌-版权所有<br>
+ * Copyright (c) 2017 王鹏程-版权所有<br>
  *
  */
 package com.wpc.enums;
@@ -14,8 +12,8 @@ package com.wpc.enums;
  *
  * 类名称：ECachePrefix <br>
  * 类描述：缓存前缀 <br>
- * 创建人：赵增斌 <br>
- * 修改人：赵增斌 <br>
+ * 创建人：王鹏程 <br>
+ * 修改人：王鹏程 <br>
  * 修改时间：2017年5月23日 下午3:21:42 <br>
  * 修改备注：TODO <br>
  *
@@ -29,8 +27,7 @@ public enum ECachePrefix {
 	/**
 	 * 标题：构造器 <br>
 	 * 描述：TODO <br>
-	 * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail：wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年5月23日 下午3:22:47 <br>
 	 *
 	 * @param des
@@ -62,8 +59,7 @@ public enum ECachePrefix {
 	/**
 	 * 方法：getKey <br>
 	 * 描述：获取真实key <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年6月1日 上午11:58:16 <br>
 	 *
 	 * @param keySuffix

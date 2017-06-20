@@ -1,11 +1,9 @@
 /**
- * 项目名：duia-tiku-api <br>
- * 包名：com.duia.tiku.common.util <br>
  * 文件名：ObjectUtils.java <br>
  * 版本信息：TODO <br>
- * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599 weibo:http://weibo.com/zhaozengbin<br>
+ * 作者：王鹏程 E-mail：376205421@qq.com QQ:376205421
  * 日期：2017年5月4日-下午12:08:21<br>
- * Copyright (c) 2017 赵增斌-版权所有<br>
+ * Copyright (c) 2017 王鹏程-版权所有<br>
  *
  */
 package com.wpc.util.base;
@@ -20,8 +18,8 @@ import java.util.*;
  *
  * 类名称：ObjectUtils <br>
  * 类描述：对象工具类 <br>
- * 创建人：赵增斌 <br>
- * 修改人：赵增斌 <br>
+ * 创建人：王鹏程 <br>
+ * 修改人：王鹏程 <br>
  * 修改时间：2017年5月4日 下午12:08:21 <br>
  * 修改备注：TODO <br>
  *
@@ -31,8 +29,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isEmpty <br>
 	 * 描述：判断集合是否为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:46:00 <br>
 	 *
 	 * @param collection
@@ -49,8 +46,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isNotEmpty <br>
 	 * 描述：判断集合是否不为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:46:15 <br>
 	 *
 	 * @param collection
@@ -67,8 +63,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isNotEmpty <br>
 	 * 描述：判断数组是否不为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:47:01 <br>
 	 *
 	 * @param objectArrays
@@ -84,8 +79,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isEmpty <br>
 	 * 描述：判断数组是否为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:47:09 <br>
 	 *
 	 * @param objectArrays
@@ -101,8 +95,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isNotEmpty <br>
 	 * 描述：判断对象是否不为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:47:01 <br>
 	 *
 	 * @param object
@@ -141,8 +134,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isEmpty <br>
 	 * 描述：判断对象是否为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:47:09 <br>
 	 *
 	 * @param object
@@ -164,8 +156,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isEmpty <br>
 	 * 描述：判断字符串是否为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:46:51 <br>
 	 *
 	 * @param stringBuffer
@@ -181,8 +172,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isNotEmpty <br>
 	 * 描述：判断字符串是否不为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:47:01 <br>
 	 *
 	 * @param stringBuffer
@@ -198,8 +188,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isEmpty <br>
 	 * 描述：判断MAP是否为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:47:09 <br>
 	 *
 	 * @param map
@@ -215,8 +204,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isNotEmpty <br>
 	 * 描述：判断MAP是否不为空 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-6-21 下午5:47:19 <br>
 	 *
 	 * @param map
@@ -232,8 +220,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isIn <br>
 	 * 描述：判断字符串是否在数组中包含 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-7-16 下午5:29:30 <br>
 	 *
 	 * @param substring
@@ -256,8 +243,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：isIn <br>
 	 * 描述：判断字符串是否在数组中包含 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-7-16 下午5:29:30 <br>
 	 *
 	 * @param substring
@@ -281,8 +267,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：decode <br>
 	 * 描述：解码 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-10-9 下午6:44:08 <br>
 	 *
 	 * @param strIn
@@ -298,8 +283,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：StrToUTF <br>
 	 * 描述： 字符串转编码转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-10-9 下午6:44:20 <br>
 	 *
 	 * @param strIn
@@ -321,8 +305,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：code2code <br>
 	 * 描述：TODO <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-10-9 下午6:44:29 <br>
 	 *
 	 * @param strIn
@@ -350,8 +333,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：getIntegerArry <br>
 	 * 描述：获取整型数组 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2013-10-9 下午6:44:37 <br>
 	 *
 	 * @param object
@@ -373,8 +355,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：convertToCode <br>
 	 * 描述： 使用commons的jexl可实现将字符串变成可执行代码的功能 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月20日 上午11:24:41 <br>
 	 *
 	 * @param jexlExp
@@ -397,8 +378,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：convertToBooleanCode <br>
 	 * 描述：使用commons的jexl可实现将字符串变成可执行代码的功能 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月20日 上午11:48:07 <br>
 	 *
 	 * @param jexlExp
@@ -417,8 +397,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：byteConvertToString <br>
 	 * 描述：list转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:28:59 <br>
 	 *
 	 * @param list
@@ -438,8 +417,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：byteConvertToObject <br>
 	 * 描述：list转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:28:59 <br>
 	 *
 	 * @param list
@@ -461,8 +439,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：byteConvertToObject <br>
 	 * 描述：list转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:28:59 <br>
 	 *
 	 * @param list
@@ -482,8 +459,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：byteConvertToObject <br>
 	 * 描述：list转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:28:59 <br>
 	 *
 	 * @param map
@@ -503,8 +479,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：byteConvertToObject <br>
 	 * 描述：list转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:28:59 <br>
 	 *
 	 * @param map
@@ -525,8 +500,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：stringConvertToByte <br>
 	 * 描述：list转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:28:59 <br>
 	 *
 	 * @param map
@@ -546,8 +520,7 @@ public class ObjectUtils {
 	/**
 	 * 方法：byteConvertToObject <br>
 	 * 描述：list转换 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:376205421@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:28:59 <br>
 	 *
 	 * @param map

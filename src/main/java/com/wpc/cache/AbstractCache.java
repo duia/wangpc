@@ -3,9 +3,9 @@
  * 包名： com.duia.tiku.common.cache <br>
  * 文件名：AbstractCache.java <br>
  * 版本信息：TODO <br>
- * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599 weibo:http://weibo.com/zhaozengbin<br>
+ * 作者：王鹏程 E-mail：wpcfree@qq.com QQ:376205421
  * 日期：2017年3月27日-下午2:25:16<br>
- * Copyright (c) 2017 赵增斌-版权所有<br>
+ * Copyright (c) 2017 王鹏程-版权所有<br>
  *
  */
 package com.wpc.cache;
@@ -29,8 +29,8 @@ import java.util.*;
  *
  * 类名称：AbstractCache <br>
  * 类描述：缓存抽象类 <br>
- * 创建人：赵增斌 <br>
- * 修改人：赵增斌 <br>
+ * 创建人：王鹏程 <br>
+ * 修改人：王鹏程 <br>
  * 修改时间：2017年3月27日 下午2:25:16 <br>
  * 修改备注：TODO <br>
  *
@@ -43,8 +43,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：ping <br>
 	 * 描述：ping缓存服务器 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:45:39 <br>
 	 *
 	 * @return
@@ -65,8 +64,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：renameNX <br>
 	 * 描述： 更改key,仅当新key不存在时才执行 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:45:39 <br>
 	 *
 	 * @param oldkey
@@ -80,8 +78,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：renameNX <br>
 	 * 描述： 更改key,仅当新key不存在时才执行 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:45:39 <br>
 	 *
 	 * @param oldkey
@@ -99,8 +96,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：expire <br>
 	 * 描述：设置key的过期时间，以秒为单位 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:47:27 <br>
 	 *
 	 * @param key
@@ -114,8 +110,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：expire <br>
 	 * 描述：设置key的过期时间，以秒为单位 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:47:27 <br>
 	 *
 	 * @param key
@@ -134,8 +129,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：expireAt <br>
 	 * 描述：设置key的过期时间,它是距历元（即格林威治标准时间 1970 年 1 月 1 日的 00:00:00，格里高利历）的偏移量 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:49:18 <br>
 	 *
 	 * @param key
@@ -149,8 +143,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：expireAt <br>
 	 * 描述：设置key的过期时间,它是距历元（即格林威治标准时间 1970 年 1 月 1 日的 00:00:00，格里高利历）的偏移量 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:49:18 <br>
 	 *
 	 * @param key
@@ -168,8 +161,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：ttl <br>
 	 * 描述： 查询key的过期时间 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:49:47 <br>
 	 *
 	 * @param key
@@ -182,8 +174,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：ttl <br>
 	 * 描述： 查询key的过期时间 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:49:47 <br>
 	 *
 	 * @param key
@@ -200,8 +191,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：persist <br>
 	 * 描述：取消对key过期时间的设置 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:50:39 <br>
 	 *
 	 * @param key
@@ -214,8 +204,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：persist <br>
 	 * 描述：取消对key过期时间的设置 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:50:39 <br>
 	 *
 	 * @param key
@@ -232,8 +221,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：del <br>
 	 * 描述：删除keys对应的记录,可以是多个key <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:51:22 <br>
 	 *
 	 * @param keys
@@ -245,8 +233,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：del <br>
 	 * 描述：删除keys对应的记录,可以是多个key <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:51:22 <br>
 	 *
 	 * @param keys
@@ -267,8 +254,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：exists <br>
 	 * 描述：判断key是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:16:22 <br>
 	 *
 	 * @param key
@@ -281,8 +267,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：exists <br>
 	 * 描述：判断key是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:16:22 <br>
 	 *
 	 * @param key
@@ -299,8 +284,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sort <br>
 	 * 描述：对List,Set,SortSet进行排序或limit <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:21:51 <br>
 	 *
 	 * @param key
@@ -314,8 +298,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sortObj <br>
 	 * 描述：对List,Set,SortSet进行排序或limit <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:21:51 <br>
 	 *
 	 * @param clazz
@@ -330,8 +313,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sort <br>
 	 * 描述：对List,Set,SortSet进行排序或limit <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:21:51 <br>
 	 *
 	 * @param key
@@ -349,8 +331,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：type <br>
 	 * 描述：返回指定key存储的类型 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:23:52 <br>
 	 *
 	 *
@@ -374,8 +355,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：keys <br>
 	 * 描述：查找所有匹配给定的模式的键 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:24:54 <br>
 	 *
 	 * @param pattern key的表达式,*表示多个，？表示一个
@@ -388,8 +368,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：keys <br>
 	 * 描述：查找所有匹配给定的模式的键 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:24:54 <br>
 	 *
 	 * @param pattern
@@ -408,8 +387,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sAdd <br>
 	 * 描述：向Set添加一条记录，如果value已存在返回0,否则返回1 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:26:55 <br>
 	 *
 	 * @param key
@@ -423,8 +401,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sAdd <br>
 	 * 描述：向Set添加一条记录，如果value已存在返回0,否则返回1 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:26:55 <br>
 	 *
 	 * @param key
@@ -438,8 +415,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sAdd <br>
 	 * 描述：向Set添加一条记录，如果value已存在返回0,否则返回1 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:31:00 <br>
 	 *
 	 * @param key
@@ -453,8 +429,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sAdd <br>
 	 * 描述：向Set添加一条记录，如果value已存在返回0,否则返回1 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:26:55 <br>
 	 *
 	 * @param key
@@ -469,8 +444,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sAdd <br>
 	 * 描述：向Set添加一条记录，如果value已存在返回0,否则返回1 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:26:55 <br>
 	 *
 	 * @param key
@@ -485,8 +459,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sAdd <br>
 	 * 描述：向Set添加一条记录，如果value已存在返回0,否则返回1 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:31:00 <br>
 	 *
 	 * @param key
@@ -513,8 +486,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sCard <br>
 	 * 描述：获取给定key中元素个数 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:34:42 <br>
 	 *
 	 * @param key
@@ -527,8 +499,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sCard <br>
 	 * 描述：获取给定key中元素个数 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:34:42 <br>
 	 *
 	 * @param key
@@ -545,8 +516,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sDiff <br>
 	 * 描述：返回从第一组和所有的给定集合之间的差异的成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:36:27 <br>
 	 *
 	 * @param keys
@@ -560,8 +530,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sDiffObj <br>
 	 * 描述：返回从第一组和所有的给定集合之间的差异的成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:36:27 <br>
 	 *
 	 * @param clazz
@@ -576,8 +545,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sDiff <br>
 	 * 描述：返回从第一组和所有的给定集合之间的差异的成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:36:27 <br>
 	 *
 	 * @param keys
@@ -594,8 +562,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sDiffStore <br>
 	 * 描述：这个命令等于sdiff,但返回的不是结果集,而是将结果集存储在新的集合中，如果目标已存在，则覆盖。 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:37:48 <br>
 	 *
 	 * @param newkey 新结果集的key
@@ -610,8 +577,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sDiffStore <br>
 	 * 描述：这个命令等于sdiff,但返回的不是结果集,而是将结果集存储在新的集合中，如果目标已存在，则覆盖。 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:37:48 <br>
 	 *
 	 * @param newkey 新结果集的key
@@ -630,8 +596,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sInter <br>
 	 * 描述：返回给定集合交集的成员,如果其中一个集合为不存在或为空，则返回空Set <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:39:53 <br>
 	 *
 	 *
@@ -646,8 +611,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sInterObj <br>
 	 * 描述：返回给定集合交集的成员,如果其中一个集合为不存在或为空，则返回空Set <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:39:53 <br>
 	 *
 	 * @param clazz
@@ -662,8 +626,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sInter <br>
 	 * 描述：返回给定集合交集的成员,如果其中一个集合为不存在或为空，则返回空Set <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:39:53 <br>
 	 *
 	 *
@@ -682,8 +645,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sInterStore <br>
 	 * 描述：这个命令等于sinter,但返回的不是结果集,而是将结果集存储在新的集合中，如果目标已存在，则覆盖。 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:40:37 <br>
 	 *
 	 * @param newkey 新结果集的key
@@ -697,8 +659,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sInterStore <br>
 	 * 描述：这个命令等于sinter,但返回的不是结果集,而是将结果集存储在新的集合中，如果目标已存在，则覆盖。 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:40:37 <br>
 	 *
 	 * @param String
@@ -718,8 +679,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sIsMember <br>
 	 * 描述：确定一个给定的值是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:42:32 <br>
 	 *
 	 * @param String
@@ -735,8 +695,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sIsMember <br>
 	 * 描述：确定一个给定的值是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:42:32 <br>
 	 *
 	 * @param String
@@ -752,8 +711,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sIsMember <br>
 	 * 描述：确定一个给定的值是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:42:32 <br>
 	 *
 	 * @param String
@@ -773,8 +731,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sMembers <br>
 	 * 描述：返回集合中的所有成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:44:07 <br>
 	 *
 	 * @param key
@@ -788,8 +745,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sMembersObj <br>
 	 * 描述：返回集合中的所有成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:44:07 <br>
 	 *
 	 * @param Class
@@ -805,8 +761,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sMembers <br>
 	 * 描述：返回集合中的所有成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:44:38 <br>
 	 *
 	 * @param key
@@ -825,8 +780,7 @@ public abstract class AbstractCache {
 	 * 描述： 将成员从源集合移出放入目标集合 <br/>
 	 * 如果源集合不存在或不包哈指定成员，不进行任何操作，返回0<br/>
 	 * 否则该成员从源集合上删除，并添加到目标集合，如果目标集合中成员已存在，则只在源集合进行删除 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:46:27 <br>
 	 *
 	 * @param String
@@ -846,8 +800,7 @@ public abstract class AbstractCache {
 	 * 描述： 将成员从源集合移出放入目标集合 <br/>
 	 * 如果源集合不存在或不包哈指定成员，不进行任何操作，返回0<br/>
 	 * 否则该成员从源集合上删除，并添加到目标集合，如果目标集合中成员已存在，则只在源集合进行删除 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:46:27 <br>
 	 *
 	 * @param String
@@ -867,8 +820,7 @@ public abstract class AbstractCache {
 	 * 描述： 将成员从源集合移出放入目标集合 <br/>
 	 * 如果源集合不存在或不包哈指定成员，不进行任何操作，返回0<br/>
 	 * 否则该成员从源集合上删除，并添加到目标集合，如果目标集合中成员已存在，则只在源集合进行删除 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:46:27 <br>
 	 *
 	 * @param String
@@ -890,8 +842,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sPop <br>
 	 * 描述：从集合中删除成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:49:52 <br>
 	 *
 	 * @param String
@@ -905,8 +856,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sPop <br>
 	 * 描述：从集合中删除成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:49:52 <br>
 	 *
 	 * @param String
@@ -924,8 +874,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sRem <br>
 	 * 描述：从集合中删除指定成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:49:23 <br>
 	 *
 	 * @param String
@@ -941,8 +890,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sRem <br>
 	 * 描述：从集合中删除指定成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:49:23 <br>
 	 *
 	 * @param String
@@ -958,8 +906,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sRem <br>
 	 * 描述：从集合中删除指定成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:49:23 <br>
 	 *
 	 * @param String
@@ -979,8 +926,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sUnion <br>
 	 * 描述：合并多个集合并返回合并后的结果，合并后的结果集合并不保存<br/>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:51:14 <br>
 	 *
 	 * @param String
@@ -995,8 +941,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sUnion <br>
 	 * 描述：合并多个集合并返回合并后的结果，合并后的结果集合并不保存<br/>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:51:14 <br>
 	 *
 	 * @param Class
@@ -1013,8 +958,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sUnion <br>
 	 * 描述：合并多个集合并返回合并后的结果，合并后的结果集合并不保存<br/>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:51:14 <br>
 	 *
 	 * @param String
@@ -1032,8 +976,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sUnionStore <br>
 	 * 描述：合并多个集合并将合并后的结果集保存在指定的新集合中，如果新集合已经存在则覆盖 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:52:02 <br>
 	 *
 	 * @param String
@@ -1049,8 +992,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：sUnionStore <br>
 	 * 描述：合并多个集合并将合并后的结果集保存在指定的新集合中，如果新集合已经存在则覆盖 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:52:02 <br>
 	 *
 	 * @param String
@@ -1071,8 +1013,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:53:30 <br>
 	 *
 	 * @param String
@@ -1090,8 +1031,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:53:30 <br>
 	 *
 	 * @param String
@@ -1109,8 +1049,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:53:30 <br>
 	 *
 	 * @param String
@@ -1129,8 +1068,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:53:30 <br>
 	 *
 	 * @param String
@@ -1148,8 +1086,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:53:30 <br>
 	 *
 	 * @param String
@@ -1167,8 +1104,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:53:30 <br>
 	 *
 	 * @param String
@@ -1197,8 +1133,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:58:07 <br>
 	 *
 	 * @param key
@@ -1212,8 +1147,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zAdd <br>
 	 * 描述：向集合中增加一条记录,如果这个值已存在，这个值对应的权重将被置为新的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午3:58:07 <br>
 	 *
 	 * @param key
@@ -1231,8 +1165,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zCard <br>
 	 * 描述：获取集合中元素的数量 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:00:16 <br>
 	 *
 	 * @param String
@@ -1246,8 +1179,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zCard <br>
 	 * 描述：获取集合中元素的数量 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:00:16 <br>
 	 *
 	 * @param String
@@ -1265,8 +1197,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zCount <br>
 	 * 描述：获取指定权重区间内集合的数量 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:01:39 <br>
 	 *
 	 * @param String
@@ -1283,8 +1214,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zCount <br>
 	 * 描述：获取指定权重区间内集合的数量 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:01:39 <br>
 	 *
 	 * @param String
@@ -1305,8 +1235,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zLength <br>
 	 * 描述： 获得set的长度 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:04:05 <br>
 	 *
 	 * @param key
@@ -1322,8 +1251,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zLength <br>
 	 * 描述： 获得set的长度 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:04:05 <br>
 	 *
 	 * @param key
@@ -1339,8 +1267,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zIncrBy <br>
 	 * 描述：权重增加给定值，如果给定的value已存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:04:51 <br>
 	 *
 	 * @param String
@@ -1358,8 +1285,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zIncrBy <br>
 	 * 描述：权重增加给定值，如果给定的value已存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:04:51 <br>
 	 *
 	 * @param String
@@ -1377,8 +1303,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zIncrBy <br>
 	 * 描述：权重增加给定值，如果给定的value已存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:04:51 <br>
 	 *
 	 * @param String
@@ -1400,8 +1325,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRange <br>
 	 * 描述：返回指定位置的集合元素,0为第一个元素，-1为最后一个元素 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:08:48 <br>
 	 *
 	 * @param String
@@ -1419,8 +1343,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRange <br>
 	 * 描述：返回指定位置的集合元素,0为第一个元素，-1为最后一个元素 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:08:48 <br>
 	 *
 	 * @param String
@@ -1438,8 +1361,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRange <br>
 	 * 描述：返回指定位置的集合元素,0为第一个元素，-1为最后一个元素 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:08:48 <br>
 	 *
 	 * @param String
@@ -1460,8 +1382,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRangeByScore <br>
 	 * 描述：返回指定权重区间的元素集合 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:10:20 <br>
 	 *
 	 * @param String
@@ -1480,8 +1401,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRangeByScoreObj <br>
 	 * 描述：返回指定权重区间的元素集合 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:10:20 <br>
 	 *
 	 * @param String
@@ -1500,8 +1420,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRangeByScore <br>
 	 * 描述：返回指定权重区间的元素集合 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:10:20 <br>
 	 *
 	 * @param String
@@ -1523,8 +1442,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRank <br>
 	 * 描述：获取指定值在集合中的位置，集合排序从低到高 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:11:06 <br>
 	 *
 	 * @param String
@@ -1540,8 +1458,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRank <br>
 	 * 描述：获取指定值在集合中的位置，集合排序从低到高 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:11:06 <br>
 	 *
 	 * @param String
@@ -1557,8 +1474,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRank <br>
 	 * 描述：获取指定值在集合中的位置，集合排序从低到高 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:11:06 <br>
 	 *
 	 * @param String
@@ -1578,8 +1494,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRevRank <br>
 	 * 描述：获取指定值在集合中的位置，集合排序从高到低 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月28日 下午12:23:11 <br>
 	 *
 	 * @param key
@@ -1593,8 +1508,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRevRank <br>
 	 * 描述：获取指定值在集合中的位置，集合排序从高到低 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月28日 下午12:23:23 <br>
 	 *
 	 * @param key
@@ -1608,8 +1522,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRevRank <br>
 	 * 描述：获取指定值在集合中的位置，集合排序从高到低 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月28日 下午12:23:40 <br>
 	 *
 	 * @param key
@@ -1627,8 +1540,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRem <br>
 	 * 描述：从集合中删除成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:15:53 <br>
 	 *
 	 * @param key
@@ -1642,8 +1554,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRem <br>
 	 * 描述：从集合中删除成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:15:53 <br>
 	 *
 	 * @param key
@@ -1657,8 +1568,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRem <br>
 	 * 描述：从集合中删除成员 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:15:53 <br>
 	 *
 	 * @param key
@@ -1676,8 +1586,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRem <br>
 	 * 描述：删除 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:17:38 <br>
 	 *
 	 * @param key
@@ -1690,8 +1599,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRem <br>
 	 * 描述：删除 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:17:38 <br>
 	 *
 	 * @param key
@@ -1708,8 +1616,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRemRangeByScore <br>
 	 * 描述：删除给定权重区间的元素 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:19:54 <br>
 	 *
 	 * @param String
@@ -1728,8 +1635,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRemRangeByScore <br>
 	 * 描述：删除给定权重区间的元素 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:19:54 <br>
 	 *
 	 * @param String
@@ -1752,8 +1658,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRevRange <br>
 	 * 描述：获取给定区间的元素，原始按照权重由高到低排序 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:20:55 <br>
 	 *
 	 * @param key
@@ -1770,8 +1675,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRevRange <br>
 	 * 描述：获取给定区间的元素，原始按照权重由高到低排序 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:20:55 <br>
 	 *
 	 * @param key
@@ -1788,8 +1692,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zRevRange <br>
 	 * 描述：获取给定区间的元素，原始按照权重由高到低排序 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:20:55 <br>
 	 *
 	 * @param key
@@ -1808,8 +1711,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zScore <br>
 	 * 描述： 获取给定值在集合中的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:21:19 <br>
 	 *
 	 * @param String
@@ -1824,8 +1726,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zScore <br>
 	 * 描述： 获取给定值在集合中的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:21:19 <br>
 	 *
 	 * @param String
@@ -1840,8 +1741,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：zScore <br>
 	 * 描述： 获取给定值在集合中的权重 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:21:19 <br>
 	 *
 	 * @param String
@@ -1861,8 +1761,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hDel <br>
 	 * 描述：从hash中删除指定的存储 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:23:16 <br>
 	 *
 	 * @param key
@@ -1876,8 +1775,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hDel <br>
 	 * 描述：从hash中删除指定的存储 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:23:16 <br>
 	 *
 	 * @param key
@@ -1900,8 +1798,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hDel <br>
 	 * 描述：删除key <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:24:00 <br>
 	 *
 	 * @param key
@@ -1914,8 +1811,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hDel <br>
 	 * 描述：删除key <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:24:00 <br>
 	 *
 	 * @param key
@@ -1937,8 +1833,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hExists <br>
 	 * 描述：测试hash中指定的存储是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:25:03 <br>
 	 *
 	 * @param String
@@ -1954,8 +1849,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hExists <br>
 	 * 描述：测试hash中指定的存储是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:25:03 <br>
 	 *
 	 * @param String
@@ -1971,8 +1865,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hExists <br>
 	 * 描述：测试hash中指定的存储是否存在 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:25:03 <br>
 	 *
 	 * @param String
@@ -1992,8 +1885,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hGet <br>
 	 * 描述： 返回hash中指定存储位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:25:56 <br>
 	 *
 	 * @param String
@@ -2009,8 +1901,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hGetObj <br>
 	 * 描述： 返回hash中指定存储位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:25:56 <br>
 	 *
 	 * @param String
@@ -2026,8 +1917,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hGet <br>
 	 * 描述：返回hash中指定存储位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:28:57 <br>
 	 *
 	 * @param key
@@ -2045,8 +1935,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hGetAll <br>
 	 * 描述：以Map的形式返回hash中的存储和值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:30:22 <br>
 	 *
 	 * @param key
@@ -2059,8 +1948,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hGetAllObj <br>
 	 * 描述：以Map的形式返回hash中的存储和值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:30:22 <br>
 	 *
 	 * @param key
@@ -2073,8 +1961,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hGetAll <br>
 	 * 描述：以Map的形式返回hash中的存储和值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:30:22 <br>
 	 *
 	 * @param key
@@ -2091,8 +1978,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hSet <br>
 	 * 描述：添加一个对应关系 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:31:15 <br>
 	 *
 	 * @param key
@@ -2107,8 +1993,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hSet <br>
 	 * 描述：添加一个对应关系 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:31:15 <br>
 	 *
 	 * @param key
@@ -2123,8 +2008,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hSet <br>
 	 * 描述：添加一个对应关系 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:31:15 <br>
 	 *
 	 * @param key
@@ -2139,8 +2023,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hSet <br>
 	 * 描述：添加一个对应关系 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:31:15 <br>
 	 *
 	 * @param key
@@ -2156,8 +2039,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hSet <br>
 	 * 描述：添加一个对应关系 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:31:15 <br>
 	 *
 	 * @param key
@@ -2173,8 +2055,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hSet <br>
 	 * 描述：添加一个对应关系 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:31:15 <br>
 	 *
 	 * @param key
@@ -2197,8 +2078,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hsetnx <br>
 	 * 描述：添加对应关系，只有在fieid不存在时才执行 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:32:50 <br>
 	 *
 	 * @param key
@@ -2213,8 +2093,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hsetnx <br>
 	 * 描述：添加对应关系，只有在fieid不存在时才执行 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:32:50 <br>
 	 *
 	 * @param key
@@ -2229,8 +2108,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hsetnx <br>
 	 * 描述：添加对应关系，只有在fieid不存在时才执行 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:32:50 <br>
 	 *
 	 * @param key
@@ -2249,8 +2127,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hVals <br>
 	 * 描述： 获取hash中value的集合 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:34:43 <br>
 	 *
 	 * @param key
@@ -2263,8 +2140,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hValsObj <br>
 	 * 描述： 获取hash中value的集合 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:34:43 <br>
 	 *
 	 * @param key
@@ -2277,8 +2153,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hVals <br>
 	 * 描述： 获取hash中value的集合 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:34:43 <br>
 	 *
 	 * @param key
@@ -2295,8 +2170,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hIncrBy <br>
 	 * 描述：在指定的存储位置加上指定的数字，存储位置的值必须可转为数字类型 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:35:57 <br>
 	 *
 	 * @param String
@@ -2314,8 +2188,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hIncrBy <br>
 	 * 描述：在指定的存储位置加上指定的数字，存储位置的值必须可转为数字类型 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:35:57 <br>
 	 *
 	 * @param String
@@ -2337,8 +2210,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hKeys <br>
 	 * 描述：返回指定hash中的所有存储名字,类似Map中的keySet方法 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:37:01 <br>
 	 *
 	 * @param String
@@ -2354,8 +2226,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hKeys <br>
 	 * 描述：返回指定hash中的所有存储名字,类似Map中的keySet方法 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:37:01 <br>
 	 *
 	 * @param String
@@ -2373,8 +2244,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hLen <br>
 	 * 描述：获取hash中存储的个数，类似Map中size方法 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:37:49 <br>
 	 *
 	 * @param String
@@ -2388,8 +2258,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hLen <br>
 	 * 描述：获取hash中存储的个数，类似Map中size方法 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:37:49 <br>
 	 *
 	 * @param String
@@ -2407,8 +2276,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hMGet <br>
 	 * 描述：根据多个key，获取对应的value，返回List,如果指定的key不存在,List对应位置为null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:39:03 <br>
 	 *
 	 * @param String
@@ -2424,8 +2292,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hMGet <br>
 	 * 描述：根据多个key，获取对应的value，返回List,如果指定的key不存在,List对应位置为null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:40:17 <br>
 	 *
 	 * @param key
@@ -2443,8 +2310,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hMSet <br>
 	 * 描述：添加对应关系，如果对应关系已存在，则覆盖 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:42:34 <br>
 	 *
 	 * @param key
@@ -2458,8 +2324,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hMSetObj <br>
 	 * 描述：添加对应关系，如果对应关系已存在，则覆盖 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:42:34 <br>
 	 *
 	 * @param key
@@ -2473,8 +2338,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：hMSet <br>
 	 * 描述：添加对应关系，如果对应关系已存在，则覆盖 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:42:34 <br>
 	 *
 	 * @param key
@@ -2494,8 +2358,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：get <br>
 	 * 描述：根据key获取记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:43:38 <br>
 	 *
 	 * @param key
@@ -2508,8 +2371,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：getObj <br>
 	 * 描述：根据key获取记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:43:38 <br>
 	 *
 	 * @param key
@@ -2522,8 +2384,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：get <br>
 	 * 描述：根据key获取记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:44:03 <br>
 	 *
 	 * @param key
@@ -2540,8 +2401,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setEx <br>
 	 * 描述：添加有过期时间的记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:45:58 <br>
 	 *
 	 * @param String
@@ -2557,8 +2417,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setEx <br>
 	 * 描述：添加有过期时间的记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:45:58 <br>
 	 *
 	 * @param String
@@ -2574,8 +2433,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setEx <br>
 	 * 描述：TODO <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:46:35 <br>
 	 *
 	 * @param key
@@ -2596,8 +2454,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setNX <br>
 	 * 描述： 添加一条记录，仅当给定的key不存在时才插入 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:48:01 <br>
 	 *
 	 * @param key
@@ -2611,8 +2468,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setNX <br>
 	 * 描述： 添加一条记录，仅当给定的key不存在时才插入 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:48:01 <br>
 	 *
 	 * @param key
@@ -2626,8 +2482,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setNX <br>
 	 * 描述： 添加一条记录，仅当给定的key不存在时才插入 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:48:01 <br>
 	 *
 	 * @param key
@@ -2641,8 +2496,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setNX <br>
 	 * 描述： 添加一条记录，仅当给定的key不存在时才插入 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:48:01 <br>
 	 *
 	 * @param key
@@ -2657,8 +2511,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setNX <br>
 	 * 描述： 添加一条记录，仅当给定的key不存在时才插入 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:48:01 <br>
 	 *
 	 * @param key
@@ -2675,8 +2528,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：setNX <br>
 	 * 描述： 添加一条记录，仅当给定的key不存在时才插入 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:48:01 <br>
 	 *
 	 * @param key
@@ -2726,8 +2578,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：set <br>
 	 * 描述：添加记录,如果记录已存在将覆盖原有的value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:50:21 <br>
 	 *
 	 * @param key
@@ -2771,8 +2622,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：set <br>
 	 * 描述：添加记录,如果记录已存在将覆盖原有的value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:50:21 <br>
 	 *
 	 * @param key
@@ -2798,8 +2648,7 @@ public abstract class AbstractCache {
 	 * 描述：从指定位置开始插入数据，插入的数据会覆盖指定位置以后的数据<br/>
 	 * 例:String str1="123456789";<br/>
 	 * 对str1操作后setRange(key,4,0000)，str1="123400009"; <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:51:48 <br>
 	 *
 	 * @param key
@@ -2816,8 +2665,7 @@ public abstract class AbstractCache {
 	 * 描述：从指定位置开始插入数据，插入的数据会覆盖指定位置以后的数据<br/>
 	 * 例:String str1="123456789";<br/>
 	 * 对str1操作后setRange(key,4,0000)，str1="123400009"; <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:51:48 <br>
 	 *
 	 * @param key
@@ -2834,8 +2682,7 @@ public abstract class AbstractCache {
 	 * 描述：从指定位置开始插入数据，插入的数据会覆盖指定位置以后的数据<br/>
 	 * 例:String str1="123456789";<br/>
 	 * 对str1操作后setRange(key,4,0000)，str1="123400009"; <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:51:48 <br>
 	 *
 	 * @param key
@@ -2855,8 +2702,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：append <br>
 	 * 描述：在指定的key中追加value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:52:21 <br>
 	 *
 	 * @param String
@@ -2872,8 +2718,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：append <br>
 	 * 描述：在指定的key中追加value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:52:21 <br>
 	 *
 	 * @param String
@@ -2889,8 +2734,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：append <br>
 	 * 描述：在指定的key中追加value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:52:21 <br>
 	 *
 	 * @param String
@@ -2910,8 +2754,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：decrBy <br>
 	 * 描述：将key对应的value减去指定的值，只有value可以转为数字时该方法才可用 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:55:44 <br>
 	 *
 	 * @param key
@@ -2926,8 +2769,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：decrBy <br>
 	 * 描述：将key对应的value减去指定的值，只有value可以转为数字时该方法才可用 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:55:44 <br>
 	 *
 	 * @param key
@@ -2946,8 +2788,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：incrBy <br>
 	 * 描述：可以作为获取唯一id的方法 将key对应的value加上指定的值，只有value可以转为数字时该方法才可用<br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:57:13 <br>
 	 *
 	 * @param String
@@ -2963,8 +2804,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：incrBy <br>
 	 * 描述：可以作为获取唯一id的方法 将key对应的value加上指定的值，只有value可以转为数字时该方法才可用<br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:57:13 <br>
 	 *
 	 * @param String
@@ -2984,8 +2824,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：getRange <br>
 	 * 描述：对指定key对应的value进行截取 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:59:35 <br>
 	 *
 	 * @param String
@@ -3003,8 +2842,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：getRange <br>
 	 * 描述：对指定key对应的value进行截取 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午4:59:35 <br>
 	 *
 	 * @param byte[]
@@ -3027,8 +2865,7 @@ public abstract class AbstractCache {
 	 * 方法：getSet <br>
 	 * 描述： 获取并设置指定key对应的value<br/>
 	 * 如果key存在返回之前的value,否则返回null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:00:54 <br>
 	 *
 	 * @param key
@@ -3043,8 +2880,7 @@ public abstract class AbstractCache {
 	 * 方法：getSet <br>
 	 * 描述： 获取并设置指定key对应的value<br/>
 	 * 如果key存在返回之前的value,否则返回null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:00:54 <br>
 	 *
 	 * @param key
@@ -3059,8 +2895,7 @@ public abstract class AbstractCache {
 	 * 方法：getSet <br>
 	 * 描述： 获取并设置指定key对应的value<br/>
 	 * 如果key存在返回之前的value,否则返回null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:00:54 <br>
 	 *
 	 * @param key
@@ -3078,8 +2913,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：mGet <br>
 	 * 描述：批量获取记录,如果指定的key不存在返回List的对应位置将是null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:02:19 <br>
 	 *
 	 * @param keys
@@ -3092,8 +2926,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：mGet <br>
 	 * 描述：批量获取记录,如果指定的key不存在返回List的对应位置将是null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:02:19 <br>
 	 *
 	 * @param keys
@@ -3106,8 +2939,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：mGet <br>
 	 * 描述：批量获取记录,如果指定的key不存在返回List的对应位置将是null <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:02:19 <br>
 	 *
 	 * @param keys
@@ -3124,8 +2956,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：mset <br>
 	 * 描述： 批量存储记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:03:22 <br>
 	 *
 	 * @param tuple
@@ -3143,8 +2974,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：strLen <br>
 	 * 描述： 获取key对应的值的长度 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:04:18 <br>
 	 *
 	 * @param String
@@ -3158,8 +2988,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：strLen <br>
 	 * 描述： 获取key对应的值的长度 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:04:18 <br>
 	 *
 	 * @param String
@@ -3178,8 +3007,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lLen <br>
 	 * 描述：List长度<br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:10:54 <br>
 	 *
 	 * @param String
@@ -3193,8 +3021,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lLen <br>
 	 * 描述：List长度 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:05:37 <br>
 	 *
 	 * @param key
@@ -3211,8 +3038,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lSet <br>
 	 * 描述： 覆盖操作,将覆盖List中指定位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:08:06 <br>
 	 *
 	 * @param key
@@ -3227,8 +3053,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lSet <br>
 	 * 描述： 覆盖操作,将覆盖List中指定位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:08:06 <br>
 	 *
 	 * @param key
@@ -3243,8 +3068,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lSet <br>
 	 * 描述：覆盖操作,将覆盖List中指定位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:06:32 <br>
 	 *
 	 * @param byte[]
@@ -3266,8 +3090,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lInsert <br>
 	 * 描述： 在value的相对位置插入记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:12:11 <br>
 	 *
 	 * @param key
@@ -3286,8 +3109,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lInsert <br>
 	 * 描述： 在value的相对位置插入记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:12:11 <br>
 	 *
 	 * @param key
@@ -3306,8 +3128,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lInsert <br>
 	 * 描述：TODO <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:08:54 <br>
 	 *
 	 * @param String
@@ -3332,8 +3153,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lIndex <br>
 	 * 描述：获取List中指定位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:12:58 <br>
 	 *
 	 * @param byte[]
@@ -3350,8 +3170,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lIndexObj <br>
 	 * 描述：获取List中指定位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:12:58 <br>
 	 *
 	 * @param byte[]
@@ -3368,8 +3187,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lIndex <br>
 	 * 描述：获取List中指定位置的值 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:12:58 <br>
 	 *
 	 * @param byte[]
@@ -3389,8 +3207,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPop <br>
 	 * 描述：将List中的第一条记录移出List <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:14:50 <br>
 	 *
 	 * @param String
@@ -3404,8 +3221,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPop <br>
 	 * 描述：将List中的第一条记录移出List <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:14:50 <br>
 	 *
 	 * @param String
@@ -3419,8 +3235,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPop <br>
 	 * 描述： 将List中的第一条记录移出List <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:14:30 <br>
 	 *
 	 * @param byte[]
@@ -3438,8 +3253,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPop <br>
 	 * 描述：将List中最后第一条记录移出List <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:14:50 <br>
 	 *
 	 * @param String
@@ -3453,8 +3267,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPop <br>
 	 * 描述：将List中最后第一条记录移出List <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:14:50 <br>
 	 *
 	 * @param String
@@ -3468,8 +3281,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPop <br>
 	 * 描述： 将List中最后第一条记录移出List <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:14:30 <br>
 	 *
 	 * @param byte[]
@@ -3487,8 +3299,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPush <br>
 	 * 描述：向List中追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:16:41 <br>
 	 *
 	 * @param key
@@ -3502,8 +3313,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPush <br>
 	 * 描述：向List中追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:16:41 <br>
 	 *
 	 * @param key
@@ -3519,8 +3329,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPush <br>
 	 * 描述：向List中追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:16:41 <br>
 	 *
 	 * @param key
@@ -3534,8 +3343,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPush <br>
 	 * 描述：向List中追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:16:41 <br>
 	 *
 	 * @param key
@@ -3550,8 +3358,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPush <br>
 	 * 描述：向List中追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:16:41 <br>
 	 *
 	 * @param clazz
@@ -3569,8 +3376,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lPush <br>
 	 * 描述：向List中追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:16:41 <br>
 	 *
 	 * @param key
@@ -3593,8 +3399,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：rPush <br>
 	 * 描述：向List头部追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:17:54 <br>
 	 *
 	 * @param key
@@ -3609,8 +3414,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：rPush <br>
 	 * 描述：向List头部追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:17:54 <br>
 	 *
 	 * @param key
@@ -3625,8 +3429,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：rPush <br>
 	 * 描述：向List头部追加记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:17:54 <br>
 	 *
 	 * @param key
@@ -3644,8 +3447,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lRange <br>
 	 * 描述：获取指定范围的记录，可以做为分页使用 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:19:47 <br>
 	 *
 	 * @param key
@@ -3660,8 +3462,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lRange <br>
 	 * 描述：获取指定范围的记录，可以做为分页使用 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:19:47 <br>
 	 *
 	 * @param key
@@ -3676,8 +3477,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lRange <br>
 	 * 描述：获取指定范围的记录，可以做为分页使用 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:19:47 <br>
 	 *
 	 * @param key
@@ -3696,8 +3496,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lRem <br>
 	 * 描述：删除List中c条记录，被删除的记录值为value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:21:10 <br>
 	 *
 	 * @param byte[]
@@ -3715,8 +3514,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lRem <br>
 	 * 描述：删除List中c条记录，被删除的记录值为value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:21:10 <br>
 	 *
 	 * @param byte[]
@@ -3734,8 +3532,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：lRem <br>
 	 * 描述：删除List中c条记录，被删除的记录值为value <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:21:10 <br>
 	 *
 	 * @param byte[]
@@ -3757,8 +3554,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：ltrim <br>
 	 * 描述：算是删除吧，只保留start与end之间的记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:22:49 <br>
 	 *
 	 * @param byte[]
@@ -3781,8 +3577,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：ltrim <br>
 	 * 描述：算是删除吧，只保留start与end之间的记录 <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午5:22:49 <br>
 	 *
 	 * @param byte[]
@@ -3800,8 +3595,7 @@ public abstract class AbstractCache {
 	/**
 	 * 方法：getRedisTemplate <br>
 	 * 描述：实现相应的redis数据源template <br>
-	 * 作者：赵增斌 E-mail:zhaozengbin@gmail.com QQ:4415599
-	 * weibo:http://weibo.com/zhaozengbin <br>
+	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月27日 下午2:30:43 <br>
 	 *
 	 * @return

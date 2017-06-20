@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.wpc.annotation.CacheAnn;
+import com.wpc.enums.ECacheDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -40,5 +42,11 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 		// TODO Auto-generated method stub
 		return userDao.queryUserByRole(roleId);
 	}
-	
+
+	@CacheAnn(groupKey = "user", eCacheDataSource = ECacheDataSource.WPC)
+	@Override
+	public User findById(Integer id) {
+		return super.findById(id);
+	}
+
 }

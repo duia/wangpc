@@ -1,11 +1,9 @@
 /**
- * 项目名：duia-web-admin <br>
- * 包名：com.duia.tiku.common.cache <br>
  * 文件名：TiKuCache.java <br>
  * 版本信息：TODO <br>
- * 作者：赵增斌 E-mail：zhaozengbin@gmail.com QQ:4415599 weibo:http://weibo.com/zhaozengbin<br>
+ * 作者：王鹏程 E-mail：376205421@qq.com QQ:376205421
  * 日期：2017年3月27日-下午5:31:28<br>
- * Copyright (c) 2017 赵增斌-版权所有<br>
+ * Copyright (c) 2017 王鹏程-版权所有<br>
  *
  */
 package com.wpc.cache;
@@ -27,8 +25,8 @@ import java.util.Arrays;
  *
  * 类名称：TiKuCache <br>
  * 类描述：题库缓存工具类 <br>
- * 创建人：赵增斌 <br>
- * 修改人：赵增斌 <br>
+ * 创建人：王鹏程 <br>
+ * 修改人：王鹏程 <br>
  * 修改时间：2017年3月27日 下午5:31:28 <br>
  * 修改备注：TODO <br>
  *

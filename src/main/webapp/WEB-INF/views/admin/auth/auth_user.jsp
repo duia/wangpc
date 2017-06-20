@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>ID</th>
 						<th>用户名</th>
 						<th>登陆账号</th>
-						<th>密码</th>
+						<%--<th>密码</th>--%>
 						<th>年龄</th>
 						<th>更新时间</th>
 						<th>操作</th>
@@ -177,8 +177,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    		},{
    			data: "account"
 		},{
-			data: "password"
-		},{
 			data: "age"
 		},{
 			data: "updateTime"
@@ -194,10 +192,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    }
 			},
 	        {
-	            targets: 7,
+	            targets: 6,
 	            render: function (data, type, row, metad) {
 	                var html = [];
-	                html.push('<button type="button" class="btn btn-primary btn-sm updateUserBtn">修改</button>');
+	                html.push('<button type="button" data-id="'+data.id+'" class="btn btn-primary btn-sm updateUserBtn">修改</button>');
 	                html.push('<button type="button" class="btn btn-danger btn-sm deleteUserBtn">删除</button>');
 	                return html.join(' ');
 	            }
@@ -238,7 +236,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     });
     
     $('#user_table').delegate('.updateUserBtn', 'click', function(e){
-    	BootstrapDialog.alert('修改用户');
+        $.post('/user/findById', {
+            id: $(e.target).attr('data-id')
+        }, function (data) {
+            BootstrapDialog.alert('修改用户'+data.result.account);
+        });
     });
     
     $('#user_table').delegate('.deleteUserBtn', 'click', function(e){
