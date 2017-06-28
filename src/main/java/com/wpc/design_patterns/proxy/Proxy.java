@@ -13,10 +13,16 @@ package com.wpc.design_patterns.proxy;
  */
 public class Proxy {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		AbstractObject obj = new ProxyObject();
-        obj.operation();
+	public static void main(String[] args) throws Exception {
+//        AbstractObject obj1 = new RealObject(new RealObject(), "wpc");
+//        obj1.operation();
+//		AbstractObject obj2 = new ProxyObject("wpc");
+//        obj2.operation();
+        AbstractObject obj3 = new RealObject("wpc");
+        AbstractObject proxy = new ProxyObject(obj3);
+//        obj3.operation();
+//        AbstractObject proxy = obj3.getProxy();
+        proxy.operation();
 	}
 
 }
@@ -24,31 +30,73 @@ public class Proxy {
 abstract class AbstractObject {
     //操作
     public abstract void operation();
+    //获取代理
+    public abstract AbstractObject getProxy();
 }
 
 class RealObject extends AbstractObject {
+
+    private String name;
+    //我的代理
+    private AbstractObject proxy;
+
+    public RealObject(String name) {
+        this.name = name;
+    }
+
+    /*public RealObject(AbstractObject object, String name) throws Exception {
+        if (object == null ) {
+            throw new Exception("不能创建真实对象");
+        } else {
+            this.name = name;
+        }
+    }*/
+
+    public AbstractObject getProxy() {
+        this.proxy = new ProxyObject(this);
+        return this.proxy;
+    }
+
+    private boolean isMyProxy() {
+        if (this.proxy == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     @Override
     public void operation() {
-        //一些操作
-        System.out.println("一些操作");
+        if (isMyProxy()) {
+            //一些操作
+            System.out.println("一些操作");
+        } else {
+            System.out.println("请使用自己的代理");
+        }
     }
 }
 
 class ProxyObject extends AbstractObject{
 	
 	AbstractObject object;
-	
-    public ProxyObject() {
+
+    public ProxyObject(AbstractObject object) {
+        super();
+        this.object = object;
+    }
+
+    /*public ProxyObject(String name) {
 		super();
-		object = new RealObject();
-	}
+        try {
+            object = new RealObject(this, name);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 
-
-	public ProxyObject(AbstractObject object) {
-		super();
-		this.object = object;
-	}
-
+    public AbstractObject getProxy() {
+        return this;
+    }
 
 	@Override
     public void operation() {
