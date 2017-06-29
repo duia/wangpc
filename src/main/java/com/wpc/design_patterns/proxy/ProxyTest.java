@@ -11,7 +11,7 @@ package com.wpc.design_patterns.proxy;
  * @author admin
  *
  */
-public class Proxy {
+public class ProxyTest {
 
 	public static void main(String[] args) throws Exception {
 //        AbstractObject obj1 = new RealObject(new RealObject(), "wpc");
