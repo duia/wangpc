@@ -6,6 +6,7 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +56,7 @@ public class UploadUtils {
                     String fileName = new String(formatter.format(new Date()).getBytes("utf-8")) + file.getOriginalFilename();
                     //上传
                     file.transferTo(new File(path, fileName));
-                    
+//                    FileUtils.copyInputStreamToFile(file.getInputStream(), new File(path + fileName));
                     FileMeta fileMeta = new FileMeta();
                     fileMeta.setSrc(Parameter.uploadServerPath+fileName);
                     fileMeta.setPath(path+fileName);

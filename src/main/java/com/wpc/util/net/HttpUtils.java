@@ -41,7 +41,7 @@ public class HttpUtils {
 
 	/**
 	 * @功能: 发送get请求
-	 * @作者: yangc
+	 * @作者: wangpengcheng
 	 * @创建日期: 2013-1-9 上午11:01:09
 	 */
 	public static String sendGet(String uri, Map<String, String> paramsMap) {
@@ -100,7 +100,7 @@ public class HttpUtils {
 
 	/**
 	 * @功能: 发送post请求
-	 * @作者: yangc
+	 * @作者: wangpengcheng
 	 * @创建日期: 2013-1-9 上午11:31:24
 	 */
 	public static String sendPost(String uri, Map<String, String> paramsMap) {
@@ -168,7 +168,7 @@ public class HttpUtils {
 
 	/**
 	 * @功能: 发送Apache get请求
-	 * @作者: yangc
+	 * @作者: wangpengcheng
 	 * @创建日期: 2013-1-9 上午11:01:09
 	 */
 	public static String sendApacheGet(String uri, Map<String, String> paramsMap) {
@@ -224,7 +224,7 @@ public class HttpUtils {
 
 	/**
 	 * @功能: 发送Apache post请求
-	 * @作者: yangc
+	 * @作者: wangpengcheng
 	 * @创建日期: 2013-1-9 上午11:31:24
 	 */
 	public static String sendApachePost(String uri, Map<String, Object> paramsMap) {
