@@ -23,7 +23,7 @@
 	  	VALUES ( <include refid="entity_properties" /> )
   	</insert>
   
-  	<delete id="delete" parameterType="Integer">
+  	<delete id="delete" parameterType="long">
   		DELETE FROM auth_file 
   		WHERE id=#{id}
   	</delete>
@@ -45,7 +45,7 @@
 	  	<where>id=#{id}</where>
   	</update>
   
-  	<select id="findById" resultMap="BaseResultMap" parameterType="Integer">
+  	<select id="findById" resultMap="BaseResultMap" parameterType="long">
   		SELECT <include refid="table_columns"/> 
   		FROM auth_file 
   		WHERE id=#{id}

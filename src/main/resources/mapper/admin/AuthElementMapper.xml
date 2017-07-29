@@ -29,7 +29,7 @@
 	  	VALUES ( <include refid="entity_properties" /> )
   	</insert>
   
-  	<delete id="delete" parameterType="Integer">
+  	<delete id="delete" parameterType="long">
   		DELETE FROM auth_element 
   		WHERE id=#{id}
   	</delete>
@@ -53,7 +53,7 @@
 	  	<where>id=#{id}</where>
   	</update>
   
-  	<select id="findById" resultMap="BaseResultMap" parameterType="Integer">
+  	<select id="findById" resultMap="BaseResultMap" parameterType="long">
   		SELECT <include refid="table_columns"/> 
   		FROM auth_element 
   		WHERE id=#{id}
@@ -125,7 +125,7 @@
   	
   	<!-- 其他自定义SQL -->
   	<!-- 通过菜单id删除按钮 -->
-  	<delete id="deleteByMenuId" parameterType="Integer">
+  	<delete id="deleteByMenuId" parameterType="long">
   		DELETE FROM auth_element 
   		WHERE menu_id = #{menuId}
   	</delete>

@@ -1,4 +1,4 @@
-package com.wpc.common;
+package com.wpc.common.base.dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.wpc.common.datatables.DataTablesRequest;
 /**
  * Created by 
  */
-public interface BaseDao<T extends Serializable,PK extends Serializable> {
+public interface BaseDao<T extends Serializable, PK extends Serializable> {
 
     void save(T t);
 

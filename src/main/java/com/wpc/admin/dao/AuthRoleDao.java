@@ -3,14 +3,14 @@ package com.wpc.admin.dao;
 import java.util.List;
 
 import com.wpc.admin.entity.AuthRole;
-import com.wpc.common.BaseDao;
+import com.wpc.common.base.dao.BaseDao;
+
 /**
  * 操作相关
  * author wpc
  */
-public interface AuthRoleDao extends BaseDao<AuthRole, Integer> {
+public interface AuthRoleDao extends BaseDao<AuthRole, Long> {
 	
-	public final static String BEAN_ID="authRoleDao";
-	
-	public List<AuthRole> queryRoleByUserId(int uid);
+	List<AuthRole> queryRoleByUserId(long uid);
+
 }

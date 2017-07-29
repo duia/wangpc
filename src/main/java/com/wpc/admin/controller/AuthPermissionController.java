@@ -1,8 +1,9 @@
 package com.wpc.admin.controller;
 import java.util.List;
 
-import javax.annotation.Resource;
 
+import com.wpc.common.msg.AjaxResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,6 @@ import com.wpc.admin.dto.PermissionDto;
 import com.wpc.admin.entity.AuthPermission;
 import com.wpc.admin.service.AuthPermissionService;
 import com.wpc.admin.service.AuthRolePermissionService;
-import com.wpc.common.AjaxResult;
 
 
 /**
@@ -25,9 +25,9 @@ import com.wpc.common.AjaxResult;
 @RequestMapping("/permission")
 public class AuthPermissionController {
 	
-	@Resource(name=AuthPermissionService.BEAN_ID)
+	@Autowired
 	private AuthPermissionService authPermissionService;
-	@Resource(name=AuthRolePermissionService.BEAN_ID)
+	@Autowired
 	private AuthRolePermissionService rolePermissionService;
 	
 	/**
@@ -58,7 +58,7 @@ public class AuthPermissionController {
 	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult delete(ModelMap model, Integer id) {
+	public AjaxResult delete(ModelMap model, Long id) {
 		AjaxResult ajaxResult = new AjaxResult();
 		authPermissionService.delete(id);
 		return ajaxResult;
@@ -69,7 +69,7 @@ public class AuthPermissionController {
 	 */
 	@RequestMapping(value="/getPermissions", method=RequestMethod.POST)
 	@ResponseBody
-	public List<PermissionDto> getPermissions(Integer rid){
+	public List<PermissionDto> getPermissions(Long rid){
 		return authPermissionService.getAllPermissionsByRole(rid);
 	}
 	
@@ -78,7 +78,7 @@ public class AuthPermissionController {
 	 */
 	@RequestMapping(value="/saveRolePermissions", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult saveRolePermissions(int roleId, @RequestParam("pers[]")int[] perIds){
+	public AjaxResult saveRolePermissions(long roleId, @RequestParam("pers[]")long[] perIds){
 		rolePermissionService.saveRolePermissions(roleId, perIds);
 		return AjaxResult.success();
 	}	

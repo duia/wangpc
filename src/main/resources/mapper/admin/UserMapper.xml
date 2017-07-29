@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wpc.admin.dao.UserDao" >
-  	
+
   	<!-- <cache eviction="LRU" type="com.wpc.redis.RedisCache"/> -->
   	
   	<resultMap id="BaseResultMap" type="com.wpc.admin.entity.User" >
@@ -35,7 +35,7 @@
 	  	VALUES ( <include refid="entity_properties" /> )
   	</insert>
   
-  	<delete id="delete" parameterType="Integer">
+  	<delete id="delete" parameterType="long">
   		DELETE FROM user 
   		WHERE id=#{id}
   	</delete>
@@ -60,7 +60,7 @@
 	  	<where>id=#{id}</where>
   	</update>
   
-  	<select id="findById" resultMap="BaseResultMap" parameterType="Integer">
+  	<select id="findById" resultMap="BaseResultMap" parameterType="long">
   		SELECT <include refid="table_columns"/> 
   		FROM user 
   		WHERE id=#{id}
@@ -155,7 +155,7 @@
   		WHERE account = #{account}
   	</select>
   	
-  	<select id="queryUserByRole" resultMap="BaseResultMap" parameterType="int">
+  	<select id="queryUserByRole" resultMap="BaseResultMap" parameterType="long">
   		SELECT
   			u.id,
 		    u.username

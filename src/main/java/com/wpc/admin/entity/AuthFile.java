@@ -1,19 +1,13 @@
 package com.wpc.admin.entity;
 
-import java.io.Serializable;
+import com.wpc.common.base.entity.BaseEntity;
 
 /**
 *  实体类
 * author wpc
 */
-public class AuthFile implements Serializable {
+public class AuthFile extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 
-	 */
-	private Integer id;
 	/**
 	 * 
 	 */
@@ -22,13 +16,6 @@ public class AuthFile implements Serializable {
 	 * 
 	 */
 	private String filePath;
-	
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
 	
 	public void setFileName(String fileName){
 		this.fileName=fileName;
@@ -48,8 +35,6 @@ public class AuthFile implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthFile[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",fileName=");
 		sb.append(fileName);
 		sb.append(",filePath=");

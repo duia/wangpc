@@ -1,14 +1,13 @@
 /**
  * 文件名：RestController.java
- *
+ * <p>
  * 描述：此处填写文件的描述信息
- * 
+ * <p>
  * 日期：2016年2月16日
- * 
+ * <p>
  * 本系统是商用软件，未经授权擅自复制或传播本程序的部分或全部将是非法的
- *
- * Copyright(C) WEAVER Corporation 2016 
- *
+ * <p>
+ * Copyright(C) WEAVER Corporation 2016
  */
 package com.wpc.controller;
 
@@ -37,58 +36,58 @@ import com.wpc.admin.entity.User;
  * @author weaver
  * @see
  * @version 1.0
- * 
+ *
  */
 @RestController
 @RequestMapping("/rest")
 public class RestDemoController {
 
-  @RequestMapping(value="/{id}", method=RequestMethod.GET)
-  public User get(@PathVariable("id") int id){
-    System.out.println("get"+id);
-    User user = new User();
-    user.setId(id);
-    user.setUsername("wpc");
-    user.setPassword("123");
-    return user;
-  }
-  
-  @RequestMapping(value="/list", method=RequestMethod.GET)
-  public List<User> getAll(){
-    System.out.println("getAll");
-    List<User> list = new ArrayList<User>();
-    User user = null;
-    user = new User();
-    user.setUsername("wpc1");
-    user.setPassword("123");
-    list.add(user);
-    user = new User();
-    user.setUsername("wpc2");
-    user.setPassword("123");
-    list.add(user);
-    user = new User();
-    user.setUsername("wpc3");
-    user.setPassword("123");
-    list.add(user);
-    return list;
-  }
-  
-  @RequestMapping(value="/{id}", method=RequestMethod.POST)
-  public String post(@PathVariable("id") int id){
-    System.out.println("post"+id);
-    return "POST";
-  }
-  
-  @RequestMapping(value="/{id}", method=RequestMethod.PUT)
-  public String put(@PathVariable("id") int id){
-    System.out.println("put"+id);
-    return "PUT";
-  }
-  
-  @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-  public String detele(@PathVariable("id") int id){
-    System.out.println("detele"+id);
-    return "DELETE";
-  }
-  
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public User get(@PathVariable("id") long id) {
+        System.out.println("get" + id);
+        User user = new User();
+        user.setId(id);
+        user.setUsername("wpc");
+        user.setPassword("123");
+        return user;
+    }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public List<User> getAll() {
+        System.out.println("getAll");
+        List<User> list = new ArrayList<User>();
+        User user = null;
+        user = new User();
+        user.setUsername("wpc1");
+        user.setPassword("123");
+        list.add(user);
+        user = new User();
+        user.setUsername("wpc2");
+        user.setPassword("123");
+        list.add(user);
+        user = new User();
+        user.setUsername("wpc3");
+        user.setPassword("123");
+        list.add(user);
+        return list;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    public String post(@PathVariable("id") int id) {
+        System.out.println("post" + id);
+        return "POST";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public String put(@PathVariable("id") int id) {
+        System.out.println("put" + id);
+        return "PUT";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public String detele(@PathVariable("id") int id) {
+        System.out.println("detele" + id);
+        return "DELETE";
+    }
+
 }

@@ -1,15 +1,13 @@
 package com.wpc.admin.entity;
 
-import java.io.Serializable;
+import com.wpc.common.base.entity.BaseEntity;
 
 /**
 *  实体类
 * author wpc
 */
-public class AuthUserRole implements Serializable {
+public class AuthUserRole extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * 
 	 */
@@ -22,13 +20,6 @@ public class AuthUserRole implements Serializable {
 	 * 
 	 */
 	private Integer roleId;
-	
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
 	
 	public void setUserId(Integer userId){
 		this.userId=userId;
@@ -48,8 +39,6 @@ public class AuthUserRole implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthUserRole[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",userId=");
 		sb.append(userId);
 		sb.append(",roleId=");

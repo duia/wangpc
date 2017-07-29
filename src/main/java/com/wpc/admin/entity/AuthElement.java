@@ -1,23 +1,19 @@
 package com.wpc.admin.entity;
 
+import com.wpc.common.base.entity.BaseEntity;
+
 import java.io.Serializable;
 
 /**
 *  实体类
 * author wpc
 */
-public class AuthElement implements Serializable {
+public class AuthElement extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 
-	 */
-	private Integer id;
 	/**
 	 * 所属菜单ID
 	 */
-	private Integer menuId;
+	private Long menuId;
 	/**
 	 * 
 	 */
@@ -31,17 +27,10 @@ public class AuthElement implements Serializable {
 	 */
 	private String elementDesc;
 	
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
-	
-	public void setMenuId(Integer menuId){
+	public void setMenuId(Long menuId){
 		this.menuId=menuId;
 	}
-	public Integer getMenuId(){
+	public Long getMenuId(){
 		return this.menuId;
 	}
 	
@@ -70,8 +59,6 @@ public class AuthElement implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthElement[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",menuId=");
 		sb.append(menuId);
 		sb.append(",elementName=");

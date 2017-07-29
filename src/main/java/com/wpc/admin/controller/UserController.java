@@ -1,10 +1,11 @@
 package com.wpc.admin.controller;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.wpc.common.msg.AjaxResult;
 import org.apache.shiro.authc.credential.PasswordService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wpc.admin.entity.User;
 import com.wpc.admin.service.UserService;
-import com.wpc.common.AjaxResult;
 import com.wpc.common.datatables.DataTablesRequest;
 import com.wpc.common.datatables.DataTablesResponse;
 
@@ -27,9 +27,10 @@ import com.wpc.common.datatables.DataTablesResponse;
 @RequestMapping("/user")
 public class UserController {
 	
-	@Resource(name=UserService.BEAN_ID)
+	@Autowired
 	private UserService userService;
-	@Resource
+
+	@Autowired
 	PasswordService passwordService;
 	
 	/**
@@ -71,7 +72,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult delete(ModelMap model, Integer id) {
+	public AjaxResult delete(ModelMap model, Long id) {
 		AjaxResult responseJsonModel = new AjaxResult();
 		userService.delete(id);
 		return responseJsonModel;
@@ -95,7 +96,7 @@ public class UserController {
 	 */
 	@RequestMapping(value="/findById", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult findById(ModelMap model, Integer id) {
+	public AjaxResult findById(ModelMap model, Long id) {
 		AjaxResult responseJsonModel = new AjaxResult();
 		responseJsonModel.setResult(userService.findById(id));
 		return responseJsonModel;

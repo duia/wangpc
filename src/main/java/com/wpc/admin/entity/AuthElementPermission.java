@@ -1,19 +1,15 @@
 package com.wpc.admin.entity;
 
+import com.wpc.common.base.entity.BaseEntity;
+
 import java.io.Serializable;
 
 /**
 *  实体类
 * author wpc
 */
-public class AuthElementPermission implements Serializable {
+public class AuthElementPermission extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 
-	 */
-	private Integer id;
 	/**
 	 * 
 	 */
@@ -22,13 +18,6 @@ public class AuthElementPermission implements Serializable {
 	 * 
 	 */
 	private Integer permissionId;
-	
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
 	
 	public void setElementId(Integer elementId){
 		this.elementId=elementId;
@@ -48,8 +37,6 @@ public class AuthElementPermission implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthElementPermission[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",elementId=");
 		sb.append(elementId);
 		sb.append(",permissionId=");

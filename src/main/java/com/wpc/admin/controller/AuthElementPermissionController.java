@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.wpc.common.msg.AjaxResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wpc.admin.entity.AuthElementPermission;
 import com.wpc.admin.service.AuthElementPermissionService;
-import com.wpc.common.AjaxResult;
 
 
 /**
@@ -31,7 +32,7 @@ import com.wpc.common.AjaxResult;
 @RequestMapping("/authelementpermission")
 public class AuthElementPermissionController {
 	
-	@Resource(name=AuthElementPermissionService.BEAN_ID)
+	@Autowired
 	private AuthElementPermissionService authElementPermissionService;
 	
 	/**
@@ -62,7 +63,7 @@ public class AuthElementPermissionController {
 	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult delete(ModelMap model, Integer id) {
+	public AjaxResult delete(ModelMap model, Long id) {
 		AjaxResult ajaxResult = new AjaxResult();
 		authElementPermissionService.delete(id);
 		return ajaxResult;

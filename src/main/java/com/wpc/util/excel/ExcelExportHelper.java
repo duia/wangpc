@@ -106,10 +106,10 @@ public class ExcelExportHelper {
 	 * @param imageHeight 
 	 * 					指定图片的高度
 	 */
-	public ExcelExportHelper(String datePatter,int imageWidht,int imageHeight){
+	public ExcelExportHelper(String datePatter,int imageWidth,int imageHeight){
 		this.DATE_PATTERN = datePatter;
 		this.IMAGE_HEIGHT = imageHeight;
-		this.IMAGE_WIDTH = imageWidht;
+		this.IMAGE_WIDTH = imageWidth;
 	}
 	
 	/**
@@ -960,7 +960,7 @@ public class ExcelExportHelper {
 	 * @author wangpengcheng 
 	 * @date 2016年6月17日 下午7:35:52
 	 * @param textValue 
-	 * @param 指定列
+	 * @param i 指定列
 	 * @return
 	 * @version 1.0
 	 */
@@ -1013,7 +1013,7 @@ public class ExcelExportHelper {
 	 * 将生成的Excel打包并保存到指定路径下
 	 * @author wangpengcheng 
 	 * @date 2016年6月19日 下午6:18:09
-	 * @param book 
+	 * @param books
 	 * 			生成的Excel HSSFWorkbook list集合
 	 * @param filePath 
 	 * 			保存路劲
@@ -1096,13 +1096,12 @@ public class ExcelExportHelper {
 		User user = null;
 		for (int i = 0; i < 10000; i++) {
 			user = new User();
-			user.setId(i+1);
+			user.setId(i+1L);
 			user.setAccount("wpc"+i);
 			user.setUsername(i+"wpc");
 			user.setPassword("123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
 			user.setAge(i+3);
 			user.setUpdateTime(new Date());
-			user.setPrice(Double.parseDouble(df.format(Math.random() * 1000)));
 			users.add(user);
 		}
 		String[] header = {"ID", "账户", "昵称", "密码", "年龄", "生日", "价钱"};

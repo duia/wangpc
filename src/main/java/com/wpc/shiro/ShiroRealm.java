@@ -23,6 +23,7 @@ import com.wpc.admin.dao.UserDao;
 import com.wpc.admin.entity.AuthPermission;
 import com.wpc.admin.entity.AuthRole;
 import com.wpc.admin.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShiroRealm extends AuthorizingRealm {
 
@@ -30,11 +31,11 @@ public class ShiroRealm extends AuthorizingRealm {
     private static final String AND_OPERATOR = " and ";
     private static final String NOT_OPERATOR = "not ";
 
-    @Resource(name = UserDao.BEAN_ID)
+    @Autowired
     private UserDao userDao;
-    @Resource(name = AuthRoleDao.BEAN_ID)
+    @Autowired
     private AuthRoleDao authRoleDao;
-    @Resource(name = AuthPermissionDao.BEAN_ID)
+    @Autowired
     private AuthPermissionDao authPermissionDao;
 
     private PasswordService passwordService;
@@ -104,7 +105,6 @@ public class ShiroRealm extends AuthorizingRealm {
     /**
      * 将一些数据放到ShiroSession中,以便于其它地方使用
      *
-     * @see 比如Controller,使用时直接用HttpSession.getAttribute(key)就可以取到
      */
     private void setSession(Object key, Object value) {
         Subject currentUser = SecurityUtils.getSubject();

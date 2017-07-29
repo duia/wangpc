@@ -1,5 +1,7 @@
 package com.wpc.admin.entity;
 
+import com.wpc.common.base.entity.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -8,14 +10,8 @@ import java.util.List;
 *  实体类
 * author wpc
 */
-public class AuthMenu implements Serializable {
+public class AuthMenu extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 
-	 */
-	private Integer id;
 	/**
 	 * 
 	 */
@@ -70,13 +66,6 @@ public class AuthMenu implements Serializable {
 		this.elements = elements;
 	}
 
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
-	
 	public void setMenuName(String menuName){
 		this.menuName=menuName;
 	}
@@ -144,8 +133,6 @@ public class AuthMenu implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthMenu[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",menuName=");
 		sb.append(menuName);
 		sb.append(",url=");

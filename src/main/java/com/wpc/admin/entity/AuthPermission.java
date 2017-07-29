@@ -1,5 +1,7 @@
 package com.wpc.admin.entity;
 
+import com.wpc.common.base.entity.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,22 +9,16 @@ import java.util.Date;
 *  实体类
 * author wpc
 */
-public class AuthPermission implements Serializable {
+public class AuthPermission extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 
-	 */
-	private Integer id;
 	/**
 	 * 对应资源id
 	 */
-	private Integer resourceId;
+	private Long resourceId;
 	/**
 	 * 所属关系id
 	 */
-	private Integer parentId;
+	private Long parentId;
 	/**
 	 * 
 	 */
@@ -40,24 +36,17 @@ public class AuthPermission implements Serializable {
 	 */
 	private Date updateTime;
 	
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
-	
-	public void setResourceId(Integer resourceId){
+	public void setResourceId(Long resourceId){
 		this.resourceId=resourceId;
 	}
-	public Integer getResourceId(){
+	public Long getResourceId(){
 		return this.resourceId;
 	}
 	
-	public void setParentId(Integer parentId){
+	public void setParentId(Long parentId){
 		this.parentId=parentId;
 	}
-	public Integer getParentId(){
+	public Long getParentId(){
 		return this.parentId;
 	}
 	
@@ -93,8 +82,6 @@ public class AuthPermission implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthPermission[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",resourceId=");
 		sb.append(resourceId);
 		sb.append(",parentId=");

@@ -1,19 +1,19 @@
+/*
+ * Copyright(c) 2016 cncounter.com All rights reserved.
+ * distributed with this file and available online at
+ * http://www.cncounter.com/
+ */
 package com.wpc.admin.dao;
+
+import com.wpc.admin.entity.User;
+import com.wpc.common.base.dao.BaseDao;
 
 import java.util.List;
 
-import com.wpc.admin.entity.User;
-import com.wpc.common.BaseDao;
-/**
- * 操作相关
- * author wpc
- */
-public interface UserDao extends BaseDao<User, Integer> {
+public interface UserDao extends BaseDao<User, Long> {
 	
-	public final static String BEAN_ID="userDao";
+	User getUserByAccount(String account);
 	
-	public User getUserByAccount(String account);
-	
-	List<User> queryUserByRole(int roleId);
+	List<User> queryUserByRole(long roleId);
 	
 }

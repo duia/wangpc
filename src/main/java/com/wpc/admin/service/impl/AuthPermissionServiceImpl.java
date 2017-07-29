@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.wpc.common.base.service.impl.BaseServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wpc.admin.dao.AuthMenuDao;
@@ -17,20 +19,19 @@ import com.wpc.admin.entity.AuthFile;
 import com.wpc.admin.entity.AuthMenu;
 import com.wpc.admin.entity.AuthPermission;
 import com.wpc.admin.service.AuthPermissionService;
-import com.wpc.common.BaseServiceImpl;
 
 /**
  * 操作相关
  * author wpc
  */
-@Service(AuthPermissionService.BEAN_ID)
-public class AuthPermissionServiceImpl extends BaseServiceImpl<AuthPermission, Integer> implements AuthPermissionService {
+@Service
+public class AuthPermissionServiceImpl extends BaseServiceImpl<AuthPermission, Long> implements AuthPermissionService {
 
 	Logger logger = LoggerFactory.getLogger(AuthPermissionServiceImpl.class);
 
-	@Resource(name=AuthMenuDao.BEAN_ID)
+	@Autowired
 	private AuthMenuDao authMenuDao;
-	@Resource(name=AuthPermissionDao.BEAN_ID)
+	@Autowired
 	private AuthPermissionDao authPermissionDao;
 	
 	@Override
@@ -67,7 +68,7 @@ public class AuthPermissionServiceImpl extends BaseServiceImpl<AuthPermission, I
 		per.setPermissionCode(menu.getMenuCode());
 		per.setPermissionType(AuthPermissionService.PER_TYPE_MENU);
 		per.setResourceId(menu.getId());
-		per.setParentId(0);
+		per.setParentId(0L);
 		per.setUpdateTime(new Date());
 		if(isExist){
 			authPermissionDao.update(per);
@@ -83,7 +84,7 @@ public class AuthPermissionServiceImpl extends BaseServiceImpl<AuthPermission, I
 	}
 
 	@Override
-	public List<PermissionDto> getAllPermissionsByRole(int roleId) {
+	public List<PermissionDto> getAllPermissionsByRole(long roleId) {
 		return authPermissionDao.getAllPermissionsByRole(roleId);
 	}
 	

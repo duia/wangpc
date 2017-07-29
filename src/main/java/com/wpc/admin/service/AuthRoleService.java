@@ -1,16 +1,12 @@
 package com.wpc.admin.service;
 
-import java.util.List;
-
 import com.wpc.admin.entity.AuthRole;
-import com.wpc.common.BaseService;
+import com.wpc.common.base.service.BaseService;
 
 /**
  * 操作相关
  * author wpc
  */
-public interface AuthRoleService extends BaseService<AuthRole, Integer> {
-	
-	public final static String BEAN_ID="authRoleService";
+public interface AuthRoleService extends BaseService<AuthRole, Long> {
 	
 }

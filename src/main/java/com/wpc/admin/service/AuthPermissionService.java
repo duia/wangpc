@@ -7,13 +7,13 @@ import com.wpc.admin.entity.AuthElement;
 import com.wpc.admin.entity.AuthFile;
 import com.wpc.admin.entity.AuthMenu;
 import com.wpc.admin.entity.AuthPermission;
-import com.wpc.common.BaseService;
+import com.wpc.common.base.service.BaseService;
 
 /**
  * 操作相关
  * author wpc
  */
-public interface AuthPermissionService extends BaseService<AuthPermission, Integer> {
+public interface AuthPermissionService extends BaseService<AuthPermission, Long> {
 	
 	public final static String BEAN_ID="authPermissionService";
 	
@@ -39,6 +39,6 @@ public interface AuthPermissionService extends BaseService<AuthPermission, Integ
 	 * 获取所有权限，区分角色是否具有该角色
 	 * @param roleId
 	 */
-	List<PermissionDto> getAllPermissionsByRole(int roleId);
+	List<PermissionDto> getAllPermissionsByRole(long roleId);
 	
 }

@@ -1,19 +1,13 @@
 package com.wpc.admin.entity;
 
-import java.io.Serializable;
+import com.wpc.common.base.entity.BaseEntity;
 
 /**
 *  实体类
 * author wpc
 */
-public class AuthMenuPermission implements Serializable {
+public class AuthMenuPermission extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 
-	 */
-	private Integer id;
 	/**
 	 * 
 	 */
@@ -22,13 +16,6 @@ public class AuthMenuPermission implements Serializable {
 	 * 
 	 */
 	private Integer permissionId;
-	
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
 	
 	public void setMenuId(Integer menuId){
 		this.menuId=menuId;
@@ -48,8 +35,6 @@ public class AuthMenuPermission implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthMenuPermission[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",menuId=");
 		sb.append(menuId);
 		sb.append(",permissionId=");

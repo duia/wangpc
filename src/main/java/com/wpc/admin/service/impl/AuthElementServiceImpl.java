@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.wpc.common.base.service.impl.BaseServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wpc.admin.dao.AuthElementDao;
@@ -15,25 +17,24 @@ import com.wpc.admin.entity.AuthElement;
 import com.wpc.admin.entity.AuthMenu;
 import com.wpc.admin.service.AuthElementService;
 import com.wpc.admin.service.AuthPermissionService;
-import com.wpc.common.BaseServiceImpl;
 
 /**
  * 操作相关
  * author wpc
  */
-@Service(AuthElementService.BEAN_ID)
-public class AuthElementServiceImpl extends BaseServiceImpl<AuthElement, Integer> implements AuthElementService {
+@Service
+public class AuthElementServiceImpl extends BaseServiceImpl<AuthElement, Long> implements AuthElementService {
 
 	Logger logger = LoggerFactory.getLogger(AuthElementServiceImpl.class);
 
-	@Resource(name=AuthMenuDao.BEAN_ID)
+	@Autowired
 	private AuthMenuDao authMenuDao;
-	@Resource(name=AuthElementDao.BEAN_ID)
+	@Autowired
 	private AuthElementDao authElementDao;
-	@Resource(name=AuthPermissionDao.BEAN_ID)
+	@Autowired
 	private AuthPermissionDao authPermissionDao;
 
-	@Resource(name=AuthPermissionService.BEAN_ID)
+	@Autowired
 	private AuthPermissionService authPermissionService;
 
 	@Override
@@ -52,7 +53,7 @@ public class AuthElementServiceImpl extends BaseServiceImpl<AuthElement, Integer
 	}
 
 	@Override
-	public List<AuthElement> queryElementByMenuId(int menuId) {
+	public List<AuthElement> queryElementByMenuId(long menuId) {
 		// TODO Auto-generated method stub
 		AuthElement query = new AuthElement();
 		query.setMenuId(menuId);
@@ -70,7 +71,7 @@ public class AuthElementServiceImpl extends BaseServiceImpl<AuthElement, Integer
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Long id) {
 		authPermissionDao.deleteByResourceId(id, AuthPermissionService.PER_TYPE_ELEMENT);
 		super.delete(id);
 	}

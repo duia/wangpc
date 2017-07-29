@@ -1,46 +1,33 @@
 package com.wpc.admin.entity;
 
-import java.io.Serializable;
+import com.wpc.common.base.entity.BaseEntity;
 
 /**
 *  实体类
 * author wpc
 */
-public class AuthRolePermission implements Serializable {
+public class AuthRolePermission extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
+	/**
+	 *
+	 */
+	private Long roleId;
 	/**
 	 * 
 	 */
-	private Integer id;
-	/**
-	 * 
-	 */
-	private Integer roleId;
-	/**
-	 * 
-	 */
-	private Integer permissionId;
+	private Long permissionId;
 	
-	public void setId(Integer id){
-		this.id=id;
-	}
-	public Integer getId(){
-		return this.id;
-	}
-	
-	public void setRoleId(Integer roleId){
+	public void setRoleId(Long roleId){
 		this.roleId=roleId;
 	}
-	public Integer getRoleId(){
+	public Long getRoleId(){
 		return this.roleId;
 	}
 	
-	public void setPermissionId(Integer permissionId){
+	public void setPermissionId(Long permissionId){
 		this.permissionId=permissionId;
 	}
-	public Integer getPermissionId(){
+	public Long getPermissionId(){
 		return this.permissionId;
 	}
 	
@@ -48,8 +35,6 @@ public class AuthRolePermission implements Serializable {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append("AuthRolePermission[");
-		sb.append("id=");
-		sb.append(id);
 		sb.append(",roleId=");
 		sb.append(roleId);
 		sb.append(",permissionId=");

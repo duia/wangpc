@@ -3,6 +3,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.wpc.common.msg.AjaxResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wpc.admin.entity.AuthElement;
 import com.wpc.admin.service.AuthElementService;
-import com.wpc.common.AjaxResult;
 
 
 /**
@@ -22,7 +23,7 @@ import com.wpc.common.AjaxResult;
 @RequestMapping("/element")
 public class AuthElementController {
 	
-	@Resource(name=AuthElementService.BEAN_ID)
+	@Autowired
 	private AuthElementService authElementService;
 	
 	/**
@@ -55,7 +56,7 @@ public class AuthElementController {
 	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult delete(ModelMap model, Integer id) {
+	public AjaxResult delete(ModelMap model, Long id) {
 		authElementService.delete(id);
 		return AjaxResult.success();
 	}
@@ -67,7 +68,7 @@ public class AuthElementController {
 	 */
 	@RequestMapping(value="/findById", method=RequestMethod.POST)
 	@ResponseBody
-	public AuthElement findById(int id){
+	public AuthElement findById(Long id){
 		return authElementService.findById(id);
 	}
 

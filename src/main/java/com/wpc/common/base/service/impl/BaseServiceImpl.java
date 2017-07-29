@@ -1,17 +1,16 @@
-package com.wpc.common;
+package com.wpc.common.base.service.impl;
+
 import java.io.Serializable;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.wpc.common.base.dao.BaseDao;
+import com.wpc.common.base.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wpc.common.datatables.DataTablesRequest;
 import com.wpc.common.datatables.DataTablesResponse;
 
 public abstract class BaseServiceImpl<T extends Serializable,PK extends Serializable> implements BaseService<T,PK>{
-    
-	Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
     
     @Autowired
     protected BaseDao<T, PK> baseDao;

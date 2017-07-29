@@ -1,15 +1,14 @@
 package com.wpc.admin.dao;
 
 import com.wpc.admin.entity.AuthElement;
-import com.wpc.common.BaseDao;
+import com.wpc.common.base.dao.BaseDao;
+
 /**
  * 操作相关
  * author wpc
  */
-public interface AuthElementDao extends BaseDao<AuthElement, Integer> {
+public interface AuthElementDao extends BaseDao<AuthElement, Long> {
 	
-	public final static String BEAN_ID="authElementDao";
-	
-	void deleteByMenuId(int menuId);
+	void deleteByMenuId(long menuId);
 	
 }

@@ -1,30 +1,33 @@
+/*
+ * 文 件 名:  UserServiceImpl.java
+ * 创 建 人:
+ * 创建时间:
+ */
 package com.wpc.admin.service.impl;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
 import com.wpc.annotation.CacheAnn;
+import com.wpc.common.base.service.impl.BaseServiceImpl;
 import com.wpc.enums.ECacheDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wpc.admin.dao.UserDao;
 import com.wpc.admin.entity.User;
 import com.wpc.admin.service.UserService;
-import com.wpc.common.BaseServiceImpl;
+
+import java.util.List;
 
 /**
- * 操作相关
- * author wpc
+ * <一句话功能简述>
  */
-@Service(UserService.BEAN_ID)
-public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements UserService {
+@Service
+public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService {
 
 	Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-	@Resource(name=UserDao.BEAN_ID)
+	@Autowired
 	private UserDao userDao;
 
 	@Override
@@ -38,14 +41,14 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 	}
 
 	@Override
-	public List<User> queryUserByRole(int roleId) {
+	public List<User> queryUserByRole(long roleId) {
 		// TODO Auto-generated method stub
 		return userDao.queryUserByRole(roleId);
 	}
 
 	@CacheAnn(groupKey = "user", eCacheDataSource = ECacheDataSource.WPC)
 	@Override
-	public User findById(Integer id) {
+	public User findById(Long id) {
 		return super.findById(id);
 	}
 

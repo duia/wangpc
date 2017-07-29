@@ -1,4 +1,4 @@
-package com.wpc.common;
+package com.wpc.common.msg;
 
 import java.io.Serializable;
 

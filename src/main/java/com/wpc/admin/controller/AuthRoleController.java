@@ -4,6 +4,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.wpc.common.msg.AjaxResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +19,6 @@ import com.wpc.admin.entity.User;
 import com.wpc.admin.service.AuthRoleService;
 import com.wpc.admin.service.AuthUserRoleService;
 import com.wpc.admin.service.UserService;
-import com.wpc.common.AjaxResult;
 import com.wpc.common.datatables.DataTablesRequest;
 import com.wpc.common.datatables.DataTablesResponse;
 
@@ -30,11 +31,11 @@ import com.wpc.common.datatables.DataTablesResponse;
 @RequestMapping("/role")
 public class AuthRoleController {
 	
-	@Resource(name=UserService.BEAN_ID)
+	@Autowired
 	private UserService userService;
-	@Resource(name=AuthRoleService.BEAN_ID)
+	@Autowired
 	private AuthRoleService authRoleService;
-	@Resource(name=AuthUserRoleService.BEAN_ID)
+	@Autowired
 	private AuthUserRoleService authUserRoleService;
 	
 	/**
@@ -75,7 +76,7 @@ public class AuthRoleController {
 	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult delete(ModelMap model, Integer id) {
+	public AjaxResult delete(ModelMap model, Long id) {
 		AjaxResult ajaxResult = new AjaxResult();
 		authRoleService.delete(id);
 		return ajaxResult;
@@ -105,7 +106,7 @@ public class AuthRoleController {
 	 */
 	@RequestMapping(value="/userByRole", method=RequestMethod.POST)
 	@ResponseBody
-	public List<User> userByRole(ModelMap model, int roleId) {
+	public List<User> userByRole(ModelMap model, Long roleId) {
 		return userService.queryUserByRole(roleId);
 	}
 	

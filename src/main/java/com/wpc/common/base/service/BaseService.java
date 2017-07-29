@@ -1,4 +1,4 @@
-package com.wpc.common;
+package com.wpc.common.base.service;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,8 +9,7 @@ import com.wpc.common.datatables.DataTablesResponse;
 /**
  * Created by 
  */
-//@Service
-public interface BaseService<T extends Serializable,PK extends Serializable> {
+public interface BaseService<T extends Serializable, PK extends Serializable> {
 
     void save(T t);
 

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.wpc.common.msg.AjaxResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wpc.admin.entity.AuthMenu;
 import com.wpc.admin.service.AuthMenuService;
-import com.wpc.common.AjaxResult;
 
 
 /**
@@ -23,7 +24,7 @@ import com.wpc.common.AjaxResult;
 @RequestMapping("/menu")
 public class AuthMenuController {
 	
-	@Resource(name=AuthMenuService.BEAN_ID)
+	@Autowired
 	private AuthMenuService authMenuService;
 	
 	/**
@@ -54,7 +55,7 @@ public class AuthMenuController {
 	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public AjaxResult delete(ModelMap model, Integer id) {
+	public AjaxResult delete(ModelMap model, Long id) {
 		authMenuService.delete(id);
 		return AjaxResult.success();
 	}
