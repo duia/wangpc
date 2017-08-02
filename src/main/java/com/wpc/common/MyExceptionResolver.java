@@ -6,7 +6,9 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wpc.aop.SystemLogAspect;
 import com.wpc.common.msg.AjaxResult;
+import com.wpc.util.exception.Exceptions;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -20,7 +22,7 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
 
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-		HandlerMethod method = null != handler?method = (HandlerMethod) handler : null;//获取抛出异常的方法对象
+		HandlerMethod method = null != handler ? (HandlerMethod) handler : null;//获取抛出异常的方法对象
 		if(method != null){
 			String accept = request.getHeader("accept");
 			String requestType = request.getHeader("X-Requested-With");
@@ -28,7 +30,7 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
 			if (accept.contains("application/json") || (requestType != null && requestType.contains("XMLHttpRequest"))) {
 				response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 				AjaxResult result = AjaxResult.error();
-				result.setMsg(ex.getLocalizedMessage());
+				result.setMsg(Exceptions.getStackTraceAsString(ex));
 				try{
 					PrintWriter writer =  response.getWriter();
 					writer.write(new ObjectMapper().writeValueAsString(result));

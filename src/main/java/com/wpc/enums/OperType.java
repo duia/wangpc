@@ -8,9 +8,10 @@ package com.wpc.enums;
  **/
 public enum OperType {
 
-    SYSTEM("系统操作","system");
+    EXCEPTION("异常", "exception"),
+    SYSTEM("系统操作", "system");
 
-    OperType(String name,String value) {
+    OperType(String name, String value) {
         this.name = name;
         this.value =value;
     }

@@ -8,7 +8,7 @@ import java.lang.annotation.*;
 @Target({ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface SystemLog {
+public @interface SysLogAnn {
 
     OperType operType(); /*操作类型*/
     OperLevel operLevel() default OperLevel.NORM;/*操作级别*/

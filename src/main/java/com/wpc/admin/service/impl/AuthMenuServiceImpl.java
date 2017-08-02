@@ -2,9 +2,7 @@ package com.wpc.admin.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
-import com.wpc.annotation.SystemLog;
+import com.wpc.annotation.SysLogAnn;
 import com.wpc.common.base.service.impl.BaseServiceImpl;
 import com.wpc.enums.OperLevel;
 import com.wpc.enums.OperType;
@@ -43,7 +41,7 @@ public class AuthMenuServiceImpl extends BaseServiceImpl<AuthMenu, Long> impleme
 	@Autowired
 	private AuthPermissionService authPermissionService;
 
-	@SystemLog(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "获取菜单")
+	@SysLogAnn(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "获取菜单")
 	@Override
 	public List<AuthMenu> getLeftMenu() {
 		return authMenuDao.getLeftMenu();

@@ -17,7 +17,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.wpc.annotation.SystemLog;
+import com.wpc.annotation.SysLogAnn;
 import com.wpc.enums.OperLevel;
 import com.wpc.enums.OperType;
 import org.quartz.Scheduler;
@@ -57,13 +57,16 @@ public class TimesController {
 	private Scheduler scheduler;
 
 	@RequestMapping
-	@SystemLog(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "查询")
-	public String index(ModelMap model) throws Exception {
+	@SysLogAnn(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "跳转")
+	public String index(ModelMap model) {
+//		int i = 1/0;
 		return "times/times";
 	}
 
+	@SysLogAnn(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "添加")
 	@RequestMapping(value = "add", method = RequestMethod.GET)
-	public void add(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+	public void add(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+		int i = 1/0;
 		ScheduleJob job = new ScheduleJob();
 		job.setJobId(3L);
 		job.setJobName("更新人员数据");
@@ -73,7 +76,11 @@ public class TimesController {
 		job.setDescription("每隔多久更新一次人员数据...");
 		job.setClassName("com.wpc.times.TestRun");
 		job.setMethodName("say");
-		SchedulerUtil.addJob(scheduler, job);
+		try {
+			SchedulerUtil.addJob(scheduler, job);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@RequestMapping(value = "pause", method = RequestMethod.GET)
@@ -94,6 +101,7 @@ public class TimesController {
 		SchedulerUtil.deleteJob(scheduler, scheduleJob);
 	}
 
+	@SysLogAnn(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "查询")
 	@RequestMapping(value = "running", method = RequestMethod.GET)
 	public @ResponseBody List<ScheduleJob> running(HttpServletRequest request, HttpServletResponse response,
 					ModelMap model) throws Exception {

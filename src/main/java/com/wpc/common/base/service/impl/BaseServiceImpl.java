@@ -5,13 +5,20 @@ import java.util.List;
 
 import com.wpc.common.base.dao.BaseDao;
 import com.wpc.common.base.service.BaseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wpc.common.datatables.DataTablesRequest;
 import com.wpc.common.datatables.DataTablesResponse;
 
 public abstract class BaseServiceImpl<T extends Serializable,PK extends Serializable> implements BaseService<T,PK>{
-    
+
+    /**
+     * 日志对象
+     */
+    protected Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     protected BaseDao<T, PK> baseDao;
 
