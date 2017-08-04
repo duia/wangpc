@@ -13,6 +13,7 @@
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<maven.compiler.plugin>2.5.1</maven.compiler.plugin>
         <tomcat7.maven.plugin>2.2</tomcat7.maven.plugin>
+		<druid.version>1.0.18</druid.version>
 	</properties>
 
 	<dependencies>
@@ -204,6 +205,13 @@
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>5.1.38</version>
+		</dependency>
+
+		<!-- connection pool -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
 		</dependency>
 
 		<dependency>
