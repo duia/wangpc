@@ -124,7 +124,7 @@
 	</tx:advice> 
 	<aop:config>
 		<aop:pointcut id="wpcServiceMethods" expression="execution(* com.wpc..service.*.*(..))"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="wpcServiceMethods" order="1"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="wpcServiceMethods"/>
 	</aop:config>  
 
 </beans>

@@ -66,7 +66,6 @@ public class TimesController {
 	@SysLogAnn(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "添加")
 	@RequestMapping(value = "add", method = RequestMethod.GET)
 	public void add(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
-		int i = 1/0;
 		ScheduleJob job = new ScheduleJob();
 		job.setJobId(3L);
 		job.setJobName("更新人员数据");

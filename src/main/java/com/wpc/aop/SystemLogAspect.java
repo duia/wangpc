@@ -41,7 +41,6 @@ import java.util.List;
 
 @Aspect
 @Component
-@Order(3)
 public class SystemLogAspect {
 
     //注入Service用于把日志保存数据库
@@ -257,6 +256,7 @@ public class SystemLogAspect {
             }
             // 保存日志信息
             DataSourceContextHolder.setDataSourceType("sys");
+//            int i = 1/0;
             sysLogService.save(log);
 //            System.out.println(log);
         }

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(2)
 public class DataSourceAspect {
 
     //Service层切点
