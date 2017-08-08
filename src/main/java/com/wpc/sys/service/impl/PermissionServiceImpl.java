@@ -28,52 +28,49 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Long> imp
 
     @Autowired
     private PermissionDao permissionDao;
-
     @Autowired
-    private MenuDao authMenuDao;
-    @Autowired
-    private PermissionDao authPermissionDao;
+    private MenuDao menuDao;
 
     @Override
     public void addElementPermission(Element element) {
         boolean isExist = true;
-        Menu menu = authMenuDao.findById(element.getMenuId());
-        Permission per = authPermissionDao.findByResourceId(element.getId(), PermissionService.PER_TYPE_ELEMENT);
+        Menu menu = menuDao.findById(element.getMenuId());
+        Permission per = permissionDao.findByResourceId(element.getId(), Permission.PER_TYPE_ELEMENT);
         if(per == null){
             per = new Permission();
             isExist = false;
         }
         per.setPermissionName(element.getElementName());
         per.setPermissionCode(menu.getMenuCode()+":"+element.getElementCode());
-        per.setPermissionType(PermissionService.PER_TYPE_ELEMENT);
+        per.setPermissionType(Permission.PER_TYPE_ELEMENT);
         per.setResourceId(element.getId());
         per.setParentId(element.getMenuId());
         per.setUpdateDate(new Date());
         if(isExist){
-            authPermissionDao.update(per);
+            permissionDao.update(per);
         }else{
-            authPermissionDao.save(per);
+            permissionDao.save(per);
         }
     }
 
     @Override
     public void addMenuPermission(Menu menu) {
         boolean isExist = true;
-        Permission per = authPermissionDao.findByResourceId(menu.getId(), PermissionService.PER_TYPE_MENU);
+        Permission per = permissionDao.findByResourceId(menu.getId(), Permission.PER_TYPE_MENU);
         if(per == null){
             per = new Permission();
             isExist = false;
         }
         per.setPermissionName(menu.getMenuName());
         per.setPermissionCode(menu.getMenuCode());
-        per.setPermissionType(PermissionService.PER_TYPE_MENU);
+        per.setPermissionType(Permission.PER_TYPE_MENU);
         per.setResourceId(menu.getId());
         per.setParentId(0L);
         per.setUpdateDate(new Date());
         if(isExist){
-            authPermissionDao.update(per);
+            permissionDao.update(per);
         }else{
-            authPermissionDao.save(per);
+            permissionDao.save(per);
         }
     }
 
@@ -85,7 +82,7 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Long> imp
 
     @Override
     public List<PermissionDto> getAllPermissionsByRole(long roleId) {
-        return authPermissionDao.getAllPermissionsByRole(roleId);
+        return permissionDao.getAllPermissionsByRole(roleId);
     }
 
 }

@@ -187,7 +187,7 @@
 	} */
 	function onRemove(e, treeId, treeNode) {
 		$.ajax({
-	    	url:'/menu/delete',
+	    	url:'/sys/menu/delete',
 	    	data:{id:treeNode.id},
 	    	type:'post',
 	    	success:function(result){
@@ -247,7 +247,7 @@
 	$("#menuform").validate({
 		submitHandler: function(form) {
 		    $.ajax({
-		    	url:'/menu/addOrUpdate',
+		    	url:'/sys/menu/addOrUpdate',
 		    	data:$(form).serialize(),
 		    	type:'post',
 		    	success:function(result){
@@ -270,7 +270,7 @@
 				return;
 			}
 		    $.ajax({
-		    	url:'/element/addOrUpdate',
+		    	url:'/sys/element/addOrUpdate',
 		    	data:$(form).serialize(),
 		    	type:'post',
 		    	success:function(result){
@@ -288,7 +288,7 @@
 		var menus = [];
 		menus.push({ id:0, pId:null, menuName:"菜单", open:true});
 		$.ajax({
-			url:'/menu/getAllMenus',
+			url:'/sys/menu/getAllMenus',
 	    	data:{},
 	    	type:'post',
 	    	success:function(result){
@@ -311,7 +311,7 @@
 			$('#btns').html('');
 			return;
 		}
-		$.post('/element/queryElementByMenu', {
+		$.post('/sys/element/queryElementByMenu', {
 			menuId: menuId
 		}, function(btns){
 			var html = template('btnstemp', {'btns':btns});
@@ -321,7 +321,7 @@
 	}
 	
 	$('#btns').delegate('button', 'click', function(event){
-		$.post('/element/findById', {
+		$.post('/sys/element/findById', {
 			id: $(event.target).parent().attr('data-id')
 		}, function(btn){
 			$('#elementName').val(btn.elementName);
@@ -332,7 +332,7 @@
 	});
 	
 	$('#btns').delegate('a', 'click', function(event){
-		$.post('/element/delete', {
+		$.post('/sys/element/delete', {
 			id: $(event.currentTarget).parent().attr('data-id')
 		}, function(result){
 			alert(result.code);

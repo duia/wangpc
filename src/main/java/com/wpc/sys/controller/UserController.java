@@ -24,7 +24,7 @@ import com.wpc.common.datatables.DataTablesRequest;
  * author wpc
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/sys/user")
 public class UserController {
 	
 	@Autowired

@@ -7,6 +7,7 @@ import com.wpc.enums.OperType;
 import com.wpc.sys.dao.ElementDao;
 import com.wpc.sys.dao.PermissionDao;
 import com.wpc.sys.model.Element;
+import com.wpc.sys.model.Permission;
 import com.wpc.sys.service.ElementService;
 import com.wpc.sys.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,49 +31,46 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu, Long> implements Menu
 
     @Autowired
     private MenuDao menuDao;
+    @Autowired
+    private ElementDao elementDao;
+    @Autowired
+    private PermissionDao permissionDao;
 
     @Autowired
-    private MenuDao authMenuDao;
+    private ElementService elementService;
     @Autowired
-    private ElementDao authElementDao;
-    @Autowired
-    private PermissionDao authPermissionDao;
-
-    @Autowired
-    private ElementService authElementService;
-    @Autowired
-    private PermissionService authPermissionService;
+    private PermissionService permissionService;
 
     @SysLogAnn(operType = OperType.SYSTEM, operLevel = OperLevel.NORM, describe = "获取菜单")
     @Override
     public List<Menu> getLeftMenu() {
-        return authMenuDao.queryAll();//getLeftMenu();
+        return menuDao.queryAll();//getLeftMenu();
     }
 
     @Override
     public void save(Menu menu) {
         // TODO Auto-generated method stub
-        authMenuDao.save(menu);
-        authPermissionService.addMenuPermission(menu);
+        menuDao.save(menu);
+        permissionService.addMenuPermission(menu);
         //首次保存要关联保存一下四个默认的按钮
-        authElementService.addDefaultElements(menu);
+        elementService.addDefaultElements(menu);
     }
 
     @Override
     public void update(Menu menu) {
         super.update(menu);
-        authPermissionService.addMenuPermission(menu);
+        permissionService.addMenuPermission(menu);
         //修改时需要关联所有的按钮权限
-        for(Element element : authElementService.queryElementByMenuId(menu.getId())){
-            authPermissionService.addElementPermission(element);
+        for(Element element : elementService.queryElementByMenuId(menu.getId())){
+            permissionService.addElementPermission(element);
         }
     }
 
     @Override
     public void delete(Long id) {
-        authElementDao.deleteByMenuId(id);
-        authPermissionDao.deleteByParentId(id, PermissionService.PER_TYPE_ELEMENT);
-        authPermissionDao.deleteByResourceId(id, PermissionService.PER_TYPE_MENU);
+        elementDao.deleteByMenuId(id);
+        permissionDao.deleteByParentId(id, Permission.PER_TYPE_ELEMENT);
+        permissionDao.deleteByResourceId(id, Permission.PER_TYPE_MENU);
         super.delete(id);
     }
 

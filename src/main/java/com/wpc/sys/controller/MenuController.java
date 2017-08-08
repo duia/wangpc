@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * author wpc
  */
 @Controller
-@RequestMapping("/menu")
+@RequestMapping("/sys/menu")
 public class MenuController {
 	
 	@Autowired

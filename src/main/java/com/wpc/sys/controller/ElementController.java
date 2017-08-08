@@ -17,7 +17,7 @@ import java.util.List;
  * author wpc
  */
 @Controller
-@RequestMapping("/element")
+@RequestMapping("/sys/element")
 public class ElementController {
 	
 	@Autowired

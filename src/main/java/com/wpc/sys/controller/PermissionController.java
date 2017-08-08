@@ -22,7 +22,7 @@ import java.util.List;
  * author wpc
  */
 @Controller
-@RequestMapping("/permission")
+@RequestMapping("/sys/permission")
 public class PermissionController {
 	
 	@Autowired

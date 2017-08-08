@@ -5,9 +5,7 @@
  */
 package com.wpc.sys.model;
 
-import com.wpc.common.base.entity.BaseEntity;
-
-import java.util.Date;
+import com.wpc.common.base.entity.TreeEntity;
 
 /**
  * 功能描述: Permission
@@ -16,12 +14,17 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class Permission extends BaseEntity {
+public class Permission extends TreeEntity<Permission> {
 
-	// parentId
-	private Long parentId;
-	// parentIds
-	private String parentIds;
+	public static String PER_TYPE_MENU = "menu";
+	public static String PER_TYPE_ELEMENT = "element";
+	public static String PER_TYPE_FILE = "file";
+
+	public static int OPERATION_COUNT = 4;
+
+	public static String[] OPERATION_NAMES = {"查看", "保存", "修改" ,"删除"};
+	public static String[] OPERATION_CODES = {"view", "save", "update", "delete"};
+
 	// resourceId
 	private Long resourceId;
 	// permissionName
@@ -30,36 +33,6 @@ public class Permission extends BaseEntity {
 	private String permissionCode;
 	// 权限类型
 	private String permissionType;
-	// sort
-	private Integer sort;
-	// createBy
-	private Long createBy;
-	// createDate
-	private Date createDate;
-	// updateBy
-	private Long updateBy;
-	// updateDate
-	private Date updateDate;
-	// remarks
-	private String remarks;
-	// delFlag
-	private String delFlag;
-		
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
-	}
-	
-	public Long getParentId() {
-		return this.parentId;
-	}
-
-	public void setParentIds(String parentIds) {
-		this.parentIds = parentIds;
-	}
-	
-	public String getParentIds() {
-		return this.parentIds;
-	}
 
 	public void setResourceId(Long resourceId) {
 		this.resourceId = resourceId;
@@ -91,62 +64,6 @@ public class Permission extends BaseEntity {
 	
 	public String getPermissionType() {
 		return this.permissionType;
-	}
-
-	public void setSort(Integer sort) {
-		this.sort = sort;
-	}
-	
-	public Integer getSort() {
-		return this.sort;
-	}
-
-	public void setCreateBy(Long createBy) {
-		this.createBy = createBy;
-	}
-	
-	public Long getCreateBy() {
-		return this.createBy;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-	
-	public Date getCreateDate() {
-		return this.createDate;
-	}
-
-	public void setUpdateBy(Long updateBy) {
-		this.updateBy = updateBy;
-	}
-	
-	public Long getUpdateBy() {
-		return this.updateBy;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-	
-	public Date getUpdateDate() {
-		return this.updateDate;
-	}
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-	
-	public String getRemarks() {
-		return this.remarks;
-	}
-
-	public void setDelFlag(String delFlag) {
-		this.delFlag = delFlag;
-	}
-	
-	public String getDelFlag() {
-		return this.delFlag;
 	}
 
 	@Override

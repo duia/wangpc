@@ -4,6 +4,7 @@ import com.wpc.common.base.service.impl.BaseServiceImpl;
 import com.wpc.sys.dao.MenuDao;
 import com.wpc.sys.dao.PermissionDao;
 import com.wpc.sys.model.Menu;
+import com.wpc.sys.model.Permission;
 import com.wpc.sys.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,12 +38,12 @@ public class ElementServiceImpl extends BaseServiceImpl<Element, Long> implement
     @Override
     public void addDefaultElements(Menu menu) {
         Element element = null;
-        for (int i = 0; i < PermissionServiceImpl.OPERATION_COUNT; i++) {
+        for (int i = 0; i < Permission.OPERATION_COUNT; i++) {
             element = new Element();
             element.setMenuId(menu.getId());
-            element.setElementName(PermissionService.OPERATION_NAMES[i]);
-            element.setElementCode(PermissionService.OPERATION_CODES[i]);
-            element.setElementDesc(menu.getMenuName()+"_"+PermissionService.OPERATION_NAMES[i]);
+            element.setElementName(Permission.OPERATION_NAMES[i]);
+            element.setElementCode(Permission.OPERATION_CODES[i]);
+            element.setElementDesc(menu.getMenuName()+"_"+Permission.OPERATION_NAMES[i]);
             elementDao.save(element);
             //给element添加权限
             permissionService.addElementPermission(element);
@@ -69,7 +70,7 @@ public class ElementServiceImpl extends BaseServiceImpl<Element, Long> implement
 
     @Override
     public void delete(Long id) {
-        permissionDao.deleteByResourceId(id, PermissionService.PER_TYPE_ELEMENT);
+        permissionDao.deleteByResourceId(id, Permission.PER_TYPE_ELEMENT);
         super.delete(id);
     }
 

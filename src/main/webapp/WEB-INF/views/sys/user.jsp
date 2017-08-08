@@ -51,18 +51,6 @@
             </form>
         </div>
         <table id="user_table" class="table table-bordered table-striped table-hover">
-            <thead>
-                <tr>
-                    <th><input type='checkbox' name='checklist' id='checkall' /></th>
-                    <th>ID</th>
-                    <th>用户名</th>
-                    <th>登陆账号</th>
-                    <%--<th>密码</th>--%>
-                    <th>年龄</th>
-                    <th>更新时间</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
         </table>
     </div>
 </div>
@@ -128,7 +116,7 @@
     var table = $('#user_table').DataTable({
         //ajax: "/static/data/objects.txt",
         ajax:{
-        	url:'/user/searchPage',
+        	url:'/sys/user/searchPage',
         	type:'post',
         	data:function (data) {
         		data.condition = {
@@ -148,39 +136,33 @@
         },
         pagingType: "full_numbers",
         columns: [{
-       		data: null
-       	},{
-       		data: "id"
+            title: '<input type="checkbox" name="checklist" id="checkall" /><label style="margin-left: 10px;">ID</label>',
+       		data: null,
+            render: function(data, type, row, meta) {
+                return '<input type="checkbox" name="checklist" value="' + row.id + '" /><label style="margin-left: 10px;">' + row.id + '</label>';
+            }
   		},{
+            title: '用户名',
   			data: "username"
    		},{
-   			data: "account"
+            title: '登陆账号',
+   			data: "loginName"
 		},{
-			data: "age"
+            title: '邮箱',
+			data: "email"
 		},{
-			data: "updateTime"
+            title: '更新时间',
+			data: "updateDate"
 		},{
-			data: null
+            title: '操作',
+			data: null,
+            render: function (data, type, row, metad) {
+                var html = [];
+                html.push('<button type="button" data-id="'+data.id+'" class="btn btn-primary btn-sm updateUserBtn">修改</button>');
+                html.push('<button type="button" class="btn btn-danger btn-sm deleteUserBtn">删除</button>');
+                return html.join(' ');
+            }
  		}],
-        columnDefs: [
-			{
-			    //   指定第一列，从0开始，0表示第一列，1表示第二列……
-			    targets: 0,
-			    render: function(data, type, row, meta) {
-			        return '<input type="checkbox" name="checklist" value="' + row.id + '" />'
-			    }
-			},
-	        {
-	            targets: 6,
-	            render: function (data, type, row, metad) {
-	                var html = [];
-	                html.push('<button type="button" data-id="'+data.id+'" class="btn btn-primary btn-sm updateUserBtn">修改</button>');
-	                html.push('<button type="button" class="btn btn-danger btn-sm deleteUserBtn">删除</button>');
-	                return html.join(' ');
-	            }
-	        }
-	
-	    ],
         dom: "<'row'<'#mytool.col-xs-3'><'col-xs-9'>>t<'row'<'col-xs-3'i><'col-xs-2'l><'col-xs-7'p>>",
 		initComplete: function () {
 		    //$("#mytool").append('<button id="datainit" type="button" class="btn btn-primary btn-sm">增加基础数据</button>&nbsp');
@@ -197,7 +179,7 @@
 		submitHandler: function(form) {
 			console.log('a');
 		    $.ajax({
-		    	url:'/user/addOrUpdate',
+		    	url:'/sys/user/addOrUpdate',
 		    	data:$('#userform').serialize(),
 		    	type:'post',
 		    	success:function(result){
@@ -215,7 +197,7 @@
     });
     
     $('#user_table').delegate('.updateUserBtn', 'click', function(e){
-        $.post('/user/findById', {
+        $.post('/sys/user/findById', {
             id: $(e.target).attr('data-id')
         }, function (data) {
             BootstrapDialog.alert('修改用户'+data.result.account);

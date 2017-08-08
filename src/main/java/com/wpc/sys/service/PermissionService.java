@@ -23,16 +23,6 @@ import java.util.List;
  */
 public interface PermissionService extends BaseService<Permission, Long> {
 
-    public static String PER_TYPE_MENU = "menu";
-    public static String PER_TYPE_ELEMENT = "element";
-    public static String PER_TYPE_FILE = "file";
-
-    public static int OPERATION_COUNT = 4;
-
-    public static String[] OPERATION_NAMES = {"查看", "保存", "修改" ,"删除"};
-    public static String[] OPERATION_CODES = {"view", "save", "update", "delete"};
-
-
     /**
      * 根据传来的资源为该资源添加对应的权限
      * @param   （菜单，按钮，文件）

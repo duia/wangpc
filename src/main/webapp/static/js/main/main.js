@@ -7,7 +7,7 @@
         if ($('#tt').tabs('exists', name)){
             $('#tt').tabs('select', name);
         } else {
-            var content = '<iframe allowtransparency="true" scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:'+($('.tabs-panels').height()-5)+'px;"></iframe>';
+            var content = '<iframe allowtransparency="true" scrolling="auto" frameborder="0"  src="'+url+'" style="width:99%;height:'+($('.tabs-panels').height()-5)+'px;"></iframe>';
             $('#tt').tabs('add',{
                 title:name,
                 content:content,
@@ -58,7 +58,7 @@
         $.ajax({
             // url:'/static/data/menu.json',
             // type:'get',
-            url:'/menu/getLeftMenus',
+            url:'/sys/menu/getLeftMenus',
             type:'post',
             data:{},
             dataType:'json',

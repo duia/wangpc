@@ -28,7 +28,7 @@ import java.util.List;
  * author wpc
  */
 @Controller
-@RequestMapping("/role")
+@RequestMapping("/sys/role")
 public class RoleController {
 	
 	@Autowired
