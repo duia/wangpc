@@ -24,8 +24,4 @@ public class MyController {
         return "my/ti";
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String upload(ModelMap model) {
-        return "my/upload";
-    }
 }

@@ -5,7 +5,8 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
@@ -82,8 +83,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!-- <script src="static/plugins/fullcalendar/fullcalendar.js"></script> -->
 <script>
-    App.restartGlobalFunction();
-    App.setPageTitle('首页');
 
     $.getScript('/static/plugins/fullcalendar/calendar.demo.js').done(function() {
         Calendar.init();

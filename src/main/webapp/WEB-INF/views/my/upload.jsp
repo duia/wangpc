@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:include page="../common/include/head.jsp"/>
 <link rel="stylesheet" href="/static/plugins/jquery-file-upload/css/jquery.fileupload.css" />
 <link rel="stylesheet" href="/static/plugins/plupload-2.3.1/js/jquery.plupload.queue/css/jquery.plupload.queue.css" />
 <style type="text/css">
@@ -12,11 +8,7 @@
         background: green;
     }
 </style>
-<title>Hello</title>
-</head>
 <body>
-<div id="content" class="content">
-    Hello world
 
     <form name="serForm" action="/upload/fileUpload" method="post"  enctype="multipart/form-data">
         <h3>上传文件</h3>
@@ -47,7 +39,7 @@
     <button id="uploader2">选择文件</button>
     <div id="progress2"></div>
     <div id="result"></div>
-</div>
+<jsp:include page="../common/include/foot.jsp"/>
 <script src="/static/plugins/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="/static/plugins/jquery-file-upload/js/jquery.iframe-transport.js"></script>
 <script src="/static/plugins/jquery-file-upload/js/jquery.fileupload.js"></script>

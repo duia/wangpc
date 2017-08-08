@@ -1,20 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>线程管理</title>
-</head>
+<jsp:include page="../common/include/head.jsp"/>
 <body>
-<div id="content" class="content">
-	<ol class="breadcrumb pull-right">
-		<li><a href="javascript:;">系统管理</a></li>
-		<li class="active">线程管理</li>
-	</ol>
-			
-	<h1 class="page-header">线程管理</h1>
-			
+
 	<div class="row">
 		<div class="col-md-12 ui-sortable">
 	        <div class="panel panel-inverse">
@@ -50,7 +38,7 @@
 	        </div>
 	    </div>
 	</div>
-</div>
+<jsp:include page="../common/include/foot.jsp"/>
 <script type="text/javascript">
 
 	$(function() {

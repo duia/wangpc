@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import com.wpc.sys.model.User;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
@@ -40,8 +41,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.ClientAnchor.AnchorType;
 import org.apache.poi.ss.usermodel.IndexedColors;
-
-import com.wpc.admin.entity.User;
 
 /**
  * Excel 生成通用类，为了兼容，所有 Excel 统一生成 Excel2003 即：xx.xls
@@ -1097,11 +1096,11 @@ public class ExcelExportHelper {
 		for (int i = 0; i < 10000; i++) {
 			user = new User();
 			user.setId(i+1L);
-			user.setAccount("wpc"+i);
+			/*user.setAccount("wpc"+i);
 			user.setUsername(i+"wpc");
 			user.setPassword("123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
 			user.setAge(i+3);
-			user.setUpdateTime(new Date());
+			user.setUpdateTime(new Date());*/
 			users.add(user);
 		}
 		String[] header = {"ID", "账户", "昵称", "密码", "年龄", "生日", "价钱"};

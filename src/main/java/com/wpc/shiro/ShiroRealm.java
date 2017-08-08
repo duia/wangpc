@@ -3,9 +3,13 @@ package com.wpc.shiro;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import com.wpc.common.HttpConstant;
+import com.wpc.sys.dao.PermissionDao;
+import com.wpc.sys.dao.RoleDao;
+import com.wpc.sys.dao.UserDao;
+import com.wpc.sys.model.Permission;
+import com.wpc.sys.model.Role;
+import com.wpc.sys.model.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.PasswordService;
@@ -17,12 +21,6 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 
-import com.wpc.admin.dao.AuthPermissionDao;
-import com.wpc.admin.dao.AuthRoleDao;
-import com.wpc.admin.dao.UserDao;
-import com.wpc.admin.entity.AuthPermission;
-import com.wpc.admin.entity.AuthRole;
-import com.wpc.admin.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShiroRealm extends AuthorizingRealm {
@@ -34,9 +32,9 @@ public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     private UserDao userDao;
     @Autowired
-    private AuthRoleDao authRoleDao;
+    private RoleDao roleDao;
     @Autowired
-    private AuthPermissionDao authPermissionDao;
+    private PermissionDao permissionDao;
 
     private PasswordService passwordService;
 
@@ -59,20 +57,20 @@ public class ShiroRealm extends AuthorizingRealm {
         List<String> permissions = new ArrayList<String>();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         if ("admin".equals(username)) {
-            for (AuthRole authRole : authRoleDao.queryAll()) {
-                roles.add(authRole.getRoleCode());
+            for (Role role : roleDao.queryAll()) {
+                roles.add(role.getRoleCode());
             }
-            for (AuthPermission authPermission : authPermissionDao.queryAll()) {
-                permissions.add(authPermission.getPermissionCode());
+            for (Permission permission : permissionDao.queryAll()) {
+                permissions.add(permission.getPermissionCode());
             }
         } else {
             // 从数据库中获取用户
             User user = userDao.getUserByAccount(username);
             // 根据用户名查询出用户 判断用户信息的有效性 然获取用户的角色权限 授权 
-            for (AuthRole authRole : authRoleDao.queryRoleByUserId(user.getId())) {
-                roles.add(authRole.getRoleCode());
-                for (AuthPermission authPermission : authPermissionDao.queryPermissionByRoleId(authRole.getId())) {
-                    permissions.add(authPermission.getPermissionCode());
+            for (Role role : roleDao.queryRoleByUserId(user.getId())) {
+                roles.add(role.getRoleCode());
+                for (Permission permission : permissionDao.queryPermissionByRoleId(role.getId())) {
+                    permissions.add(permission.getPermissionCode());
                 }
             }
         }
@@ -91,12 +89,12 @@ public class ShiroRealm extends AuthorizingRealm {
         if (user == null) {
             throw new UnknownAccountException();//没找到帐号
         }
-//        if(Boolean.TRUE.equals(user.getLocked())) {
+//        if(Boolean.TRUE.equals(user.getLoginFlag())) {
 //            throw new LockedAccountException(); //帐号锁定
 //        }
-        this.setSession(HttpConstant.LOGIN_USER, user);
+//        this.setSession(HttpConstant.LOGIN_USER, user);
         return new SimpleAuthenticationInfo(
-                user.getUsername(),
+                user.getLoginName(),
 //                passwordService.encryptPassword(user.getPassword()),
                 user.getPassword(),
                 getName());

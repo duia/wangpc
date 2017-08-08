@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
@@ -25,7 +26,7 @@ import com.wpc.admin.service.impl.UserServiceImpl;
 })
 public class RedisTest {
 
-	@Resource(name=UserService.BEAN_ID)
+	@Autowired
 	private UserServiceImpl userService;
 	
 	@Resource
@@ -39,8 +40,8 @@ public class RedisTest {
         redisTemplate.setValueSerializer(serializer);
         redisTemplate.setHashValueSerializer(serializer);
         
-        User user1 = userService.findById(2);  
-        User user2 = userService.findById(4);
+        User user1 = userService.findById(2L);
+        User user2 = userService.findById(4L);
         
 //        Set<String> set = redisTemplate.keys("*");
 //        System.out.println(set.size());

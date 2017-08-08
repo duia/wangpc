@@ -14,6 +14,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +34,11 @@ import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
 @Controller
 @RequestMapping("/upload")
 public class UploadController {
+
+    @RequestMapping
+    public String upload(ModelMap model) {
+        return "my/upload";
+    }
 
     @RequestMapping("fileUpload")
     @ResponseBody

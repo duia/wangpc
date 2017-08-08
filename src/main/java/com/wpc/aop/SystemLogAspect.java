@@ -2,7 +2,6 @@ package com.wpc.aop;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wpc.admin.entity.User;
 import com.wpc.annotation.SysLogAnn;
 import com.wpc.common.DataSourceContextHolder;
 import com.wpc.common.HttpConstant;
@@ -10,6 +9,7 @@ import com.wpc.enums.DataSource;
 import com.wpc.enums.OperType;
 import com.wpc.sys.dao.SysLogDao;
 import com.wpc.sys.model.SysLog;
+import com.wpc.sys.model.User;
 import com.wpc.sys.service.SysLogService;
 import com.wpc.util.date.DateFormatUtils;
 import com.wpc.util.exception.Exceptions;
