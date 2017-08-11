@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%    
-String path = request.getContextPath();    
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<jsp:include page="common/include/taglib.jsp"/>
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
@@ -17,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta content="" name="author" />
 
 <!-- ================== BEGIN BASE CSS STYLE ================== -->
-<link href="/static/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" />
+<link href="${ctxStatic}/static/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" />
 <link href="/static/plugins/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="/static/plugins/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="/static/plugins/color_admin/css/animate.min.css" rel="stylesheet" />
@@ -55,13 +53,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <!-- end brand -->
             <div class="login-content">
-                <form action="/dologin" method="POST" class="margin-bottom-0">
+                <form action="/login" method="POST" class="margin-bottom-0">
                     <div class="form-group m-b-20">
-                        <input type="text" class="form-control input-lg" placeholder="用户名" name="loginName"/>
+                        <input type="text" class="form-control input-lg" placeholder="用户名" name="loginName" value="${loginName}"/>
                     </div>
                     ${message}
                     <div class="form-group m-b-20">
-                        <input type="text" class="form-control input-lg" placeholder="密码" name="password"/>
+                        <input type="text" class="form-control input-lg" placeholder="密码" name="password" value="${password}"/>
                     </div>
                     <div class="checkbox m-b-20">
                         <label>

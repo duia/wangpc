@@ -247,7 +247,7 @@
             <artifactId>shiro-ehcache</artifactId>
             <version>1.2.3</version>  
         </dependency>
-        <!-- <dependency>
+         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-cas</artifactId>
             <version>1.2.3</version>
@@ -257,12 +257,12 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency> -->
-        <dependency>
+        </dependency>
+        <!--<dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-quartz</artifactId>
             <version>1.2.3</version>
-        </dependency>
+        </dependency>-->
 		
 		<!-- redis spring 整合 -->
 		<dependency>

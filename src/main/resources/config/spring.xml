@@ -23,25 +23,6 @@
     <import resource="spring-shiro.xml"/>
     <import resource="spring-redis.xml"/> 
 
-	<!-- 配置定时执行计划  -->
-	<!-- <bean id="app" class="com.wpc.app.App" />
-	<bean id="ktrTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="app"/>
-		<property name="targetMethod" value="ktrRun"/>
-	</bean>
-	<bean id="ktrTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="ktrTask"/>
-		<property name="cronExpression" value="0 0/1 * * * ?"/>
-	</bean>
-	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-		<property name="triggers">
-			<list>
-				<ref bean="ktrTaskTrigger" />
-			</list>
-		</property>
-	</bean> -->
-	
-	
     <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
 	<!-- <bean class="com.wpc.times.JobTest">
 		<property name="scheduler" ref="schedulerFactoryBean"></property>

@@ -1,6 +1,3 @@
-/**
- * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- */
 package com.wpc.common.base.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,6 +9,13 @@ import java.util.Date;
  * 数据Entity类
  * @author ThinkGem
  * @version 2014-05-16
+ */
+/**
+ * 功能描述: 实体基础类
+ * @Author: 王鹏程
+ * @E-mail: wpcfree@qq.com @QQ: 376205421
+ * @Blog: http://www.wpcfree.com
+ * @Date:
  */
 public abstract class DataEntity<T> extends BaseEntity<T> {
 

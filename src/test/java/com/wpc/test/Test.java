@@ -1,9 +1,9 @@
 package com.wpc.test;
 
+import com.wpc.sys.model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.wpc.admin.entity.User;
 import com.wpc.test.spring.MyEvent;
 
 public class Test {

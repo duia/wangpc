@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import com.wpc.sys.model.User;
+import com.wpc.sys.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,6 @@ import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.wpc.admin.entity.User;
-import com.wpc.admin.service.UserService;
-import com.wpc.admin.service.impl.UserServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {

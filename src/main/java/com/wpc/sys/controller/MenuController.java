@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MenuController {
 	
 	@Autowired
-	private MenuService authMenuService;
+	private MenuService menuService;
 	
 	/**
 	 * 页面跳转
@@ -39,9 +39,9 @@ public class MenuController {
 	public AjaxResult addOrUpdate(ModelMap model, Menu menu) {
 		menu.setUpdateDate(new Date());
 		if(menu.getId()!=null && menu.getId()!=0){
-			authMenuService.update(menu);
+			menuService.update(menu);
 		}else{
-			authMenuService.save(menu);
+			menuService.save(menu);
 		}
 		return AjaxResult.success();
 	}
@@ -52,7 +52,7 @@ public class MenuController {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
 	public AjaxResult delete(ModelMap model, Long id) {
-		authMenuService.delete(id);
+		menuService.delete(id);
 		return AjaxResult.success();
 	}
 	
@@ -64,7 +64,7 @@ public class MenuController {
 	@RequestMapping(value="/getAllMenus", method=RequestMethod.POST)
 	@ResponseBody
 	public List<Menu> getAllMenus(ModelMap model) {
-		return authMenuService.queryAll();
+		return menuService.queryAll();
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class MenuController {
 	@RequestMapping(value="/getLeftMenus")
 	@ResponseBody
 	public List<Menu> getLeftMenus(ModelMap model) {
-		return authMenuService.getLeftMenu();
+		return menuService.getLeftMenu();
 	}
 
 }

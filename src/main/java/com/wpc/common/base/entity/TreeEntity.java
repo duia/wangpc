@@ -1,19 +1,15 @@
-/**
- * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- */
 package com.wpc.common.base.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.wpc.util.base.ObjectUtils;
-import com.wpc.util.base.Reflections;
-import org.apache.commons.lang3.StringUtils;
 
 /**
- * 数据Entity类
- * @author ThinkGem
- * @version 2014-05-16
+ * 功能描述: 树形实体基础类
+ * @Author: 王鹏程
+ * @E-mail: wpcfree@qq.com @QQ: 376205421
+ * @Blog: http://www.wpcfree.com
+ * @Date:
  */
-public abstract class TreeEntity<T> extends DataEntity<T> {
+public class TreeEntity<T> extends DataEntity<T> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,11 +53,7 @@ public abstract class TreeEntity<T> extends DataEntity<T> {
 	}
 
 	public Long getParentId() {
-		Long id = null;
-		if (parent != null){
-			id = (Long) Reflections.getFieldValue(parent, "id");
-		}
-		return ObjectUtils.isNotEmpty(id) ? id : 0L;
+		return parentId != null ? parentId : 0L;
 	}
 
 	public void setParentId(Long parentId) {
