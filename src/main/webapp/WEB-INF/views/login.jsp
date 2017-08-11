@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:include page="common/include/taglib.jsp"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="common/include/taglib.jsp" %>
 <!DOCTYPE html>
 <!--[if IE 8]>
 <html lang="en" class="ie8"> <![endif]-->
@@ -63,7 +62,7 @@
                     </div>
                     <div class="checkbox m-b-20">
                         <label>
-                            <input type="checkbox" name="rememberMe" value="true"/> Remember Me
+                            <input type="checkbox" name="rememberMe" value="true" <c:if test="${rememberMe}">checked</c:if>/> Remember Me
                         </label>
                     </div>
                     <div class="login-buttons">
