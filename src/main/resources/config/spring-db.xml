@@ -33,7 +33,7 @@
 	</bean>
 
 	<!-- 数据源配置, 使用 BoneCP 数据库连接池 -->
-	<bean id="admin" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+	<bean id="h2" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
 		<property name="driverClassName" value="${h2.driver.class}" />
 
@@ -94,7 +94,7 @@
 		</property>
 	</bean>
 
-	<bean id="sys" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+	<bean id="mysql" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<property name="driverClassName" value="${mysql.driver.class}" />
 		<property name="url" value="${mysql.jdbc.url}" />
 		<property name="username" value="${mysql.jdbc.username}" />
@@ -152,11 +152,11 @@
 	<bean id ="dataSource" class= "com.wpc.common.DynamicDataSource" >
 		<property name ="targetDataSources">
 			<map key-type ="java.lang.String">
-				<entry key= "admin" value-ref ="admin"/>
-				<entry key= "sys" value-ref ="sys"/>
+				<entry key= "admin" value-ref ="h2"/>
+				<entry key= "sys" value-ref ="mysql"/>
 			</map >
 		</property >
-		<property name ="defaultTargetDataSource" ref= "sys"/>      <!-- 默认使用ds1的数据源 -->
+		<property name ="defaultTargetDataSource" ref= "h2"/>      <!-- 默认使用ds1的数据源 -->
 	</bean >
  	 
 </beans>

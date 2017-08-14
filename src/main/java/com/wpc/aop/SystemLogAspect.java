@@ -255,7 +255,7 @@ public class SystemLogAspect {
                 return;
             }
             // 保存日志信息
-            DataSourceContextHolder.setDataSourceType("sys");
+            DataSourceContextHolder.setDataSourceType("mysql");
 //            int i = 1/0;
             sysLogService.save(log);
 //            System.out.println(log);
