@@ -50,7 +50,7 @@
                 <button class="btn btn-default" type="submit">重置</button>
             </form>
         </div>
-        <table id="user_table" class="table table-bordered table-striped table-hover">
+        <table id="user_table" class="table table-bordered table-striped table-hover display" cellspacing="0" width="100%">
         </table>
     </div>
 </div>
@@ -115,22 +115,22 @@
     
     var table = $('#user_table').DataTable({
         //ajax: "/static/data/objects.txt",
+        processing: true,
+        serverSide: true,
         ajax:{
-        	url:'/sys/user/searchPage',
-        	type:'post',
-        	data:function (data) {
-        		data.condition = {
-        			/* username:'123',//添加额外参数
-        			password:'123456' */
-        		}
+            url:'/sys/user/searchPage',
+            type:'post',
+            data:function (data) {
+                data.condition = {
+                    /* username:'123',//添加额外参数
+                     password:'123456' */
+                }
                 return JSON.stringify(data);
             },
             dataType: "json",
-            processData: false,
+            processData: true,
             contentType: 'application/json;charset=UTF-8'
         },
-        processing: true,
-        serverSide: true,
         language: {
 		    url:'/static/plugins/DataTables-1.10.12/media/Chinese.json'
         },
@@ -163,12 +163,26 @@
                 return html.join(' ');
             }
  		}],
-        dom: "<'row'<'#mytool.col-xs-3'><'col-xs-9'>>t<'row'<'col-xs-3'i><'col-xs-2'l><'col-xs-7'p>>",
+        dom: "<'row'<'#mytool.col-xs-3'><'col-xs-9'>><'row'<'.col-xs-12'tr>><'row'<'col-xs-3'i><'col-xs-2'l><'col-xs-7'p>>",
 		initComplete: function () {
 		    //$("#mytool").append('<button id="datainit" type="button" class="btn btn-primary btn-sm">增加基础数据</button>&nbsp');
 		    //$("#mytool").append('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">添加</button>');
 		    //$("#datainit").on("click", initData);
-		}
+		},
+        fnDrawCallback: function(table) {
+            var tableId = $(this).attr('id');
+            $('#'+tableId+'_paginate').append("<div>到第 <input type='text' id='changePage' class='input-text' style='width:50px;height:27px'> 页 " +
+                "<a class='btn btn-default shiny' href='javascript:void(0);' id='dataTable-btn' style='text-align:center'>确认</a></div>");
+            var oTable = $('#'+tableId).dataTable();
+            $('#dataTable-btn').click(function(e) {
+                if($("#changePage").val() && $("#changePage").val() > 0) {
+                    var redirectpage = $("#changePage").val() - 1;
+                } else {
+                    var redirectpage = 0;
+                }
+                oTable.fnPageChange(redirectpage);
+            });
+        }
     });
     
     $('#saveUser').on('click', function(){
