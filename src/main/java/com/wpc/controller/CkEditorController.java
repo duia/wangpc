@@ -44,7 +44,7 @@ import com.wpc.util.entity.Parameter;
  * 
  */
 @Controller
-@RequestMapping("/ckeditor")
+@RequestMapping("/editor")
 public class CkEditorController {
 
 	@RequestMapping
@@ -58,6 +58,18 @@ public class CkEditorController {
 	public String submit(Title title){
 		System.out.println(title);
 		return "OK";
+	}
+
+	@RequestMapping("/mathml2internal")
+	@ResponseBody
+	public String mathml2internal(boolean httpstatus) {
+		return "<math/>";
+	}
+
+	@RequestMapping("/tick")
+	@ResponseBody
+	public String tick(boolean httpstatus) {
+		return "<math/>";
 	}
 
 }

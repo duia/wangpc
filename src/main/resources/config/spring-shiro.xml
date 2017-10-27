@@ -54,6 +54,11 @@
                 /favicon.ico = anon
                 /console/* = anon
                 /druid/* = anon
+                /app/* = anon
+                /cache/** = anon
+                /formulas/** = anon
+                /docs/** = anon
+                /lang/** = anon
                 <!-- anon 允许访问 -->
                 /login = authc
                 /logout = logout

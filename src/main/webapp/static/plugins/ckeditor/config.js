@@ -7,7 +7,15 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
+
+    config.extraPlugins += (config.extraPlugins.length == 0 ? '' : ',') + 'ckeditor_wiris';
+
 	config.image_previewText = ''; //清空预览区域显示内容
 	config.filebrowserImageUploadUrl = "/upload/springUpload";//设置提交上传图片按钮处
-    config.toolbar = [[ 'Bold', 'Italic', 'Underline','Image', 'Table' ]];
+    config.toolbar = [[ 'Bold', 'Italic', 'Underline','Image', 'Table', 'ckeditor_wiris_formulaEditor', 'ckeditor_wiris_formulaEditorChemistry' ]];
+
+    // config.toolbar_Full.push({name:'wiris', items:['ckeditor_wiris_formulaEditor', 'ckeditor_wiris_formulaEditorChemistry']});
+
+    config.allowedContent = true;
+    config.height = '250px';
 };

@@ -178,7 +178,28 @@
     <!--<session-config>
         <session-timeout>30</session-timeout>  
     </session-config>-->
-    
+
+    <!-- Pluginwiris configuration begin -->
+
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>com.wiris.plugin.dispatchers.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/app/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>35</session-timeout>
+    </session-config>
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>txt</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

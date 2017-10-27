@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<input type="submit" value="upload"/>
 	</form>
 </div>
-<!-- <script src="/static/js/jquery-2.1.3.min.js"></script> -->
+<script src="/static/js/jquery-2.1.3.min.js"></script>
 <script src="/static/plugins/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 (function(){

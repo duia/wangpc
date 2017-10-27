@@ -6,3 +6,5 @@
 .classpath
 .project
 *.iml
+/src/main/webapp/formulas/
+/src/main/webapp/cache/

@@ -325,6 +325,17 @@
             <artifactId>pinyin4j</artifactId>
             <version>2.5.1</version>
         </dependency>
+
+		<!--<dependency>
+			<groupId>com.wiris.plugin</groupId>
+			<artifactId>wirisplugin-api</artifactId>
+			<version>1.17.17.0415</version>
+		</dependency>
+		<dependency>
+			<groupId>com.wiris.plugin</groupId>
+			<artifactId>wirisplugin-engine</artifactId>
+			<version>3.17.20.0706</version>
+		</dependency>-->
         
 	</dependencies>
 
