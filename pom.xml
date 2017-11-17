@@ -12,7 +12,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<maven.compiler.plugin>2.5.1</maven.compiler.plugin>
+		<maven.resources.plugin>2.7</maven.resources.plugin>
+		<maven.surefire.plugin>2.18.1</maven.surefire.plugin>
         <tomcat7.maven.plugin>2.2</tomcat7.maven.plugin>
+		<maven.war.plugin>2.6</maven.war.plugin>
 		<druid.version>1.0.18</druid.version>
 	</properties>
 
@@ -339,8 +342,43 @@
         
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<package.environment>local</package.environment>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<package.environment>test</package.environment>
+			</properties>
+		</profile>
+		<profile>
+			<id>product</id>
+			<properties>
+				<package.environment>product</package.environment>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<finalName>wangpc</finalName>
+		<resources> <!-- 忽略测试用例 -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>config/local/*</exclude>
+					<exclude>config/test/*</exclude>
+					<exclude>config/product/*</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -352,6 +390,42 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/classes/config</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources/config/${package.environment}/</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin}</version>
+				<configuration>
+					<!--不执行测试用例，也不编译测试用例类-->
+					<skip>true</skip>
+					<!--不执行测试用例，但编译测试用例类生成相应的class文件至target/test-classes下-->
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -366,6 +440,25 @@
 			        </systemProperties>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.plugin}</version>
+				<!--<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+					<warName>${project.artifactId}</warName>
+					<webResources>
+						&lt;!&ndash; 不同的环境，使用不同的配置文件 &ndash;&gt;
+						<resource>
+							<directory>src/main/resources/config/${package.environment}</directory>
+							<targetPath>WEB-INF/classes/config</targetPath>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
+				</configuration>-->
+			</plugin>
 		</plugins>
 	</build>
 </project>

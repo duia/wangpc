@@ -53,7 +53,7 @@
                 /static/** = anon
                 /favicon.ico = anon
                 /console/* = anon
-                /druid/* = anon
+                /druid/** = anon
                 /app/* = anon
                 /cache/** = anon
                 /formulas/** = anon
