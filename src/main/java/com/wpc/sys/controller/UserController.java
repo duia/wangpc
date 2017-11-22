@@ -8,6 +8,7 @@ import com.wpc.common.msg.AjaxResult;
 import com.wpc.sys.model.User;
 import com.wpc.sys.service.UserService;
 import org.apache.shiro.authc.credential.PasswordService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -45,6 +46,7 @@ public class UserController {
 	 *
 	 * 分页查询列表
 	 */
+	@RequiresRoles("admin")
 	@RequestMapping(value="/searchPage", method=RequestMethod.POST)
 	@ResponseBody
 	public DataTablesResponse<User> searchPage(ModelMap model, HttpServletRequest request, @RequestBody DataTablesRequest query) {

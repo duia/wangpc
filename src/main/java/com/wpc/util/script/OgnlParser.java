@@ -1,11 +1,10 @@
 package com.wpc.util.script;
 
-import com.wpc.util.base.BeanUtils;
+import com.wpc.common.utils.base.BeanUtils;
 import org.apache.ibatis.ognl.Ognl;
 import org.apache.ibatis.ognl.OgnlContext;
 
 import java.lang.reflect.Method;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

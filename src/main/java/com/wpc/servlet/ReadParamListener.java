@@ -4,8 +4,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import com.wpc.util.ParameterUtil;
-import com.wpc.util.entity.Parameter;
+import com.wpc.common.utils.ParameterUtil;
+import com.wpc.common.utils.entity.Parameter;
 
 @WebListener(value="ReadParamListener")
 public class ReadParamListener implements ServletContextListener {

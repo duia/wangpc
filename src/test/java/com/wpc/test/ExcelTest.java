@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.wpc.util.excel.excel.ExcelBean;
-import com.wpc.util.excel.excel.SheetBean;
-import com.wpc.util.excel.excel.WriteExcel;
+import com.wpc.common.utils.excel.excel.ExcelBean;
+import com.wpc.common.utils.excel.excel.SheetBean;
+import com.wpc.common.utils.excel.excel.WriteExcel;
 
 /**   
  * @ClassName:  ExcelTest   

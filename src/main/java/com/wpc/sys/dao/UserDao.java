@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface UserDao extends BaseDao<User, Long> {
 
-    User getUserByAccount(String account);
+    User getUserByLoginName(String loginName);
 
     List<User> queryUserByRole(long roleId);
 

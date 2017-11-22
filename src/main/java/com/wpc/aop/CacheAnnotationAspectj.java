@@ -12,24 +12,14 @@ import com.wpc.annotation.CacheAnn;
 import com.wpc.cache.AbstractCache;
 import com.wpc.cache.WpcCache;
 import com.wpc.enums.ECacheDataSource;
-import com.wpc.util.base.BeanUtils;
-import com.wpc.util.encrypt.Md5Utils;
+import com.wpc.common.utils.base.BeanUtils;
 import com.wpc.util.script.AbstractScriptParser;
 import com.wpc.util.script.SpringELParser;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 /**
  *

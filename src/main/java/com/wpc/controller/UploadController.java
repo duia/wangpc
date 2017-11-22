@@ -1,35 +1,20 @@
 package com.wpc.controller;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.wpc.util.UploadUtils;
-import com.wpc.util.entity.FileMeta;
-import com.wpc.util.entity.Parameter;
-
-import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
+import com.wpc.common.utils.UploadUtils;
+import com.wpc.common.utils.entity.FileMeta;
+import com.wpc.common.utils.entity.Parameter;
 
 @Controller
 @RequestMapping("/upload")

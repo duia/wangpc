@@ -293,10 +293,10 @@
 		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
 	</sql>
 
-	<select id="getUserByAccount" resultMap="BaseResultMap" parameterType="String">
+	<select id="getUserByLoginName" resultMap="BaseResultMap" parameterType="String">
 		SELECT <include refid="table_columns"/>
 		FROM sys_user
-		WHERE login_name = #{account}
+		WHERE login_name = #{loginName}
 	</select>
 
 	<select id="queryUserByRole" resultMap="BaseResultMap" parameterType="long">

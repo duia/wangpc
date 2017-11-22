@@ -156,7 +156,7 @@
 				<entry key= "sys" value-ref ="mysql"/>
 			</map >
 		</property >
-		<property name ="defaultTargetDataSource" ref= "h2"/>      <!-- 默认使用ds1的数据源 -->
+		<property name ="defaultTargetDataSource" ref= "mysql"/>      <!-- 默认使用的数据源 -->
 	</bean >
  	 
 </beans>

@@ -12,18 +12,12 @@
  */
 package com.wpc.controller;
 
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wpc.core.ueditor.ActionEnter;
 import com.wpc.model.Title;
-import com.wpc.util.entity.Parameter;
+import com.wpc.common.utils.entity.Parameter;
 
 /**
  * <dl>

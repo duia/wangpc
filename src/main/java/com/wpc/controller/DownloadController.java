@@ -13,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wpc.util.file.DownLoadUtil;
-import com.wpc.util.io.ZipUtils;
+import com.wpc.common.utils.file.DownLoadUtil;
+import com.wpc.common.utils.io.ZipUtils;
 
 @Controller
 @RequestMapping("/download")

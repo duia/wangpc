@@ -1,6 +1,6 @@
 package com.wpc.util.script;
 
-import com.wpc.util.base.BeanUtils;
+import com.wpc.common.utils.base.BeanUtils;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;

@@ -12,11 +12,9 @@
  */
 package com.wpc.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
@@ -26,9 +24,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wpc.model.LdapObject;
 import com.wpc.model.Node;
-import com.wpc.util.ConfigUtils;
+import com.wpc.common.utils.ConfigUtils;
 
 /**
  * <dl>  Class Description

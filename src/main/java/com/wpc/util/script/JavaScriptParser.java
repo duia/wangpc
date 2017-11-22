@@ -1,6 +1,6 @@
 package com.wpc.util.script;
 
-import com.wpc.util.base.BeanUtils;
+import com.wpc.common.utils.base.BeanUtils;
 import org.apache.log4j.Logger;
 
 import javax.script.*;

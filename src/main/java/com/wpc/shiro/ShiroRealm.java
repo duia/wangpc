@@ -1,25 +1,24 @@
 package com.wpc.shiro;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import com.wpc.common.HttpConstant;
+import com.wpc.common.utils.net.IpUtils;
 import com.wpc.sys.dao.PermissionDao;
 import com.wpc.sys.dao.RoleDao;
 import com.wpc.sys.dao.UserDao;
 import com.wpc.sys.model.Permission;
 import com.wpc.sys.model.Role;
 import com.wpc.sys.model.User;
-import org.apache.shiro.SecurityUtils;
+import com.wpc.util.SessionUtil;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.Subject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -56,7 +55,12 @@ public class ShiroRealm extends AuthorizingRealm {
         List<String> roles = new ArrayList<String>();
         List<String> permissions = new ArrayList<String>();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        if ("admin".equals(username)) {
+        // 从数据库中获取用户
+        User user = userDao.getUserByLoginName(username);
+        if (null == user) {
+            return null;
+        }
+        if ("admin".equals(username)) {//可以修改为别的验证是否是超级管理员
             for (Role role : roleDao.queryAll()) {
                 roles.add(role.getRoleCode());
             }
@@ -64,9 +68,7 @@ public class ShiroRealm extends AuthorizingRealm {
                 permissions.add(permission.getPermissionCode());
             }
         } else {
-            // 从数据库中获取用户
-            User user = userDao.getUserByAccount(username);
-            // 根据用户名查询出用户 判断用户信息的有效性 然获取用户的角色权限 授权 
+            // 根据用户名查询出用户 判断用户信息的有效性 然获取用户的角色权限 授权
             for (Role role : roleDao.queryRoleByUserId(user.getId())) {
                 roles.add(role.getRoleCode());
                 for (Permission permission : permissionDao.queryPermissionByRoleId(role.getId())) {
@@ -76,6 +78,39 @@ public class ShiroRealm extends AuthorizingRealm {
         }
         info.addRoles(roles);
         info.addStringPermissions(permissions);
+
+        // 更新登录IP和时间
+        User entity = new User();
+        entity.setId(user.getId());
+        entity.setLoginDate(new Date());
+        entity.setLoginIp(IpUtils.getIpAddress(SessionUtil.getRequest()));
+        userDao.update(entity);
+        // 记录登录日志
+//        LogUtils.saveLog(Servlets.getRequest(), "系统登录");
+
+        return info;
+    }
+
+    /**
+     * 获取权限授权信息，如果缓存中存在，则直接从缓存中获取，否则就重新获取， 登录成功后调用
+     */
+    @Override
+    protected AuthorizationInfo getAuthorizationInfo(PrincipalCollection principals) {
+        if (principals == null) {
+            return null;
+        }
+
+        AuthorizationInfo info = null;
+
+        info = (AuthorizationInfo)SessionUtil.getAuthInfo(SessionUtil.CACHE_AUTH_INFO);
+
+        if (info == null) {
+            info = doGetAuthorizationInfo(principals);
+            if (info != null) {
+                SessionUtil.putAuthInfo(SessionUtil.CACHE_AUTH_INFO, info);
+            }
+        }
+
         return info;
     }
 
@@ -85,7 +120,7 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        User user = userDao.getUserByAccount(token.getUsername());
+        User user = userDao.getUserByLoginName(token.getUsername());
         if (user == null) {
             throw new UnknownAccountException();//没找到帐号
         }
@@ -98,21 +133,6 @@ public class ShiroRealm extends AuthorizingRealm {
 //                passwordService.encryptPassword(user.getPassword()),
                 user.getPassword(),
                 getName());
-    }
-
-    /**
-     * 将一些数据放到ShiroSession中,以便于其它地方使用
-     *
-     */
-    private void setSession(Object key, Object value) {
-        Subject currentUser = SecurityUtils.getSubject();
-        if (null != currentUser) {
-            Session session = currentUser.getSession();
-//            System.out.println("Session默认超时时间为[" + session.getTimeout() + "]毫秒");
-            if (null != session) {
-                session.setAttribute(key, value);
-            }
-        }
     }
 
     /**

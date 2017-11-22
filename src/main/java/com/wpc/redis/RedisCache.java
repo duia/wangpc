@@ -7,10 +7,9 @@ import org.apache.ibatis.cache.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.connection.jedis.JedisConnection;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 
-import com.wpc.util.io.SerializeUtil;
+import com.wpc.common.utils.io.SerializeUtil;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
