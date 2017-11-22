@@ -36,7 +36,7 @@ public class WpcCache extends AbstractCache {
 
 	@Autowired
 	@Qualifier("redisTemplate")
-	private RedisTemplate<Serializable, Serializable> redisTemplate;
+	private RedisTemplate<String, Serializable> redisTemplate;
 
 	/**
 	 * 方法：getRedisTemplate <br>
@@ -46,7 +46,7 @@ public class WpcCache extends AbstractCache {
 	 * @see com.wpc.cache.AbstractCache#getRedisTemplate()
 	 */
 	@Override
-	protected RedisTemplate<Serializable, Serializable> getRedisTemplate() {
+	protected RedisTemplate<String, Serializable> getRedisTemplate() {
 		return redisTemplate;
 	}
 

@@ -1,3 +1,41 @@
+
+
+**************************************************************************************************
+
+2017-06-09
+
+添加redis注解式缓冲功能
+    |--java
+    |   |--annotation
+    |   |   |--CacheAnn.java
+    |   |--aop
+    |   |   |--BaseAnnotationAspectj.java
+    |   |   |--CacheAnnotationAspectj.java
+    |   |--cache
+    |   |   |--AbstractCache.java
+    |   |   |--WpcCache.java
+    |   |--enums
+    |   |   |--ECacheDataSource.java
+    |   |   |--ECachePrefix.java
+
+**************************************************************************************************
+
+2017-05-18
+
+aop实现系统日志记录功能
+    |--java
+    |   |--annotation
+    |   |   |--SystemLog.java
+    |   |--aop
+    |   |   |--SystemLogAspect.java
+    |   |--enums
+    |   |   |--OperLevel.java
+    |   |   |--OperType.java
+    |--resources
+    |   |--config
+    |   |   |--spring-mvc.xml
+    |   |   |--spring.xml（添加配置）
+
 **************************************************************************************************
 
 2017-03-10
@@ -19,6 +57,7 @@
 
 2016-12-30
 
+添加一些utils工具类
     |——java
     |   |——util
     |       |——*（工具类）
@@ -29,6 +68,7 @@
 
 2016-10-20
 
+简便方式配置websocket
     |——java
     |   |——websocket
     |   |   |——WebSocketConfig.java（简便方式配置websocket）
@@ -42,7 +82,6 @@
     |   |——socket
     |       |——socket.jsp
 
-简便方式配置websocket
 
 **************************************************************************************************
 

@@ -22,7 +22,7 @@
                     </span>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary" id="btn-add" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> 添加</button>
+            <button type="button" class="btn btn-primary" id="btn-add"><i class="fa fa-plus"></i> 添加</button>
             <button type="button" class="btn btn-danger" id="btn-del"><i class="fa fa-remove"></i> 批量删除</button>
         </div>
         <div class="row-fluid" style="display: none; margin-top: 15px;" id="div-advanced-search">
@@ -64,38 +64,6 @@
                 <h4 class="modal-title" id="myModalLabel">新增人员</h4>
             </div>
             <div class="modal-body">
-				<form method="POST" action="/" class="form-horizontal" id="userform">
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">用户名</label>
-                        <div class="col-md-9">
-                            <input type="text" name="username" placeholder="用户名" class="form-control required">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">登陆账号</label>
-                        <div class="col-md-9">
-                            <input type="text" name="account" placeholder="登陆账号" class="form-control required">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">密码</label>
-                        <div class="col-md-9">
-                            <input type="text" name="password" placeholder="登陆密码" class="form-control required">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">年龄</label>
-                        <div class="col-md-9">
-                            <input type="number" name="age" placeholder="年龄" class="form-control required">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">添加时间</label>
-                        <div class="col-md-9">
-                            <input type="datetime" name="" placeholder="添加时间" class="form-control">
-                        </div>
-                    </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -104,6 +72,41 @@
         </div>
     </div>
 </div>
+<script type="text/html" id="userformHtml">
+    <form method="POST" class="form-horizontal" id="userform">
+        <input type="hidden" id="id" value="<<=id>>" name="id">
+        <div class="form-group">
+            <label class="col-md-3 control-label">用户名</label>
+            <div class="col-md-9">
+                <input type="text" name="username" placeholder="用户名" class="form-control required" value="<<=username>>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">登陆账号</label>
+            <div class="col-md-9">
+                <input type="text" name="loginName" placeholder="登陆账号" class="form-control required" value="<<=loginName>>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">邮箱</label>
+            <div class="col-md-9">
+                <input type="text" name="email" placeholder="Email" class="form-control required" value="<<=email>>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">手机</label>
+            <div class="col-md-9">
+                <input type="text" name="mobile" placeholder="手机号码" class="form-control required" value="<<=mobile>>">
+            </div>
+        </div>
+        <%--<div class="form-group">
+            <label class="col-md-3 control-label">添加时间</label>
+            <div class="col-md-9">
+                <input type="datetime" name="" placeholder="添加时间" class="form-control">
+            </div>
+        </div>--%>
+    </form>
+</script>
 <jsp:include page="../common/include/foot.jsp"/>
 <script>
 (function(){
@@ -184,37 +187,45 @@
             });
         }
     });
+
+    $('#btn-add').on('click', function () {
+        $('#myModal .modal-body').empty().html(template('userformHtml', {}));
+        formAddValidate();
+        $('#myModal').modal('show');
+    });
     
     $('#saveUser').on('click', function(){
     	$('#userform').submit();
     });
-    
-    $('#userform').validate({
-		submitHandler: function(form) {
-			console.log('a');
-		    $.ajax({
-		    	url:'/sys/user/addOrUpdate',
-		    	data:$('#userform').serialize(),
-		    	type:'post',
-		    	success:function(result){
-		    		if(result.code == '200'){
-			    		console.log('ok');
-			    		$('#myModal').modal('hide')
-			    		//table.draw(false);
-			    		table.ajax.reload(null, false);
-		    		}else{
-						alert(result.msg);		    			
-		    		}
-		    	}
-		    });
-	    }
-    });
-    
+
+    var formAddValidate = function () {
+        $('#userform').validate({
+            submitHandler: function(form) {
+                $.ajax({
+                    url:'/sys/user/addOrUpdate',
+                    data:$('#userform').serialize(),
+                    type:'post',
+                    success:function(result){
+                        if(result.code == '200'){
+                            $('#myModal').modal('hide')
+                            //table.draw(false);
+                            table.ajax.reload(null, false);
+                        }else{
+                            alert(result.msg);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
     $('#user_table').delegate('.updateUserBtn', 'click', function(e){
         $.post('/sys/user/findById', {
             id: $(e.target).attr('data-id')
         }, function (data) {
-            BootstrapDialog.alert('修改用户'+data.result.account);
+            $('#myModal .modal-body').empty().html(template('userformHtml', data.result));
+            formAddValidate();
+            $('#myModal').modal('show');
         });
     });
     

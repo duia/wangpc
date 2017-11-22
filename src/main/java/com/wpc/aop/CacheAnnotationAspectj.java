@@ -12,14 +12,20 @@ import com.wpc.annotation.CacheAnn;
 import com.wpc.cache.AbstractCache;
 import com.wpc.cache.WpcCache;
 import com.wpc.enums.ECacheDataSource;
-import com.wpc.util.base.ObjectUtils;
+import com.wpc.util.base.BeanUtils;
 import com.wpc.util.encrypt.Md5Utils;
-import org.apache.log4j.Logger;
+import com.wpc.util.script.AbstractScriptParser;
+import com.wpc.util.script.SpringELParser;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +45,7 @@ import java.util.Set;
 @Component
 public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 
-	private static final Logger LOGGER = Logger.getLogger(CacheAnnotationAspectj.class);
+    private AbstractScriptParser scriptParser = new SpringELParser();
 
 	@Autowired
 	private WpcCache wpcCache;
@@ -47,10 +53,10 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	private AbstractCache cache;
 
 	/** 存放数据的Field */
-	public static final String FIELD_DATA = "data";
+	private static final String FIELD_DATA = "data";
 
 	/** 存放编码前的的Field内容 */
-	public static final String FIELD_DECODE_FIELD = "field";
+	private static final String FIELD_DECODE_FIELD = "field";
 
 	/**
 	 * 标题：构造器 <br>
@@ -61,7 +67,7 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	 * @param eCacheDataSource
 	 *            缓存源
 	 */
-	public void setCacheDataSource(ECacheDataSource eCacheDataSource) {
+	private void setCacheDataSource(ECacheDataSource eCacheDataSource) {
 		switch (eCacheDataSource) {
 			case WPC:
 				cache = wpcCache;
@@ -81,217 +87,120 @@ public class CacheAnnotationAspectj extends BaseAnnotationAspectj {
 	 * @param cacheAnnotation
 	 * @return
 	 */
-	@Around("execution(* com.wpc..*.*(..)) and @annotation(cacheAnnotation))")
-	public Object around(ProceedingJoinPoint joinPoint, CacheAnn cacheAnnotation) {
+	@Around("execution(* com.wpc..*.*(..)) && @annotation(cacheAnnotation)")
+	public Object around(ProceedingJoinPoint joinPoint, CacheAnn cacheAnnotation) throws Throwable {
+
 		try {
-
-			// 如果组编号为空则直接执行方法
-			if (ObjectUtils.isEmpty(cacheAnnotation.groupKey())) {
-				return joinPoint.proceed();
-			}
-			// 如果参数为空则直接执行方法
-			if (ObjectUtils.isEmpty(joinPoint.getArgs()) && ObjectUtils.isEmpty(cacheAnnotation.customKey())) {
-				return joinPoint.proceed();
-			}
-
-			// 如果入口参数
-			if (ObjectUtils.isEmpty(joinPoint.getArgs()) && !ObjectUtils.isEmpty(cacheAnnotation.appointFieldKey())) {
-				return joinPoint.proceed();
-			}
-
 			//设置缓存源
 			setCacheDataSource(cacheAnnotation.eCacheDataSource());
+
 			// 判断是否链接缓存
 			if (cache.ping()) {
-				// 设置入口参数值
-				super.setParams(joinPoint);
 
+				String cacheKey = getCacheKey(joinPoint, cacheAnnotation);
+
+				if(null == cacheKey) {
+					return getData(joinPoint);
+				}
+
+				Object cacheObject = null;
 				// 如果是清除操作,则直接根据分组KEY进行删除
 				if (cacheAnnotation.isClean()) {
-					for (String gourpKeyTemp : cacheAnnotation.groupKey()) {
-						gourpKeyTemp = getGroupName(gourpKeyTemp);
-						// 为了尽可能精确按照组编号删除,前后加连接符查询
-						gourpKeyTemp = cacheAnnotation.eCachePrefix().getDes() + AbstractCache.SYMBOL_CONNECTOR
-								+ gourpKeyTemp + AbstractCache.SYMBOL_CONNECTOR;
-						Set<String> keySet = cache.keys("*" + gourpKeyTemp + "*");
-						cache.del(keySet.toArray(new String[0]));
-					}
-				} else if (cacheAnnotation.groupKey().length == 1) {
-					// 如果要存取缓存 groupKey必须唯一不能是数组
-					return execute(joinPoint, cacheAnnotation);
+					cache.delete(cacheKey);
+					return getData(joinPoint);
 				}
-
+				if (cache.hasKey(cacheKey)) {
+					cacheObject = cache.get(cacheKey);// 从缓存中获取数据
+				} else {
+					cacheObject = getData(joinPoint);
+					cache.set(cacheKey, cacheObject);
+				}
+				if (null != cacheObject && cacheAnnotation.expire() > 0) {
+					cache.expire(cacheKey, cacheAnnotation.expire());
+				}
+				return cacheObject;
+			} else {
+				return getData(joinPoint);
 			}
-			return joinPoint.proceed();
-		} catch (Throwable e) {
+		} catch (Throwable throwable) {
+			logger.error(throwable.getMessage());
 			try {
-				return joinPoint.proceed();
-			} catch (Throwable e1) {
-				return null;
+				return getData(joinPoint);
+			} catch (Throwable throwable1) {
+				throw throwable1;
 			}
 		}
 	}
 
 	/**
-	 * 方法：getGroupName <br>
-	 * 描述：处理组ID确认是否为动态组ID <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年5月23日 下午2:30:14 <br>
-	 *
-	 * @param groupName
-	 * @return
-	 */
-	protected String getGroupName(String groupName) {
-		if (!ObjectUtils.isEmpty(groupName)) {
-			if (groupName.startsWith("{") && groupName.endsWith("}")) {
-				groupName = groupName.replace("{", "").replace("}", "");
-				if (nameAndValueMap.containsKey(groupName)) {
-					return String.valueOf(nameAndValueMap.get(groupName));
-				}
-			}
-			return groupName;
-		}
-		return null;
-	}
-
-	/**
-	 * 方法：execute <br>
-	 * 描述：执行缓存操作 <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年3月23日 下午4:02:45 <br>
-	 *
+	 * 生成缓存 Key
 	 * @param joinPoint
 	 * @param cacheAnnotation
-	 * @return
-	 * @throws Throwable
+	 * @return String 缓存Key
 	 */
-	protected Object execute(ProceedingJoinPoint joinPoint, CacheAnn cacheAnnotation) throws Throwable {
-		String key = cacheAnnotation.eCachePrefix().getDes() + AbstractCache.SYMBOL_CONNECTOR
-				+ getGroupName(cacheAnnotation.groupKey()[0]);
-		String targetClassName = joinPoint.getTarget().getClass().getName();
-		String targetMethodName = joinPoint.getSignature().getName();
-		String fieldPre = targetClassName + AbstractCache.SYMBOL_CONNECTOR + targetMethodName + AbstractCache.SYMBOL_CONNECTOR;
-		String field = null;
-		Object value = null;
-		// 如果要存取缓存 groupKey必须唯一不能是数组
-		if (!ObjectUtils.isEmpty(cacheAnnotation.customKey())) {
-			// 如果自定义key不为空,则个当前KEY临时变量复制
-			field = cacheAnnotation.customKey();
-		} else if (!ObjectUtils.isEmpty(joinPoint.getArgs())) {
-			field = filterKey(joinPoint, cacheAnnotation.appointFieldKey());
-		}
-		if (ObjectUtils.isEmpty(field)) {
-			return joinPoint.proceed();
-		}
-		// 新增Key前缀
-		field = fieldPre + field;
-		String realKey = assembleKey(key, encodeField(field));
-		if (cache.exists(realKey)) {
-			// 如果缓存存在则直接从缓存取
-			// 获取方法的返回类型,让缓存可以返回正确的类型
-			// Class<?> returnType = ((MethodSignature)
-			// joinPoint.getSignature()).getReturnType();
-			value = cache.hGetObj(realKey, FIELD_DATA);
-			LOGGER.info("缓存获取数据...");
-		}
-		if (ObjectUtils.isEmpty(value)) {
-			LOGGER.info("缓存获取数据为空,执行具体方法...");
-			// 如果返回值为空则执行具体方法获取返回值
-			value = joinPoint.proceed();
-			if (!ObjectUtils.isEmpty(value)) {
-				LOGGER.info("缓存获取数据为空,执行具体方法，返回结果不为空,存入缓存...");
-				// 如果执行具体方法获取的返回值不为空则放入缓存
-				set(key, field, value, cacheAnnotation.cacheTime() * 1000 * 60);
-			}
-		}
-		return value;
-
+	private String getCacheKey(ProceedingJoinPoint joinPoint, CacheAnn cacheAnnotation) {
+		String className = getTargetClass(joinPoint).getName();
+		String methodName = getMethod(joinPoint).getName();
+		Object[] arguments = getArgs(joinPoint);
+		String keyExpression = cacheAnnotation.key();
+		return getCacheKey(className, methodName, arguments, keyExpression);
 	}
 
-	/**
-	 * 方法：filterKey <br>
-	 * 描述：获取指定字段作为KEY <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年3月23日 下午4:24:47 <br>
-	 *
-	 * @param joinPoint
-	 * @param appointFieldKey
-	 * @return
-	 */
-	protected String filterKey(ProceedingJoinPoint joinPoint, String... appointFieldKey) throws Exception {
-		boolean returnFlag = false;
-		Map<String, Object> newMap = new HashMap<String, Object>();
-		if (!ObjectUtils.isEmpty(nameAndValueMap)) {
-			if (!ObjectUtils.isEmpty(appointFieldKey) && !ObjectUtils.isEmpty(appointFieldKey[0])) {
-				// 如果指定字段不为空则，符合要求的组装为KEY;
-				for (String appointFieldKeyTemp : appointFieldKey) {
-					if (nameAndValueMap.containsKey(appointFieldKeyTemp)) {
-						newMap.put(appointFieldKeyTemp, nameAndValueMap.get(appointFieldKeyTemp));
-						returnFlag = true;
-					} else {
-						// 如果有一个指定字段不包含的话直接返回
-						returnFlag = false;
-						break;
-					}
-				}
-			} else {
-				returnFlag = true;
-				newMap.putAll(nameAndValueMap);
-			}
-		}
-		if (returnFlag && !ObjectUtils.isEmpty(newMap)) {
+    /**
+     * 生成缓存KeyTO
+     * @param className 类名
+     * @param methodName 方法名
+     * @param arguments 参数
+     * @param keyExpression key表达式
+     * @return CacheKeyTO
+     */
+    private String getCacheKey(String className, String methodName, Object[] arguments, String keyExpression) {
+        String key=null;
+        if(null != keyExpression && keyExpression.trim().length() > 0) {
+            try {
+                key = scriptParser.getDefinedCacheKey(keyExpression, arguments);
+            } catch(Exception ex) {
+                logger.error(ex.getMessage(), ex);
+            }
+        } else {
+            key = getDefaultCacheKey(className, methodName, arguments);
+        }
+        if(null == key || key.trim().length() == 0) {
+            logger.error("{}.{}; cache key is empty", className, methodName);
+            return null;
+        }
+        return key;
+    }
 
-			return newMap.toString();
-		}
-		return null;
-	}
+    /**
+     * 生成缓存Key
+     * @param className 类名称
+     * @param method 方法名称
+     * @param arguments 参数
+     * @return CacheKey 缓存Key
+     */
+    public static String getDefaultCacheKey(String className, String method, Object[] arguments) {
+        StringBuilder sb=new StringBuilder();
+        sb.append(getDefaultCacheKeyPrefix(className, method));
+        if(null != arguments && arguments.length > 0) {
+            sb.append(BeanUtils.getUniqueHashStr(arguments));
+        }
+        return sb.toString();
+    }
 
-	/**
-	 * 方法：encodeField <br>
-	 * 描述：获取编码后的field <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年3月23日 下午5:11:41 <br>
-	 *
-	 * @param field
-	 * @return
-	 */
-	public String encodeField(String field) {
-		return Md5Utils.getMD5(field);
-	}
-
-	/**
-	 * 方法：assembleKey <br>
-	 * 描述：组装Key <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年3月23日 下午5:03:51 <br>
-	 *
-	 * @param key
-	 * @param field
-	 * @return
-	 */
-	public String assembleKey(String key, String field) {
-		return key + AbstractCache.SYMBOL_CONNECTOR + field;
-	}
-
-	/**
-	 * 方法：set <br>
-	 * 描述：设置方法 <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年3月23日 下午3:14:51 <br>
-	 *
-	 * @param key
-	 * @param field
-	 * @param o
-	 * @param liveTime
-	 */
-	public void set(final String key, final String field, Object o, final long liveTime) {// 设置缓存field编码前字段
-		String newKey = assembleKey(key, encodeField(field));
-		cache.hSet(newKey, FIELD_DECODE_FIELD, field);
-		// 设置缓存数据字段
-		cache.hSet(newKey, FIELD_DATA, o);
-		if (liveTime > 0) {
-			cache.expire(newKey, liveTime);
-		}
-	}
+    /**
+     * 生成缓存Key的前缀
+     * @param className 类名称
+     * @param method 方法名称
+     * @return CacheKey 缓存Key
+     */
+    public static String getDefaultCacheKeyPrefix(String className, String method) {
+        StringBuilder sb=new StringBuilder();
+        sb.append(className);
+        if(null != method && method.length() > 0) {
+            sb.append(".").append(method);
+        }
+        return sb.toString();
+    }
 
 }

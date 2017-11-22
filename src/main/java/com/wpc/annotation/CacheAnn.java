@@ -29,24 +29,20 @@ import java.lang.annotation.*;
 public @interface CacheAnn {
 
 	/**
+	 * 缓存的过期时间，单位：秒，如果为0则表示永久缓存
+	 * @return 时间
+	 */
+	int expire() default 300;
+
+	/**
 	 * 方法：customKey <br>
-	 * 描述：自定义key,可为空,如果为空则默认按照入口参数名及值来生成key <br>
+	 * 描述：自定义缓存Key，支持表达式，可为空，如果为空则默认按照入口参数名及值来生成key <br>
 	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
 	 * 日期： 2017年3月23日 下午1:54:02 <br>
 	 *
 	 * @return
 	 */
-	String customKey() default "";
-
-	/**
-	 * 方法：appointFieldKey <br>
-	 * 描述：指定作为KEY的字段,如果为空则把全部入口参数作为key <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年3月23日 下午2:00:18 <br>
-	 *
-	 * @return
-	 */
-	String[] appointFieldKey() default "";
+	String key() default "";
 
 	/**
 	 * 方法：groupKey <br>
@@ -59,16 +55,6 @@ public @interface CacheAnn {
 	 * @return
 	 */
 	String[] groupKey();
-
-	/**
-	 * 方法：cacheTime <br>
-	 * 描述：缓存时间 单位：秒 默认5分钟 <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年3月23日 下午2:02:26 <br>
-	 *
-	 * @return
-	 */
-	int cacheTime() default 5;
 
 	/**
 	 * 方法：isClean <br>
@@ -89,15 +75,5 @@ public @interface CacheAnn {
 	 * @return
 	 */
 	ECacheDataSource eCacheDataSource();
-
-	/**
-	 * 方法：eCachePrefix <br>
-	 * 描述：缓存前缀默认为tiku <br>
-	 * 作者：王鹏程 E-mail:wpcfree@qq.com QQ:376205421
-	 * 日期： 2017年5月23日 下午3:24:32 <br>
-	 *
-	 * @return
-	 */
-	ECachePrefix eCachePrefix() default ECachePrefix.TI_KU;
 
 }

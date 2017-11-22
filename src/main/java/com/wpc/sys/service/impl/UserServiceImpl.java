@@ -19,7 +19,7 @@ import java.util.List;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-@Service
+@Service("userService")
 public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService {
 
     @Autowired
@@ -41,10 +41,15 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements User
         return userDao.queryUserByRole(roleId);
     }
 
-    @CacheAnn(groupKey = "user", eCacheDataSource = ECacheDataSource.WPC)
+    @CacheAnn(expire = 100, groupKey = "user", key = "'user_id_'+#args[0]", eCacheDataSource = ECacheDataSource.WPC)
     @Override
     public User findById(Long id) {
         return super.findById(id);
     }
 
+    @CacheAnn(isClean = true, groupKey = "user", key = "'user_id_'+#User.id", eCacheDataSource = ECacheDataSource.WPC)
+    @Override
+    public void update(User user) {
+        super.update(user);
+    }
 }
