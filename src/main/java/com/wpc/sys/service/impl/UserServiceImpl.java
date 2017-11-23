@@ -1,8 +1,8 @@
 package com.wpc.sys.service.impl;
 
-import com.wpc.annotation.CacheAnn;
+import com.wpc.common.annotation.CacheAnn;
 import com.wpc.common.base.service.impl.BaseServiceImpl;
-import com.wpc.enums.ECacheDataSource;
+import com.wpc.common.enums.ECacheDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -6,15 +6,15 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wpc.common.Global;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wpc.common.utils.UploadUtils;
-import com.wpc.common.utils.entity.FileMeta;
-import com.wpc.common.utils.entity.Parameter;
+import com.wpc.common.utils.file.UploadUtils;
+import com.wpc.common.utils.file.entity.FileMeta;
 
 @Controller
 @RequestMapping("/upload")
@@ -29,7 +29,7 @@ public class UploadController {
     @ResponseBody
     public List<FileMeta> fileUpload2(HttpServletRequest request) throws IOException {
     	long  startTime=System.currentTimeMillis();
-    	String path=Parameter.uploadPath;
+    	String path = Global.getConfig("uploadPath");
     	List<FileMeta> list = UploadUtils.upload(request, path);
         long  endTime=System.currentTimeMillis();
         System.out.println("方法一的运行时间："+String.valueOf(endTime-startTime)+"ms");
@@ -45,7 +45,7 @@ public class UploadController {
     {
     	String callback = request.getParameter("CKEditorFuncNum");
     	long  startTime=System.currentTimeMillis();
-    	String path=Parameter.uploadPath;
+    	String path = Global.getConfig("uploadPath");
     	List<FileMeta> list = UploadUtils.upload(request, path);
         long  endTime=System.currentTimeMillis();
         String imageurl = "";
@@ -62,7 +62,7 @@ public class UploadController {
     @ResponseBody
     public List<FileMeta> uploadFile2(HttpServletRequest request, HttpServletResponse response) throws Exception {
         long  startTime=System.currentTimeMillis();
-        String path=Parameter.uploadPath;
+        String path = Global.getConfig("uploadPath");
         List<FileMeta> list = UploadUtils.uploadChunk(request, path);
         long  endTime=System.currentTimeMillis();
         System.out.println("方法二的运行时间："+String.valueOf(endTime-startTime)+"ms");

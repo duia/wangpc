@@ -1,8 +1,8 @@
 package com.wpc.test.script;
 
 import com.wpc.sys.model.User;
-import com.wpc.util.script.AbstractScriptParser;
-import com.wpc.util.script.JavaScriptParser;
+import com.wpc.common.script.AbstractScriptParser;
+import com.wpc.common.script.JavaScriptParser;
 import junit.framework.TestCase;
 
 import java.util.HashMap;

@@ -17,9 +17,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.wpc.annotation.SysLogAnn;
-import com.wpc.enums.OperLevel;
-import com.wpc.enums.OperType;
+import com.wpc.common.annotation.SysLogAnn;
+import com.wpc.common.enums.OperLevel;
+import com.wpc.common.enums.OperType;
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

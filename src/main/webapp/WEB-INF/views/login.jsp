@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="common/include/taglib.jsp" %>
 <!DOCTYPE html>
-<!--[if IE 8]>
-<html lang="en" class="ie8"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
+<html style="overflow-x:auto;overflow-y:auto;">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8" />
@@ -14,9 +11,7 @@
 <meta content="" name="author" />
 
 <!-- ================== BEGIN BASE CSS STYLE ================== -->
-<link href="${ctxStatic}/static/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" />
 <link href="/static/plugins/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" />
-<link href="/static/plugins/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="/static/plugins/color_admin/css/animate.min.css" rel="stylesheet" />
 <link href="/static/plugins/color_admin/css/style.min.css" rel="stylesheet" />
 <link href="/static/plugins/color_admin/css/style-responsive.min.css" rel="stylesheet" />
@@ -90,7 +85,6 @@
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="/static/js/jquery-1.9.1.min.js"></script>
 <script src="/static/js/jquery-migrate-1.1.0.min.js"></script>
-<script src="/static/plugins/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 <script src="/static/plugins/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 <!--[if lt IE 9]>
 <script src="/static/plugins/color_admin/crossbrowserjs/html5shiv.js"></script>
@@ -108,7 +102,7 @@
 <!-- ================== END PAGE LEVEL JS ================== -->
 <script>
 $(document).ready(function() {
-	App.init(login=true);
+	App.init();
 	LoginV2.init();
 });
 </script>

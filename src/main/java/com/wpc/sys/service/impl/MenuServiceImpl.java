@@ -1,9 +1,9 @@
 package com.wpc.sys.service.impl;
 
-import com.wpc.annotation.SysLogAnn;
+import com.wpc.common.annotation.SysLogAnn;
 import com.wpc.common.base.service.impl.BaseServiceImpl;
-import com.wpc.enums.OperLevel;
-import com.wpc.enums.OperType;
+import com.wpc.common.enums.OperLevel;
+import com.wpc.common.enums.OperType;
 import com.wpc.sys.dao.ElementDao;
 import com.wpc.sys.dao.PermissionDao;
 import com.wpc.sys.model.Element;

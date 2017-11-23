@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wpc.model.Title;
-import com.wpc.common.utils.entity.Parameter;
 
 /**
  * <dl>
@@ -43,7 +42,6 @@ public class CkEditorController {
 
 	@RequestMapping
 	public String index() {
-		System.out.println("==========="+Parameter.myParam);
 		return "ckeditor/index";
 	}
 	

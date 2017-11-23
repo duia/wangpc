@@ -34,7 +34,7 @@
 	</listener>
     <!-- 使用监听器启动和停止数据库 -->
     <listener>
-        <listener-class>com.wpc.listener.H2DBServerStartListener</listener-class>
+        <listener-class>com.wpc.common.listener.H2DBServerStartListener</listener-class>
     </listener>
 
     <!-- 使用H2控制台的Servlet H2控制台是一个独立的应用程序，包括它自己的Web服务器，但它可以作为一个servlet作为-->

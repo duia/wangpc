@@ -17,7 +17,7 @@
     <description>Shiro Configuration</description>
 
     <!-- 基于 Form 表单的身份验证过滤器 -->
-    <bean id="formAuthenticationFilter" class="com.wpc.shiro.MyFormAuthenticationFilter">
+    <bean id="formAuthenticationFilter" class="com.wpc.common.shiro.MyFormAuthenticationFilter">
         <property name="usernameParam" value="loginName"/>
         <property name="passwordParam" value="password"/>
         <property name="rememberMeParam" value="rememberMe"/>
@@ -69,7 +69,7 @@
     </bean>
 
     <!-- 項目自定义的Realm认证登录 授权 -->
-    <bean id="shiroDbRealm" class="com.wpc.shiro.ShiroRealm">
+    <bean id="shiroDbRealm" class="com.wpc.common.shiro.ShiroRealm">
         <!--<property name="cacheManager" ref="cacheManager"/>-->
         <!--<property name="credentialsMatcher" ref="credentialsMatcher"/>-->
         <property name="credentialsMatcher" ref="passwordMatcher"/>

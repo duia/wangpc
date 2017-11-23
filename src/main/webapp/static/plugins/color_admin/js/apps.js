@@ -357,7 +357,7 @@ var handleDraggablePanel = function() {
     var target = $('.panel').parent('[class*=col]');
     var targetHandle = '.panel-heading';
     var connectedTarget = '.row > [class*=col]';
-    
+
     $(target).sortable({
         handle: targetHandle,
         connectWith: connectedTarget,
@@ -1216,7 +1216,7 @@ var App = function () {
 		},
 		initAjaxFunction: function() {
             handleSidebarAjaxClick();
-            !login && handleCheckPageLoadUrl(window.location.hash);
+            handleCheckPageLoadUrl(window.location.hash);
 			handleHashChange();
 			
 			// ajax cache setup

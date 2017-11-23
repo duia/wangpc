@@ -2,12 +2,9 @@ package com.wpc.test.script;
 
 import com.wpc.sys.model.Department;
 import com.wpc.sys.model.User;
-import com.wpc.util.script.AbstractScriptParser;
-import com.wpc.util.script.SpringELParser;
+import com.wpc.common.script.AbstractScriptParser;
+import com.wpc.common.script.SpringELParser;
 import junit.framework.TestCase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author: jiayu.qiu

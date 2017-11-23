@@ -1,9 +1,9 @@
 package com.wpc.test.script;
 
-import com.wpc.util.script.AbstractScriptParser;
-import com.wpc.util.script.JavaScriptParser;
-import com.wpc.util.script.OgnlParser;
-import com.wpc.util.script.SpringELParser;
+import com.wpc.common.script.AbstractScriptParser;
+import com.wpc.common.script.JavaScriptParser;
+import com.wpc.common.script.OgnlParser;
+import com.wpc.common.script.SpringELParser;
 import org.junit.Test;
 
 /**

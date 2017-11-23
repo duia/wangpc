@@ -2,12 +2,11 @@ package com.wpc.sys.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.wpc.shiro.MyFormAuthenticationFilter;
+import com.wpc.common.shiro.MyFormAuthenticationFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
