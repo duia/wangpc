@@ -3,7 +3,7 @@ package com.wpc.common.aop;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wpc.common.annotation.SysLogAnn;
-import com.wpc.common.DataSourceContextHolder;
+import com.wpc.common.datasource.DataSourceContextHolder;
 import com.wpc.common.enums.OperType;
 import com.wpc.sys.dao.SysLogDao;
 import com.wpc.sys.model.SysLog;

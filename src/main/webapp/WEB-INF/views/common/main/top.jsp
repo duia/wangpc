@@ -15,5 +15,7 @@
         <a href="#" class="easyui-linkbutton" data-options="" data-color="metro-green" style="background: #9ba842; border-color: #9ba842;"></a>
         <!--<a href="#" class="easyui-linkbutton" data-options="" data-color="metro-orange" style="background: #de8033; border-color: #de8033;"></a>
         <a href="#" class="easyui-linkbutton" data-options="" data-color="metro-red" style="background: #c75252; border-color: #c75252;"></a>-->
+
+        <a href="/logout" class="easyui-linkbutton" data-options="" data-color="bootstrap">注销</a>
     </div>
 </div>

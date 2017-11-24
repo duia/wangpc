@@ -38,7 +38,7 @@ public class ShiroController {
 	// 同步
 	@RequestMapping("/syn401")
 	public String syn401(ModelMap modelMap, HttpServletRequest request) {
-		return "../405";
+		return "common/error/405";
 	}
 
 }

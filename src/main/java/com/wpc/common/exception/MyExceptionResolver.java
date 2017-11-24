@@ -1,4 +1,4 @@
-package com.wpc.common;
+package com.wpc.common.exception;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,7 +41,7 @@ public class MyExceptionResolver implements HandlerExceptionResolver {
 			} else {
 				ModelAndView mv = new ModelAndView();
 				mv.addObject("errorMsg", ex.getLocalizedMessage());
-				mv.setViewName("../500");//Get方法,跳转到500页面
+				mv.setViewName("common/error/500");//Get方法,跳转到500页面
 				return mv;//500
 			}
 		}else{

@@ -149,7 +149,7 @@
 	</aop:config>
 
 	<!-- 动态配置数据源 -->
-	<bean id ="dataSource" class= "com.wpc.common.DynamicDataSource" >
+	<bean id ="dataSource" class= "com.wpc.common.datasource.DynamicDataSource" >
 		<property name ="targetDataSources">
 			<map key-type ="java.lang.String">
 				<entry key= "admin" value-ref ="h2"/>

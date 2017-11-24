@@ -17,7 +17,7 @@
     <description>Shiro Configuration</description>
 
     <!-- 基于 Form 表单的身份验证过滤器 -->
-    <bean id="formAuthenticationFilter" class="com.wpc.common.shiro.MyFormAuthenticationFilter">
+    <bean id="formAuthenticationFilter" class="com.wpc.common.security.shiro.MyFormAuthenticationFilter">
         <property name="usernameParam" value="loginName"/>
         <property name="passwordParam" value="password"/>
         <property name="rememberMeParam" value="rememberMe"/>
@@ -69,8 +69,7 @@
     </bean>
 
     <!-- 項目自定义的Realm认证登录 授权 -->
-    <bean id="shiroDbRealm" class="com.wpc.common.shiro.ShiroRealm">
-        <!--<property name="cacheManager" ref="cacheManager"/>-->
+    <bean id="shiroDbRealm" class="com.wpc.common.security.shiro.ShiroRealm">
         <!--<property name="credentialsMatcher" ref="credentialsMatcher"/>-->
         <property name="credentialsMatcher" ref="passwordMatcher"/>
         <property name="passwordService" ref="passwordService"/>
@@ -81,6 +80,10 @@
         <property name="authorizationCacheName" value="authorizationCache"/>
     </bean>
 
+    <!-- 用户授权信息Cache -->
+    <!--<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>-->
+    <bean id="cacheManager" class="com.wpc.common.security.shiro.cache.JedisCacheManager"/>
+
     <!-- Shiro's main business-tier object for web-enabled applications -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="shiroDbRealm"/>
@@ -90,8 +93,6 @@
         <property name="rememberMeManager" ref="rememberMeManager"/>
     </bean>
 
-    <!-- 用户授权信息Cache -->
-    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
     <!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 -->
     <!--<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"/>-->
     <bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher">
@@ -110,20 +111,25 @@
     <!-- 定义Session ID生成管理器 -->
     <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
     <!-- 配置Session DAO的操作处理 -->
-    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
-        <!-- 设置session缓存的名字，这个名字可以任意 -->
+ 	<bean id="sessionDAO" class="com.wpc.common.security.shiro.session.JedisSessionDAO">
+ 		<property name="sessionIdGenerator" ref="sessionIdGenerator" />
+ 		<!--<property name="sessionKeyPrefix" value="${redis.keyPrefix}_session_" />-->
+ 	</bean>
+    <!--<bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        &lt;!&ndash; 设置session缓存的名字，这个名字可以任意 &ndash;&gt;
         <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
-        <!-- 定义该Session DAO操作中所使用的ID生成器 -->
+        &lt;!&ndash; 定义该Session DAO操作中所使用的ID生成器 &ndash;&gt;
         <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
-    </bean>
+    </bean>-->
+
     <!-- 配置需要向Cookie中保存数据的配置模版 -->
     <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <!-- 在Tomcat运行下默认使用的Cookie的名字为JSESSIONID -->
-        <constructor-arg value="wpc.session.id"/>
+        <constructor-arg name="name" value="wpc.session.id"/>
         <!-- 保证该系统不会受到跨域的脚本操作供给 -->
         <property name="httpOnly" value="true"/>
         <!-- 定义Cookie的过期时间，单位为秒，如果设置为-1表示浏览器关闭，则Cookie消失 -->
-        <property name="maxAge" value="-1"/>
+        <property name="maxAge" value="180000"/>
     </bean>
     <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <constructor-arg value="rememberMe"/>
@@ -136,7 +142,7 @@
         <property name="cookie" ref="rememberMeCookie"/>
     </bean>
     <!-- 定义会话管理器的操作 -->
-    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+    <bean id="sessionManager" class="com.wpc.common.security.shiro.session.SessionManager">
         <!-- 定义的是全局的session会话超时时间，此操作会覆盖web.xml文件中的超时时间配置 -->
         <property name="globalSessionTimeout" value="1800000"/>
         <!-- 删除所有无效的Session对象，此时的session被保存在了内存里面 -->
@@ -153,9 +159,9 @@
         <property name="sessionIdCookieEnabled" value="true"/>
     </bean>
     <!-- 配置session的定时验证检测程序类，以让无效的session释放 -->
-    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler  ">
+    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
         <!-- 设置session的失效扫描间隔，单位为毫秒 -->
-        <property name="interval" value="3600000"/>
+        <property name="sessionValidationInterval" value="1800000"/>
         <!-- 随后还需要定义有一个会话管理器的程序类的引用 -->
         <property name="sessionManager" ref="sessionManager"/>
     </bean>

@@ -633,6 +633,36 @@ public class DateUtils {
 		}
     	return value;
     }
+
+	/**
+	 * 获取过去的天数
+	 * @param date
+	 * @return
+	 */
+	public static long pastDays(Date date) {
+		long t = new Date().getTime()-date.getTime();
+		return t/(24*60*60*1000);
+	}
+
+	/**
+	 * 获取过去的小时
+	 * @param date
+	 * @return
+	 */
+	public static long pastHour(Date date) {
+		long t = new Date().getTime()-date.getTime();
+		return t/(60*60*1000);
+	}
+
+	/**
+	 * 获取过去的分钟
+	 * @param date
+	 * @return
+	 */
+	public static long pastMinutes(Date date) {
+		long t = new Date().getTime()-date.getTime();
+		return t/(60*1000);
+	}
     
     /**
      * 比较两个日期的大小。<br>

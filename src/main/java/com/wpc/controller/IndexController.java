@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.wpc.sys.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,7 @@ public class IndexController {
 	// return "hello";
 	// }
 
+	@RequiresPermissions("user")
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(ModelMap model) {
 //		System.out.println(userService.findById(1));

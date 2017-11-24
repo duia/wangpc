@@ -2,7 +2,7 @@ package com.wpc.sys.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.wpc.common.shiro.MyFormAuthenticationFilter;
+import com.wpc.common.security.shiro.MyFormAuthenticationFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
@@ -37,7 +37,7 @@ public class LoginController {
     
     @RequestMapping(value = "/logout")
     public String doLogout(HttpServletRequest request, Model model) {
-        logger.info("======用户"+request.getSession().getAttribute("user")+"退出了系统");
+//        logger.info("======用户"+request.getSession().getAttribute("user")+"退出了系统");
         SecurityUtils.getSubject().logout();
         return "login";
     }

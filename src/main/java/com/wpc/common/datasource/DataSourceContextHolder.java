@@ -1,4 +1,4 @@
-package com.wpc.common;
+package com.wpc.common.datasource;
 
 public class DataSourceContextHolder {
 

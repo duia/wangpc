@@ -1,7 +1,7 @@
 package com.wpc.common;
 
 import com.wpc.common.cache.WpcCache;
-import com.wpc.common.shiro.ShiroRealm;
+import com.wpc.common.security.shiro.ShiroRealm;
 import com.wpc.sys.dao.UserDao;
 import com.wpc.sys.model.User;
 import org.apache.shiro.SecurityUtils;
@@ -25,18 +25,6 @@ public class SessionUtil {
 
     public static final String CACHE_AUTH_INFO = "authInfo";
 
-    /**
-     * 获取当前请求对象
-     * @return
-     */
-    public static HttpServletRequest getRequest(){
-        try{
-            return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        }catch(Exception e){
-            return null;
-        }
-    }
-
     public static Session getSession(){
         try{
             Subject subject = SecurityUtils.getSubject();
@@ -51,6 +39,47 @@ public class SessionUtil {
 
         }
         return null;
+    }
+
+    /**
+     * 获取授权主要对象
+     */
+    public static Subject getSubject(){
+        return SecurityUtils.getSubject();
+    }
+
+    /**
+     * 获取当前登录者对象
+     */
+    public static ShiroRealm.Principal getPrincipal(){
+        try{
+            Subject subject = SecurityUtils.getSubject();
+            ShiroRealm.Principal principal = (ShiroRealm.Principal)subject.getPrincipal();
+            if (principal != null){
+                return principal;
+            }
+//			subject.logout();
+        }catch (UnavailableSecurityManagerException | InvalidSessionException e) {
+
+        }
+        return null;
+    }
+
+    public static Object getAuthInfo(String key) {
+        return getAuthInfo(key, null);
+    }
+
+    public static Object getAuthInfo(String key, Object defaultValue) {
+        Object obj = getSession().getAttribute(key);
+        return obj==null?defaultValue:obj;
+    }
+
+    public static void putAuthInfo(String key, Object value) {
+        getSession().setAttribute(key, value);
+    }
+
+    public static void removeAuthInfo(String key) {
+        getSession().removeAttribute(key);
     }
 
     /**
@@ -113,40 +142,6 @@ public class SessionUtil {
     public static void clearCache(User user){
         wpcCache.delete(USER_CACHE, USER_CACHE_ID_ + user.getId());
         wpcCache.delete(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
-    }
-
-    /**
-     * 获取当前登录者对象
-     */
-    public static ShiroRealm.Principal getPrincipal(){
-        try{
-            Subject subject = SecurityUtils.getSubject();
-            ShiroRealm.Principal principal = (ShiroRealm.Principal)subject.getPrincipal();
-            if (principal != null){
-                return principal;
-            }
-//			subject.logout();
-        }catch (UnavailableSecurityManagerException | InvalidSessionException e) {
-
-        }
-        return null;
-    }
-
-    public static Object getAuthInfo(String key) {
-        return getAuthInfo(key, null);
-    }
-
-    public static Object getAuthInfo(String key, Object defaultValue) {
-        Object obj = getSession().getAttribute(key);
-        return obj==null?defaultValue:obj;
-    }
-
-    public static void putAuthInfo(String key, Object value) {
-        getSession().setAttribute(key, value);
-    }
-
-    public static void removeAuthInfo(String key) {
-        getSession().removeAttribute(key);
     }
 
 }

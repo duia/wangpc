@@ -213,11 +213,11 @@
 	<!-- 错误页设置 -->
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/404.jsp</location>
+        <location>/WEB-INF/views/common/error/404.jsp</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/WEB-INF/500.jsp</location>
+        <location>/WEB-INF/views/common/error/500.jsp</location>
     </error-page>
 
 </web-app>  

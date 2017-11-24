@@ -1,10 +1,14 @@
-package com.wpc.common.shiro;
+package com.wpc.common.security.shiro;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import com.wpc.common.Global;
+import com.wpc.common.security.shiro.session.SessionDAO;
+import com.wpc.common.utils.Servlets;
 import com.wpc.common.utils.net.IpUtils;
 import com.wpc.sys.dao.PermissionDao;
 import com.wpc.sys.dao.RoleDao;
@@ -18,11 +22,16 @@ import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ShiroRealm extends AuthorizingRealm {
+
+    private static final Logger logger = LoggerFactory.getLogger(ShiroRealm.class);
 
     private static final String OR_OPERATOR = " or ";
     private static final String AND_OPERATOR = " and ";
@@ -34,6 +43,9 @@ public class ShiroRealm extends AuthorizingRealm {
     private RoleDao roleDao;
     @Autowired
     private PermissionDao permissionDao;
+
+    @Autowired
+    private SessionDAO sessionDAO;
 
     private PasswordService passwordService;
 
@@ -47,6 +59,12 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
+
+        int activeSessionSize = sessionDAO.getActiveSessions(false).size();
+        if (logger.isDebugEnabled()){
+            logger.debug("login submit, active session size: {}, username: {}", activeSessionSize, token.getUsername());
+        }
+
         User user = userDao.getUserByLoginName(token.getUsername());
         if (user == null) {
             throw new UnknownAccountException();//没找到帐号
@@ -68,9 +86,27 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         // 根据用户配置用户与权限  
         Principal principal = (Principal)  getAvailablePrincipal(principals);
-
+        // 获取当前已登录的用户
+        if (!Global.TRUE.equals(Global.getConfig("user.multiAccountLogin"))){
+            Collection<Session> sessions = sessionDAO.getActiveSessions(true, principal, SessionUtil.getSession());
+            if (sessions.size() > 0){
+                // 如果是登录进来的，则踢出已在线用户
+                if (SessionUtil.getSubject().isAuthenticated()){
+                    for (Session session : sessions){
+                        sessionDAO.delete(session);
+                    }
+                }
+                // 记住我进来的，并且当前用户已登录，则退出当前用户提示信息。
+                else{
+                    SessionUtil.getSubject().logout();
+                    throw new AuthenticationException("msg:账号已在其它地方登录，请重新登录。");
+                }
+            }
+        }
         List<String> roles = new ArrayList<String>();
         List<String> permissions = new ArrayList<String>();
+        // 添加用户权限
+        permissions.add("user");
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         // 从数据库中获取用户
         User user = userDao.getUserByLoginName(principal.getLoginName());
@@ -100,7 +136,7 @@ public class ShiroRealm extends AuthorizingRealm {
         User entity = new User();
         entity.setId(user.getId());
         entity.setLoginDate(new Date());
-        entity.setLoginIp(IpUtils.getIpAddress(SessionUtil.getRequest()));
+        entity.setLoginIp(IpUtils.getIpAddress(Servlets.getRequest()));
         userDao.update(entity);
         // 记录登录日志
 //        LogUtils.saveLog(Servlets.getRequest(), "系统登录");

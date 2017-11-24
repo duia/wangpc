@@ -8,10 +8,17 @@
             $('#tt').tabs('select', name);
         } else {
             var content = '<iframe allowtransparency="true" scrolling="auto" frameborder="0"  src="'+url+'" style="width:99%;height:'+($('.tabs-panels').height()-5)+'px;"></iframe>';
-            $('#tt').tabs('add',{
-                title:name,
-                content:content,
-                closable:true
+            $.get(url, function(data){
+                if (data.indexOf("action=\"/login\"") !== -1){
+                    alert('未登录或登录超时。请重新登录，谢谢！');
+                    top.location = "/";
+                    return false;
+                }
+                $('#tt').tabs('add',{
+                    title:name,
+                    content:content,
+                    closable:true
+                });
             });
         }
     }
@@ -170,11 +177,11 @@
             });
         });
 
-        $('#btns').delegate('a', 'click', function(event){
-            // console.log($(event.target).parent().parent().attr('data-color'));
-            // console.log($('#themesId').attr('href'));
-            $('#themesId').attr('href', 'jquery-easyui-1.4.4/themes/'+$(event.target).parent().parent().attr('data-color')+'/easyui.css');
-        });
+        // $('#btns').delegate('a', 'click', function(event){
+        //     // console.log($(event.target).parent().parent().attr('data-color'));
+        //     // console.log($('#themesId').attr('href'));
+        //     $('#themesId').attr('href', 'jquery-easyui-1.4.4/themes/'+$(event.target).parent().parent().attr('data-color')+'/easyui.css');
+        // });
 
     }
 

@@ -8,6 +8,7 @@ import com.wpc.common.msg.AjaxResult;
 import com.wpc.sys.model.User;
 import com.wpc.sys.service.UserService;
 import org.apache.shiro.authc.credential.PasswordService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,7 @@ public class UserController {
 	/**
 	 * 页面跳转
 	 */
+	@RequiresPermissions("user")
 	@RequestMapping
 	public String user(ModelMap model) {
 		return "sys/user";
