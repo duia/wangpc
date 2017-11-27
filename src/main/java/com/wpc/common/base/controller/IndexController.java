@@ -10,7 +10,7 @@
  * Copyright(C) WEAVER Corporation 2015 
  *
  */
-package com.wpc.controller;
+package com.wpc.common.base.controller;
 
 import java.text.SimpleDateFormat;
 
@@ -53,22 +53,9 @@ public class IndexController {
 
 	Logger logger = LoggerFactory.getLogger(IndexController.class);
 	
-	@Autowired
-	private UserService userService;
-
-	// @RequestMapping(method = RequestMethod.GET)
-	// public String index(ModelMap model) {
-	// model.addAttribute("message", "Spring4 MVC 例子");
-	// SimpleDateFormat dateFormat = new
-	// SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
-	// model.addAttribute("date", dateFormat.format(new java.util.Date()));
-	// return "hello";
-	// }
-
 	@RequiresPermissions("user")
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(ModelMap model) {
-//		System.out.println(userService.findById(1));
 		return "index";
 	}
 

@@ -91,7 +91,7 @@ public class ShiroRealm extends AuthorizingRealm {
             Collection<Session> sessions = sessionDAO.getActiveSessions(true, principal, SessionUtil.getSession());
             if (sessions.size() > 0){
                 // 如果是登录进来的，则踢出已在线用户
-                if (SessionUtil.getSubject().isAuthenticated()){
+                if (SessionUtil.getSubject().isAuthenticated()){//SessionUtil.getSubject().isRemembered() 记住我进来的
                     for (Session session : sessions){
                         sessionDAO.delete(session);
                     }
@@ -99,7 +99,7 @@ public class ShiroRealm extends AuthorizingRealm {
                 // 记住我进来的，并且当前用户已登录，则退出当前用户提示信息。
                 else{
                     SessionUtil.getSubject().logout();
-                    throw new AuthenticationException("msg:账号已在其它地方登录，请重新登录。");
+                    throw new AuthenticationException("msg: 账号已在其它地方登录，请重新登录。");
                 }
             }
         }
