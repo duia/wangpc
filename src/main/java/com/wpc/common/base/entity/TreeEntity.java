@@ -1,6 +1,7 @@
 package com.wpc.common.base.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.wpc.common.utils.base.Reflections;
 
 /**
  * 功能描述: 树形实体基础类
@@ -20,7 +21,6 @@ public class TreeEntity<T> extends DataEntity<T> {
 
 	public TreeEntity() {
 		super();
-		this.sort = 30;
 	}
 	
 	public TreeEntity(Long id) {
@@ -53,7 +53,11 @@ public class TreeEntity<T> extends DataEntity<T> {
 	}
 
 	public Long getParentId() {
-		return parentId != null ? parentId : 0L;
+		Long id = parentId;
+		if (parent != null){
+			id = (Long) Reflections.getFieldValue(parent, "id");
+		}
+		return null != id ? id : 0L;
 	}
 
 	public void setParentId(Long parentId) {

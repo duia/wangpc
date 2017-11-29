@@ -2,6 +2,8 @@ package com.wpc.common.base.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.wpc.common.SessionUtil;
+import com.wpc.sys.model.User;
 
 import java.util.Date;
 
@@ -35,6 +37,30 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 
 	public DataEntity(Long id) {
 		super(id);
+	}
+
+	/**
+	 * 插入之前执行方法，需要手动调用
+	 */
+	@Override
+	public void preInsert(){
+		User user = SessionUtil.getUser();
+		if (null != user){
+			this.createBy = user.getId();
+		}
+		this.createDate = new Date();
+	}
+
+	/**
+	 * 更新之前执行方法，需要手动调用
+	 */
+	@Override
+	public void preUpdate(){
+		User user = SessionUtil.getUser();
+		if (null != user){
+			this.updateBy = user.getId();
+		}
+		this.updateDate = new Date();
 	}
 
 	public Integer getSort() {

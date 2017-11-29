@@ -1,25 +1,25 @@
 package com.wpc.common.base.service;
 
-import java.io.Serializable;
 import java.util.List;
 
+import com.wpc.common.base.entity.DataEntity;
 import com.wpc.common.datatables.DataTablesRequest;
 import com.wpc.common.datatables.DataTablesResponse;
 
 /**
  * Created by 
  */
-public interface BaseService<T extends Serializable, PK extends Serializable> {
+public interface BaseService<T extends DataEntity<T>> {
 
     void save(T t);
 
-    void delete(PK id);
+    void delete(Long id);
 
-    void deleteByIds(PK[] ids);
+    void deleteByIds(Long[] ids);
 
     void update(T t);
 
-    T findById(PK id);
+    T findById(Long id);
 
     List<T> queryAll();
     

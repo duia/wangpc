@@ -4,10 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.wpc.common.SessionUtil;
 import com.wpc.common.security.shiro.MyFormAuthenticationFilter;
+import com.wpc.common.security.shiro.ShiroRealm.Principal;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
-import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.util.SavedRequest;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
@@ -17,8 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.security.Principal;
 
 @Controller
 @RequestMapping(value = "/")
@@ -47,8 +45,7 @@ public class LoginController {
     public String doLogin(HttpServletRequest request, Model model) {
         logger.info("======用户进入了ShiroController的/doLogin.html");
 
-        Subject subject = SecurityUtils.getSubject();
-        Principal principal = (Principal)subject.getPrincipal();
+        Principal principal = SessionUtil.getPrincipal();
         if (principal != null) {
             SavedRequest savedRequest = WebUtils.getSavedRequest(request);
             // 获取保存的URL

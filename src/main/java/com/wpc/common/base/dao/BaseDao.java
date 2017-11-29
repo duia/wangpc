@@ -1,24 +1,24 @@
 package com.wpc.common.base.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
+import com.wpc.common.base.entity.DataEntity;
 import com.wpc.common.datatables.DataTablesRequest;
 
 /**
  * Created by 
  */
-public interface BaseDao<T extends Serializable, PK extends Serializable> {
+public interface BaseDao<T extends DataEntity<T>> {
 
     void save(T t);
 
-    void delete(PK id);
+    void delete(Long id);
 
-    void deleteByIds(PK[] ids);
+    void deleteByIds(Long[] ids);
 
     void update(T t);
 
-    T findById(PK id);
+    T findById(Long id);
 
     List<T> queryAll();
     
