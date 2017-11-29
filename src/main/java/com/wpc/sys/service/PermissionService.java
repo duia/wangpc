@@ -27,9 +27,9 @@ public interface PermissionService extends BaseService<Permission, Long> {
      * 根据传来的资源为该资源添加对应的权限
      * @param   （菜单，按钮，文件）
      */
-    void addMenuPermission(Menu menu);
-    void addElementPermission(Element element);
-    void addFilePermission(File file);
+    void addOrUpdateMenuPermission(Menu menu);
+    void addOrUpdateElementPermission(Element element);
+    void addOrUpdateFilePermission(File file);
 
     /**
      * 获取所有权限，区分角色是否具有该角色

@@ -3,19 +3,19 @@
 <mapper namespace="com.wpc.sys.dao.FileDao">
 
 	<resultMap id="BaseResultMap" type="com.wpc.sys.model.File">
-		<id property="id" column="id" jdbcType="BIGINT"/>
-		<result property="fileName" column="file_name" jdbcType="VARCHAR"/>
-		<result property="fileCode" column="file_code" jdbcType="VARCHAR"/>
-		<result property="filePath" column="file_path" jdbcType="VARCHAR"/>
-		<result property="sort" column="sort" jdbcType="INTEGER"/>
-		<result property="createBy" column="create_by" jdbcType="BIGINT"/>
-		<result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
-		<result property="updateBy" column="update_by" jdbcType="BIGINT"/>
-		<result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
-		<result property="remarks" column="remarks" jdbcType="VARCHAR"/>
-		<result property="delFlag" column="del_flag" jdbcType="CHAR"/>
+		<id property="id" column="id"/>
+		<result property="fileName" column="file_name"/>
+		<result property="fileCode" column="file_code"/>
+		<result property="filePath" column="file_path"/>
+		<result property="sort" column="sort"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createDate" column="create_date"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="remarks" column="remarks"/>
+		<result property="delFlag" column="del_flag"/>
 	</resultMap>
-	
+
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="table_columns">
 		id,
@@ -200,9 +200,12 @@
 		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
 	</sql>
 
-			<!-- 分页，供datatables插件查询使用  -->
+	<!-- 分页，供datatables插件查询使用  -->
 	<sql id="limit">
 		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
 	</sql>
+
+
+	<!-- 自定义sql语句 -->
 
 </mapper>

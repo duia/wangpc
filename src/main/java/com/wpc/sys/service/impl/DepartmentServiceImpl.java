@@ -1,6 +1,6 @@
 package com.wpc.sys.service.impl;
 
-import com.wpc.common.base.service.impl.BaseServiceImpl;
+import com.wpc.common.base.service.impl.TreeBaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import com.wpc.sys.service.DepartmentService;
  * @Date:
  */
 @Service
-public class DepartmentServiceImpl extends BaseServiceImpl<Department, Long> implements DepartmentService {
+public class DepartmentServiceImpl extends TreeBaseServiceImpl<Department> implements DepartmentService {
 
     @Autowired
     private DepartmentDao departmentDao;

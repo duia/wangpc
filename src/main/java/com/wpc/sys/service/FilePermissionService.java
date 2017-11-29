@@ -15,6 +15,6 @@ import com.wpc.common.base.service.BaseService;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface FilePermissionService extends BaseService<FilePermission, Long> {
+public interface FilePermissionService extends BaseService<FilePermission> {
 	
 }

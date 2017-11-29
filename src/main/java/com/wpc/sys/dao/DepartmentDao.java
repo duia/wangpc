@@ -6,8 +6,8 @@
 package com.wpc.sys.dao;
 
 import com.wpc.sys.model.Department;
-import com.wpc.common.base.dao.BaseDao;
+import com.wpc.common.base.dao.TreeBaseDao;
 
-public interface DepartmentDao extends BaseDao<Department, Long> {
+public interface DepartmentDao extends TreeBaseDao<Department> {
     
 }

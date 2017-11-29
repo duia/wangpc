@@ -62,7 +62,7 @@ public class UserController {
 	@ResponseBody
 	public AjaxResult addOrUpdate(ModelMap model, User user) {
 		if(user.getId()!=null && user.getId()!=0){
-			user.setPassword(passwordService.encryptPassword(user.getPassword()));
+			user.setPassword(passwordService.encryptPassword("123456"));
 			userService.update(user);
 		}else{
 			user.setPassword(passwordService.encryptPassword(user.getPassword()));

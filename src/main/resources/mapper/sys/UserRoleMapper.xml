@@ -3,11 +3,11 @@
 <mapper namespace="com.wpc.sys.dao.UserRoleDao">
 
 	<resultMap id="BaseResultMap" type="com.wpc.sys.model.UserRole">
-		<id property="id" column="id" jdbcType="BIGINT"/>
-		<result property="userId" column="user_id" jdbcType="BIGINT"/>
-		<result property="roleId" column="role_id" jdbcType="BIGINT"/>
+		<id property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="roleId" column="role_id"/>
 	</resultMap>
-	
+
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="table_columns">
 		id,
@@ -136,9 +136,12 @@
 		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
 	</sql>
 
-			<!-- 分页，供datatables插件查询使用  -->
+	<!-- 分页，供datatables插件查询使用  -->
 	<sql id="limit">
 		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
 	</sql>
+
+
+	<!-- 自定义sql语句 -->
 
 </mapper>

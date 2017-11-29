@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ include file="/WEB-INF/views/common/include/taglib.jsp"%>
 <!DOCTYPE html>
 <html style="overflow-x:auto;overflow-y:auto;">
 <head>
@@ -12,15 +13,21 @@
 	<link href="/static/plugins/zTree_v3-master/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
 	<link href="/static/plugins/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 	<link href="/static/css/main/leftmenu.css" rel="stylesheet" type="text/css">
-	<style type="text/css">
-
-	</style>
+	<script src="/static/plugins/jquery-easyui-1.4.4/jquery.min.js"></script>
+	<%--<script src="/static/plugins/pageloader/js/pageloader.js"></script>--%>
+	<script src="/static/plugins/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+	<script src="/static/plugins/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
+	<script src="/static/plugins/zTree_v3-master/js/jquery.ztree.all.min.js"></script>
+	<script src="/static/js/main/main.js"></script>
 	<script>
-        // 如果在框架或在对话框中，则弹出提示并跳转到首页
-        if(self.frameElement && self.frameElement.tagName == "IFRAME"){
-            alert('未登录或登录超时。请重新登录，谢谢！');
-            top.location = "/";
-        }
+        $(function () {
+            // 如果在框架或在对话框中，则弹出提示并跳转到首页
+            if(self.frameElement && self.frameElement.tagName == "IFRAME"){
+                alert('未登录或登录超时。请重新登录，谢谢！');
+                top.location = "/";
+            }
+            page.init();
+        });
 	</script>
 </head>
 <body class="easyui-layout">
@@ -58,25 +65,5 @@
 <jsp:include page="common/main/bottom.jsp"/>
 <jsp:include page="common/main/center.jsp"/>
 
-<script src="/static/plugins/jquery-easyui-1.4.4/jquery.min.js"></script>
-<%--<script src="/static/plugins/pageloader/js/pageloader.js"></script>--%>
-<script src="/static/plugins/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
-<script src="/static/plugins/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
-<script src="/static/plugins/zTree_v3-master/js/jquery.ztree.all.min.js"></script>
-<script src="/static/js/main/main.js"></script>
-<script>
-	/*$(window).resize(function(){
-	 resizenow();
-	 });
-	 function resizenow() {
-	 var browserwidth = $(window).width();
-	 var browserheight = $(window).height();
-	 $('.bonfire-pageloader-icon').css('right', ((browserwidth - $(".bonfire-pageloader-icon").width())/2)).css('top', ((browserheight - $(".bonfire-pageloader-icon").height())/2 + 50));
-	 };
-	 resizenow();*/
-    $(function () {
-        page.init();
-    });
-</script>
 </body>
 </html>

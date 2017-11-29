@@ -16,7 +16,7 @@ import com.wpc.sys.service.RoleService;
  * @Date:
  */
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<Role, Long> implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleService {
 
     @Autowired
     private RoleDao roleDao;

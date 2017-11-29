@@ -5,10 +5,7 @@
  */
 package com.wpc.sys.model;
 
-import com.wpc.common.base.entity.BaseEntity;
 import com.wpc.common.base.entity.TreeEntity;
-
-import java.util.Date;
 
 /**
  * 功能描述: 机构表
@@ -45,7 +42,7 @@ public class Department extends TreeEntity<Department> {
 	private String primaryPerson;
 	// 副负责人
 	private String deputyPerson;
-
+		
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -150,57 +147,4 @@ public class Department extends TreeEntity<Department> {
 		return this.deputyPerson;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("Department[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", parentId=");
-		sb.append(parentId);
-		sb.append(", parentIds=");
-		sb.append(parentIds);
-		sb.append(", name=");
-		sb.append(name);
-		sb.append(", sort=");
-		sb.append(sort);
-		sb.append(", code=");
-		sb.append(code);
-		sb.append(", type=");
-		sb.append(type);
-		sb.append(", grade=");
-		sb.append(grade);
-		sb.append(", address=");
-		sb.append(address);
-		sb.append(", zipCode=");
-		sb.append(zipCode);
-		sb.append(", master=");
-		sb.append(master);
-		sb.append(", phone=");
-		sb.append(phone);
-		sb.append(", fax=");
-		sb.append(fax);
-		sb.append(", email=");
-		sb.append(email);
-		sb.append(", useable=");
-		sb.append(useable);
-		sb.append(", primaryPerson=");
-		sb.append(primaryPerson);
-		sb.append(", deputyPerson=");
-		sb.append(deputyPerson);
-		sb.append(", createBy=");
-		sb.append(createBy);
-		sb.append(", createDate=");
-		sb.append(createDate);
-		sb.append(", updateBy=");
-		sb.append(updateBy);
-		sb.append(", updateDate=");
-		sb.append(updateDate);
-		sb.append(", remarks=");
-		sb.append(remarks);
-		sb.append(", delFlag=");
-		sb.append(delFlag);
-		sb.append("]");
-		return sb.toString();
-	}
 }

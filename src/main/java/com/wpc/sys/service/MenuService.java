@@ -17,8 +17,10 @@ import java.util.List;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface MenuService extends BaseService<Menu, Long> {
+public interface MenuService extends BaseService<Menu> {
 
     List<Menu> getLeftMenu();
+
+    Long saveOrUpdateMenu(Menu menu);
 
 }

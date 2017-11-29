@@ -3,21 +3,36 @@
 <mapper namespace="com.wpc.sys.dao.DictDao">
 
 	<resultMap id="BaseResultMap" type="com.wpc.sys.model.Dict">
-		<id property="id" column="id" jdbcType="BIGINT"/>
-		<result property="value" column="value" jdbcType="VARCHAR"/>
-		<result property="label" column="label" jdbcType="VARCHAR"/>
-		<result property="type" column="type" jdbcType="VARCHAR"/>
-		<result property="description" column="description" jdbcType="VARCHAR"/>
-		<result property="sort" column="sort" jdbcType="INTEGER"/>
-		<result property="parentId" column="parent_id" jdbcType="BIGINT"/>
-		<result property="createBy" column="create_by" jdbcType="BIGINT"/>
-		<result property="createDate" column="create_date" jdbcType="TIMESTAMP"/>
-		<result property="updateBy" column="update_by" jdbcType="BIGINT"/>
-		<result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
-		<result property="remarks" column="remarks" jdbcType="VARCHAR"/>
-		<result property="delFlag" column="del_flag" jdbcType="CHAR"/>
+		<id property="id" column="id"/>
+		<result property="value" column="value"/>
+		<result property="label" column="label"/>
+		<result property="type" column="type"/>
+		<result property="description" column="description"/>
+		<result property="sort" column="sort"/>
+		<result property="parentId" column="parent_id"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createDate" column="create_date"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="remarks" column="remarks"/>
+		<result property="delFlag" column="del_flag"/>
+		<association property="parent" javaType="com.wpc.sys.model.Dict">
+			<id property="id" column="parent.id"/>
+			<result property="value" column="value"/>
+			<result property="label" column="label"/>
+			<result property="type" column="type"/>
+			<result property="description" column="description"/>
+			<result property="sort" column="sort"/>
+			<result property="parentId" column="parent_id"/>
+			<result property="createBy" column="create_by"/>
+			<result property="createDate" column="create_date"/>
+			<result property="updateBy" column="update_by"/>
+			<result property="updateDate" column="update_date"/>
+			<result property="remarks" column="remarks"/>
+			<result property="delFlag" column="del_flag"/>
+		</association>
 	</resultMap>
-	
+
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="table_columns">
 		id,
@@ -216,9 +231,28 @@
 		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
 	</sql>
 
-			<!-- 分页，供datatables插件查询使用  -->
+	<!-- 分页，供datatables插件查询使用  -->
 	<sql id="limit">
 		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
 	</sql>
+
+	<select id="findByParentIdsLike" resultMap="BaseResultMap">
+		SELECT
+			id,
+			parent_id AS "parent.id",
+			parent_ids
+		FROM sys_dict
+		WHERE del_flag != #{DEL_FLAG_DELETE} AND parent_ids LIKE #{parentIds}
+		ORDER BY sort
+	</select>
+
+	<update id="updateParentIds">
+		UPDATE sys_dict SET
+			parent_id = #{parent.id},
+			parent_ids = #{parentIds}
+		WHERE id = #{id}
+	</update>
+
+	<!-- 自定义sql语句 -->
 
 </mapper>

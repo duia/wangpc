@@ -1,6 +1,6 @@
 package com.wpc.sys.service.impl;
 
-import com.wpc.common.base.service.impl.BaseServiceImpl;
+import com.wpc.common.base.service.impl.TreeBaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import com.wpc.sys.service.DictService;
  * @Date:
  */
 @Service
-public class DictServiceImpl extends BaseServiceImpl<Dict, Long> implements DictService {
+public class DictServiceImpl extends TreeBaseServiceImpl<Dict> implements DictService {
 
     @Autowired
     private DictDao dictDao;

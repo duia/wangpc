@@ -19,6 +19,10 @@
 		<result property="updateDate" column="update_date" jdbcType="TIMESTAMP"/>
 		<result property="remarks" column="remarks" jdbcType="VARCHAR"/>
 		<result property="delFlag" column="del_flag" jdbcType="CHAR"/>
+		<association property="parent" javaType="com.wpc.sys.model.Menu">
+			<id property="id" column="parent.id"/>
+			<result property="menuName" column="parent.menu_name"/>
+		</association>
 	</resultMap>
 
 	<resultMap id="MenuAndChildren" type="com.wpc.sys.model.Menu" >
@@ -298,6 +302,46 @@
 		WHERE m.parent_id = 0
 		AND m.is_active = 1
 		ORDER BY m.sort,mc.sort
+	</select>
+
+	<select id="findMenusByUserId" resultMap="BaseResultMap">
+		SELECT DISTINCT
+			m.id,
+			m.parent_id  AS "parent.id",
+			m.parent_ids,
+			m.menu_name,
+			m.menu_code,
+			m.href,
+			m.target,
+			m.icon,
+			m.is_active,
+			m.sort,
+			m.create_by,
+			m.create_date,
+			m.update_by,
+			m.update_date,
+			m.remarks,
+			m.del_flag,
+			pa.menu_name AS "parent.menu_name"
+		FROM sys_menu m
+ 		LEFT JOIN sys_menu pa ON pa.id = m.parent_id
+		LEFT JOIN sys_permission p ON (p.resource_id = m.id AND p.permission_type = 'menu')
+		JOIN sys_role_permission rp ON rp.permission_id = p.id
+		JOIN sys_role r ON (r.id = rp.role_id AND r.useable='1')
+		JOIN sys_user_role ur ON ur.role_id = r.id
+		JOIN sys_user u ON u.id = ur.user_id AND u.id = #{userId}
+		WHERE m.del_flag != #{DEL_FLAG_DELETE} AND r.del_flag != #{DEL_FLAG_DELETE} AND u.del_flag != #{DEL_FLAG_DELETE}
+		ORDER BY m.sort
+	</select>
+
+	<select id="findByParentIdsLike" resultMap="BaseResultMap">
+		SELECT
+		a.id,
+		a.parent_id AS "parent.id",
+		a.parent_ids
+		FROM sys_menu a
+		WHERE a.del_flag != #{DEL_FLAG_DELETE} AND a.parent_ids LIKE #{parentIds}
+		ORDER BY a.sort
 	</select>
 
 </mapper>

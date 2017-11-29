@@ -37,12 +37,7 @@ public class MenuController {
 	@RequestMapping(value="/addOrUpdate", method=RequestMethod.POST)
 	@ResponseBody
 	public AjaxResult addOrUpdate(ModelMap model, Menu menu) {
-		menu.setUpdateDate(new Date());
-		if(menu.getId()!=null && menu.getId()!=0){
-			menuService.update(menu);
-		}else{
-			menuService.save(menu);
-		}
+		menuService.saveOrUpdateMenu(menu);
 		return AjaxResult.success();
 	}
 	

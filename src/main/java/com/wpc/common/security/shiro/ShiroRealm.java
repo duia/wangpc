@@ -85,7 +85,7 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         // 根据用户配置用户与权限  
-        Principal principal = (Principal)  getAvailablePrincipal(principals);
+        Principal principal = (Principal) getAvailablePrincipal(principals);
         // 获取当前已登录的用户
         if (!Global.TRUE.equals(Global.getConfig("user.multiAccountLogin"))){
             Collection<Session> sessions = sessionDAO.getActiveSessions(true, principal, SessionUtil.getSession());
@@ -113,7 +113,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if (null == user) {
             return null;
         }
-        if (new Long(1).equals(user.getId())) {//可以修改为别的验证是否是超级管理员
+        if (user.isAdmin()) {//可以修改为别的验证是否是超级管理员
             for (Role role : roleDao.queryAll()) {
                 roles.add(role.getRoleCode());
             }
@@ -122,14 +122,14 @@ public class ShiroRealm extends AuthorizingRealm {
             }
         } else {
             // 根据用户名查询出用户 判断用户信息的有效性 然获取用户的角色权限 授权
-            for (Role role : roleDao.queryRoleByUserId(user.getId())) {
+            /*for (Role role : roleDao.queryRoleByUserId(user.getId())) {
                 roles.add(role.getRoleCode());
                 for (Permission permission : permissionDao.queryPermissionByRoleId(role.getId())) {
                     permissions.add(permission.getPermissionCode());
                 }
-            }
+            }*/
         }
-        info.addRoles(roles);
+//        info.addRoles(roles);
         info.addStringPermissions(permissions);
 
         // 更新登录IP和时间

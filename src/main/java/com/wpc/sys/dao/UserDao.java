@@ -10,7 +10,7 @@ import com.wpc.common.base.dao.BaseDao;
 
 import java.util.List;
 
-public interface UserDao extends BaseDao<User, Long> {
+public interface UserDao extends BaseDao<User> {
 
     User getUserByLoginName(String loginName);
 

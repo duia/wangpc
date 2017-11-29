@@ -8,6 +8,6 @@ package com.wpc.sys.dao;
 import com.wpc.sys.model.UserRole;
 import com.wpc.common.base.dao.BaseDao;
 
-public interface UserRoleDao extends BaseDao<UserRole, Long> {
+public interface UserRoleDao extends BaseDao<UserRole> {
     
 }

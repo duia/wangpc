@@ -5,9 +5,7 @@
  */
 package com.wpc.sys.model;
 
-import com.wpc.common.base.entity.BaseEntity;
-
-import java.util.Date;
+import com.wpc.common.base.entity.DataEntity;
 
 /**
  * 功能描述: RolePermission
@@ -16,7 +14,7 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class RolePermission extends BaseEntity {
+public class RolePermission extends DataEntity<RolePermission> {
 
 	// roleId
 	private Long roleId;
@@ -39,17 +37,4 @@ public class RolePermission extends BaseEntity {
 		return this.permissionId;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("RolePermission[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", roleId=");
-		sb.append(roleId);
-		sb.append(", permissionId=");
-		sb.append(permissionId);
-		sb.append("]");
-		return sb.toString();
-	}
 }

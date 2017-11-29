@@ -10,7 +10,7 @@ import com.wpc.common.base.dao.BaseDao;
 
 import java.util.List;
 
-public interface RoleDao extends BaseDao<Role, Long> {
+public interface RoleDao extends BaseDao<Role> {
 
     List<Role> queryRoleByUserId(long uid);
 

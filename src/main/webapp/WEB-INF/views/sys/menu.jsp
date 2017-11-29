@@ -59,15 +59,15 @@
                         <fieldset>
                             <legend>菜单信息</legend>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">菜单名称</label>
+                                <label for="menuName">菜单名称</label>
                                 <input type="text" placeholder="名称" id="menuName" name="menuName" class="form-control required">
                             </div>
                             <div class="form-group">
-                                <label for="url">菜单链接</label>
-                                <input type="text" placeholder="链接" id="url" name="url" class="form-control required">
+                                <label for="href">菜单链接</label>
+                                <input type="text" placeholder="链接" id="href" name="href" class="form-control required">
                             </div>
                             <div class="form-group">
-                                <label for="url">菜单码</label>
+                                <label for="menuCode">菜单码</label>
                                 <input type="text" placeholder="菜单码" id="menuCode" name="menuCode" class="form-control required">
                             </div>
                             <div class="form-group">
@@ -75,15 +75,15 @@
                                 <input type="text" placeholder="图标代码" id="icon" name="icon" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="sortNum">排序</label>
-                                <input type="text" placeholder="序号" id="sortNum" name="sortNum" class="form-control">
+                                <label for="sort">排序</label>
+                                <input type="text" placeholder="序号" id="sort" name="sort" class="form-control">
                             </div>
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" name="isActive" id="isActive" value="1"> 是否启用
                                 </label>
                             </div>
-                            <input type="hidden" name="pId" value="" id="pId">
+                            <input type="hidden" name="parent.id" value="" id="parentId">
                             <input type="hidden" name="id" value="" id="menuFromId">
                             <button class="btn btn-sm btn-primary m-r-5" type="submit">保存</button>
                             <button class="btn btn-sm btn-default" type="reset">重置</button>
@@ -203,14 +203,15 @@
 	    clearTimeout(TimeFn);
 	    //执行延时
 	    TimeFn = setTimeout(function(){
+	        console.log(treeNode)
 	        //do function在此处写单击事件要执行的代码
 	        $('#menuName').val($(treeNode.menuName).text().trim() || treeNode.menuName);
-	        $('#url').val(treeNode.url);
+	        $('#href').val(treeNode.href);
 	        $('#menuCode').val(treeNode.menuCode);//.attr("disabled", 'true');
 	        $('#icon').val(treeNode.icon);
-	        treeNode.isActive?$('#isActive').attr('checked',true):$('#isActive').attr('checked',false);
-	        treeNode.sortNum?$('#sortNum').val(treeNode.sortNum):$('#sortNum').val(999);
-	        $('#pId').val(treeNode.pid);
+	        $('#isActive').attr('checked',treeNode.isActive == 1);
+	        $('#sort').val(treeNode.sort || 30);
+	        $('#parentId').val(treeNode.parentId);
 	        $('#menuFromId').val(treeNode.id);
 	        getMenuBtns(treeNode.id);
 	    },200);

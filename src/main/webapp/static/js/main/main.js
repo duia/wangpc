@@ -7,7 +7,8 @@
         if ($('#tt').tabs('exists', name)){
             $('#tt').tabs('select', name);
         } else {
-            var content = '<iframe allowtransparency="true" scrolling="auto" frameborder="0"  src="'+url+'" style="width:99%;height:'+($('.tabs-panels').height()-5)+'px;"></iframe>';
+            var content = '<iframe allowtransparency="true" scrolling="auto" frameborder="0"  src="'+url+'" ' +
+                'style="overflow: hidden; width:100%; height:'+($('.tabs-panels').height()-5)+'px;"></iframe>';
             $.get(url, function(data){
                 if (data.indexOf("action=\"/login\"") !== -1){
                     alert('未登录或登录超时。请重新登录，谢谢！');

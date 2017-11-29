@@ -16,7 +16,7 @@ import com.wpc.sys.service.FileService;
  * @Date:
  */
 @Service
-public class FileServiceImpl extends BaseServiceImpl<File, Long> implements FileService {
+public class FileServiceImpl extends BaseServiceImpl<File> implements FileService {
 
     @Autowired
     private FileDao fileDao;

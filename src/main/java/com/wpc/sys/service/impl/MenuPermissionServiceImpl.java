@@ -16,7 +16,7 @@ import com.wpc.sys.service.MenuPermissionService;
  * @Date:
  */
 @Service
-public class MenuPermissionServiceImpl extends BaseServiceImpl<MenuPermission, Long> implements MenuPermissionService {
+public class MenuPermissionServiceImpl extends BaseServiceImpl<MenuPermission> implements MenuPermissionService {
 
     @Autowired
     private MenuPermissionDao menuPermissionDao;

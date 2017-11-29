@@ -5,9 +5,7 @@
  */
 package com.wpc.sys.model;
 
-import com.wpc.common.base.entity.BaseEntity;
-
-import java.util.Date;
+import com.wpc.common.base.entity.DataEntity;
 
 /**
  * 功能描述: FilePermission
@@ -16,7 +14,7 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class FilePermission extends BaseEntity {
+public class FilePermission extends DataEntity<FilePermission> {
 
 	// fileId
 	private Long fileId;
@@ -39,17 +37,4 @@ public class FilePermission extends BaseEntity {
 		return this.permissionId;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("FilePermission[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", fileId=");
-		sb.append(fileId);
-		sb.append(", permissionId=");
-		sb.append(permissionId);
-		sb.append("]");
-		return sb.toString();
-	}
 }

@@ -1,5 +1,6 @@
 package com.wpc.sys.service.impl;
 
+import com.wpc.common.SessionUtil;
 import com.wpc.sys.dto.PermissionDto;
 import com.wpc.common.base.service.impl.BaseServiceImpl;
 import com.wpc.sys.dao.MenuDao;
@@ -32,50 +33,48 @@ public class PermissionServiceImpl extends BaseServiceImpl<Permission, Long> imp
     private MenuDao menuDao;
 
     @Override
-    public void addElementPermission(Element element) {
-        boolean isExist = true;
+    public void addOrUpdateElementPermission(Element element) {
         Menu menu = menuDao.findById(element.getMenuId());
         Permission per = permissionDao.findByResourceId(element.getId(), Permission.PER_TYPE_ELEMENT);
         if(per == null){
             per = new Permission();
-            isExist = false;
         }
         per.setPermissionName(element.getElementName());
         per.setPermissionCode(menu.getMenuCode()+":"+element.getElementCode());
         per.setPermissionType(Permission.PER_TYPE_ELEMENT);
         per.setResourceId(element.getId());
         per.setParentId(element.getMenuId());
-        per.setUpdateDate(new Date());
-        if(isExist){
-            permissionDao.update(per);
-        }else{
-            permissionDao.save(per);
-        }
+        saveOrUpdate(per);
     }
 
     @Override
-    public void addMenuPermission(Menu menu) {
-        boolean isExist = true;
+    public void addOrUpdateMenuPermission(Menu menu) {
         Permission per = permissionDao.findByResourceId(menu.getId(), Permission.PER_TYPE_MENU);
         if(per == null){
             per = new Permission();
-            isExist = false;
         }
         per.setPermissionName(menu.getMenuName());
         per.setPermissionCode(menu.getMenuCode());
         per.setPermissionType(Permission.PER_TYPE_MENU);
         per.setResourceId(menu.getId());
         per.setParentId(0L);
-        per.setUpdateDate(new Date());
-        if(isExist){
+        saveOrUpdate(per);
+    }
+
+    private void saveOrUpdate(Permission per) {
+        if(null != per.getId() && per.getId() != 0L){
+            per.setUpdateDate(new Date());
+            per.setUpdateBy(SessionUtil.getUser().getId());
             permissionDao.update(per);
         }else{
+            per.setCreateDate(new Date());
+            per.setCreateBy(SessionUtil.getUser().getId());
             permissionDao.save(per);
         }
     }
 
     @Override
-    public void addFilePermission(File file) {
+    public void addOrUpdateFilePermission(File file) {
         // TODO Auto-generated method stub
 
     }

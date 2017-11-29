@@ -15,6 +15,6 @@ import com.wpc.common.base.service.BaseService;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface RoleDepartmentService extends BaseService<RoleDepartment, Long> {
+public interface RoleDepartmentService extends BaseService<RoleDepartment> {
 	
 }

@@ -8,6 +8,6 @@ package com.wpc.sys.dao;
 import com.wpc.sys.model.MenuPermission;
 import com.wpc.common.base.dao.BaseDao;
 
-public interface MenuPermissionDao extends BaseDao<MenuPermission, Long> {
+public interface MenuPermissionDao extends BaseDao<MenuPermission> {
     
 }

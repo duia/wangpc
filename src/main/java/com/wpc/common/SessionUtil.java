@@ -1,23 +1,27 @@
 package com.wpc.common;
 
+import com.wpc.common.cache.AbstractCache;
 import com.wpc.common.cache.WpcCache;
-import com.wpc.common.security.shiro.ShiroRealm;
+import com.wpc.common.security.shiro.ShiroRealm.Principal;
 import com.wpc.sys.dao.UserDao;
+import com.wpc.sys.model.Menu;
 import com.wpc.sys.model.User;
+import com.wpc.sys.service.MenuService;
+import com.wpc.sys.service.impl.MenuServiceImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.session.InvalidSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public class SessionUtil {
 
+    private static MenuService menuService = SpringContextHolder.getBean(MenuServiceImpl.class);
+
     private static UserDao userDao = SpringContextHolder.getBean(UserDao.class);
-    private static WpcCache wpcCache = SpringContextHolder.getBean(WpcCache.class);
+    private static AbstractCache ache = SpringContextHolder.getBean(WpcCache.class);
 
     public static final String USER_CACHE = "userCache";
     public static final String USER_CACHE_ID_ = "id_";
@@ -51,10 +55,10 @@ public class SessionUtil {
     /**
      * 获取当前登录者对象
      */
-    public static ShiroRealm.Principal getPrincipal(){
+    public static Principal getPrincipal(){
         try{
             Subject subject = SecurityUtils.getSubject();
-            ShiroRealm.Principal principal = (ShiroRealm.Principal)subject.getPrincipal();
+            Principal principal = (Principal)subject.getPrincipal();
             if (principal != null){
                 return principal;
             }
@@ -70,16 +74,16 @@ public class SessionUtil {
     }
 
     public static Object getAuthInfo(String key, Object defaultValue) {
-        Object obj = getSession().getAttribute(key);
+        Object obj = ache.get(key);
         return obj==null?defaultValue:obj;
     }
 
     public static void putAuthInfo(String key, Object value) {
-        getSession().setAttribute(key, value);
+        ache.set(key, value);
     }
 
     public static void removeAuthInfo(String key) {
-        getSession().removeAttribute(key);
+        ache.delete(key);
     }
 
     /**
@@ -87,7 +91,7 @@ public class SessionUtil {
      * @return 取不到返回 new User()
      */
     public static User getUser(){
-        ShiroRealm.Principal principal = getPrincipal();
+        Principal principal = getPrincipal();
         if (principal!=null){
             User user = get(principal.getId());
             if (user != null){
@@ -105,14 +109,14 @@ public class SessionUtil {
      * @return 取不到返回null
      */
     public static User get(Long id){
-        User user = (User)wpcCache.hGet(USER_CACHE, USER_CACHE_ID_ + id);
+        User user = (User)ache.hGet(USER_CACHE, USER_CACHE_ID_ + id);
         if (user ==  null){
             user = userDao.findById(id);
             if (user == null){
                 return null;
             }
-            wpcCache.hSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            wpcCache.hSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+            ache.hSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+            ache.hSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }
@@ -123,14 +127,14 @@ public class SessionUtil {
      * @return 取不到返回null
      */
     public static User getByLoginName(String loginName){
-        User user = (User)wpcCache.hGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
+        User user = (User)ache.hGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
         if (user == null){
             user = userDao.getUserByLoginName(loginName);
             if (user == null){
                 return null;
             }
-            wpcCache.hSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            wpcCache.hSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+            ache.hSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+            ache.hSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }
@@ -140,8 +144,16 @@ public class SessionUtil {
      * @param user
      */
     public static void clearCache(User user){
-        wpcCache.delete(USER_CACHE, USER_CACHE_ID_ + user.getId());
-        wpcCache.delete(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
+        ache.delete(USER_CACHE, USER_CACHE_ID_ + user.getId());
+        ache.delete(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
+    }
+
+    /**
+     * 获取当前用户授权菜单
+     * @return
+     */
+    public static List<Menu> getUserMenuList(){
+        return menuService.getLeftMenu();
     }
 
 }

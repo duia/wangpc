@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface PermissionDao extends BaseDao<Permission, Long> {
+public interface PermissionDao extends BaseDao<Permission> {
 
     List<Permission> queryPermissionByRoleId(long rid);
 

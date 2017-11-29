@@ -8,6 +8,6 @@ package com.wpc.sys.dao;
 import com.wpc.sys.model.FilePermission;
 import com.wpc.common.base.dao.BaseDao;
 
-public interface FilePermissionDao extends BaseDao<FilePermission, Long> {
+public interface FilePermissionDao extends BaseDao<FilePermission> {
     
 }

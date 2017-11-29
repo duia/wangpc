@@ -8,7 +8,7 @@ package com.wpc.sys.dao;
 import com.wpc.sys.model.Element;
 import com.wpc.common.base.dao.BaseDao;
 
-public interface ElementDao extends BaseDao<Element, Long> {
+public interface ElementDao extends BaseDao<Element> {
 
     void deleteByMenuId(long menuId);
 

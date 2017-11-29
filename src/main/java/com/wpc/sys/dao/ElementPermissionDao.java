@@ -8,6 +8,6 @@ package com.wpc.sys.dao;
 import com.wpc.sys.model.ElementPermission;
 import com.wpc.common.base.dao.BaseDao;
 
-public interface ElementPermissionDao extends BaseDao<ElementPermission, Long> {
+public interface ElementPermissionDao extends BaseDao<ElementPermission> {
     
 }

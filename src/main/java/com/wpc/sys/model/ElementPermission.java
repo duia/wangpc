@@ -5,9 +5,7 @@
  */
 package com.wpc.sys.model;
 
-import com.wpc.common.base.entity.BaseEntity;
-
-import java.util.Date;
+import com.wpc.common.base.entity.DataEntity;
 
 /**
  * 功能描述: ElementPermission
@@ -16,7 +14,7 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class ElementPermission extends BaseEntity {
+public class ElementPermission extends DataEntity<ElementPermission> {
 
 	// elementId
 	private Long elementId;
@@ -39,17 +37,4 @@ public class ElementPermission extends BaseEntity {
 		return this.permissionId;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("ElementPermission[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", elementId=");
-		sb.append(elementId);
-		sb.append(", permissionId=");
-		sb.append(permissionId);
-		sb.append("]");
-		return sb.toString();
-	}
 }

@@ -16,7 +16,7 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class SysLog extends BaseEntity {
+public class SysLog extends BaseEntity<SysLog> {
 
 	// 操作名称
 	private String operName;
@@ -44,7 +44,7 @@ public class SysLog extends BaseEntity {
 	private String userAgent;
 	// 异常信息
 	private String exception;
-		
+
 	public void setOperName(String operName) {
 		this.operName = operName;
 	}
@@ -149,39 +149,4 @@ public class SysLog extends BaseEntity {
 		return this.exception;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("SysLog[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", operName=");
-		sb.append(operName);
-		sb.append(", operParam=");
-		sb.append(operParam);
-		sb.append(", operType=");
-		sb.append(operType);
-		sb.append(", operDescribe=");
-		sb.append(operDescribe);
-		sb.append(", operLevel=");
-		sb.append(operLevel);
-		sb.append(", operTime=");
-		sb.append(operTime);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", userName=");
-		sb.append(userName);
-		sb.append(", remoteAddr=");
-		sb.append(remoteAddr);
-		sb.append(", requestUri=");
-		sb.append(requestUri);
-		sb.append(", method=");
-		sb.append(method);
-		sb.append(", userAgent=");
-		sb.append(userAgent);
-		sb.append(", exception=");
-		sb.append(exception);
-		sb.append("]");
-		return sb.toString();
-	}
 }

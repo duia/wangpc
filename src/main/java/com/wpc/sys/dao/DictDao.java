@@ -6,8 +6,8 @@
 package com.wpc.sys.dao;
 
 import com.wpc.sys.model.Dict;
-import com.wpc.common.base.dao.BaseDao;
+import com.wpc.common.base.dao.TreeBaseDao;
 
-public interface DictDao extends BaseDao<Dict, Long> {
+public interface DictDao extends TreeBaseDao<Dict> {
     
 }

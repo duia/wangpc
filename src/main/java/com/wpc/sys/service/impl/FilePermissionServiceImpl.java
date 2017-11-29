@@ -16,7 +16,7 @@ import com.wpc.sys.service.FilePermissionService;
  * @Date:
  */
 @Service
-public class FilePermissionServiceImpl extends BaseServiceImpl<FilePermission, Long> implements FilePermissionService {
+public class FilePermissionServiceImpl extends BaseServiceImpl<FilePermission> implements FilePermissionService {
 
     @Autowired
     private FilePermissionDao filePermissionDao;

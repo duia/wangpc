@@ -8,7 +8,7 @@ package com.wpc.sys.dao;
 import com.wpc.sys.model.RolePermission;
 import com.wpc.common.base.dao.BaseDao;
 
-public interface RolePermissionDao extends BaseDao<RolePermission, Long> {
+public interface RolePermissionDao extends BaseDao<RolePermission> {
 
     /**
      * 通过角色ID删除数据

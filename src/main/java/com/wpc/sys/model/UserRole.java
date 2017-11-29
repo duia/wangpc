@@ -5,9 +5,7 @@
  */
 package com.wpc.sys.model;
 
-import com.wpc.common.base.entity.BaseEntity;
-
-import java.util.Date;
+import com.wpc.common.base.entity.DataEntity;
 
 /**
  * 功能描述: 用户-角色
@@ -16,7 +14,7 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class UserRole extends BaseEntity {
+public class UserRole extends DataEntity<UserRole> {
 
 	// 用户编号
 	private Long userId;
@@ -39,17 +37,4 @@ public class UserRole extends BaseEntity {
 		return this.roleId;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("UserRole[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", userId=");
-		sb.append(userId);
-		sb.append(", roleId=");
-		sb.append(roleId);
-		sb.append("]");
-		return sb.toString();
-	}
 }

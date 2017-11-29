@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
     <div id="btns" class="pull-right" style="padding:5px 0;">
         <!-- <a href="#" class="easyui-linkbutton" data-options="" data-color="black">black</a> -->

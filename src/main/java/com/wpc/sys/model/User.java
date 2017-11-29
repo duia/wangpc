@@ -5,6 +5,7 @@
  */
 package com.wpc.sys.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wpc.common.base.entity.DataEntity;
 
 import java.util.Date;
@@ -159,55 +160,14 @@ public class User extends DataEntity<User> {
 		return this.departmentId;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("User[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", loginName=");
-		sb.append(loginName);
-		sb.append(", password=");
-		sb.append(password);
-		sb.append(", no=");
-		sb.append(no);
-		sb.append(", username=");
-		sb.append(username);
-		sb.append(", email=");
-		sb.append(email);
-		sb.append(", phone=");
-		sb.append(phone);
-		sb.append(", mobile=");
-		sb.append(mobile);
-		sb.append(", userType=");
-		sb.append(userType);
-		sb.append(", photo=");
-		sb.append(photo);
-		sb.append(", loginIp=");
-		sb.append(loginIp);
-		sb.append(", loginDate=");
-		sb.append(loginDate);
-		sb.append(", loginFlag=");
-		sb.append(loginFlag);
-		sb.append(", sort=");
-		sb.append(sort);
-		sb.append(", createBy=");
-		sb.append(createBy);
-		sb.append(", createDate=");
-		sb.append(createDate);
-		sb.append(", updateBy=");
-		sb.append(updateBy);
-		sb.append(", updateDate=");
-		sb.append(updateDate);
-		sb.append(", remarks=");
-		sb.append(remarks);
-		sb.append(", delFlag=");
-		sb.append(delFlag);
-		sb.append(", companyId=");
-		sb.append(companyId);
-		sb.append(", departmentId=");
-		sb.append(departmentId);
-		sb.append("]");
-		return sb.toString();
+	@JsonIgnore
+	public boolean isAdmin(){
+		return isAdmin(this.id);
 	}
+
+	@JsonIgnore
+	public static boolean isAdmin(Long id){
+		return id != null && new Long(1).equals(id);
+	}
+
 }

@@ -16,7 +16,7 @@ import com.wpc.sys.service.ElementPermissionService;
  * @Date:
  */
 @Service
-public class ElementPermissionServiceImpl extends BaseServiceImpl<ElementPermission, Long> implements ElementPermissionService {
+public class ElementPermissionServiceImpl extends BaseServiceImpl<ElementPermission> implements ElementPermissionService {
 
     @Autowired
     private ElementPermissionDao elementPermissionDao;

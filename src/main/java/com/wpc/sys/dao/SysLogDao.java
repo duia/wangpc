@@ -8,6 +8,6 @@ package com.wpc.sys.dao;
 import com.wpc.sys.model.SysLog;
 import com.wpc.common.base.dao.BaseDao;
 
-public interface SysLogDao extends BaseDao<SysLog, Long> {
+public interface SysLogDao extends BaseDao<SysLog> {
     
 }

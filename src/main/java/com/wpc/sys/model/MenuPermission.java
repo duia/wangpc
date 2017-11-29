@@ -5,9 +5,7 @@
  */
 package com.wpc.sys.model;
 
-import com.wpc.common.base.entity.BaseEntity;
-
-import java.util.Date;
+import com.wpc.common.base.entity.DataEntity;
 
 /**
  * 功能描述: MenuPermission
@@ -16,7 +14,7 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class MenuPermission extends BaseEntity {
+public class MenuPermission extends DataEntity<MenuPermission> {
 
 	// menuId
 	private Long menuId;
@@ -39,17 +37,4 @@ public class MenuPermission extends BaseEntity {
 		return this.permissionId;
 	}
 
-	@Override
-	public String toString(){
-		StringBuilder sb = new StringBuilder();
-		sb.append("MenuPermission[");
-		sb.append("id=");
-		sb.append(id);
-		sb.append(", menuId=");
-		sb.append(menuId);
-		sb.append(", permissionId=");
-		sb.append(permissionId);
-		sb.append("]");
-		return sb.toString();
-	}
 }
