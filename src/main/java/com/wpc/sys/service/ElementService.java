@@ -18,7 +18,7 @@ import java.util.List;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface ElementService extends BaseService<Element, Long> {
+public interface ElementService extends BaseService<Element> {
 
     /**
      * 为菜单添加默认的四个按钮（查看，保存，修改，删除）

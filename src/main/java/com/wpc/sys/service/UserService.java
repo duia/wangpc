@@ -17,7 +17,7 @@ import java.util.List;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface UserService extends BaseService<User, Long> {
+public interface UserService extends BaseService<User> {
 
     User getUserByAccount(String loginNme);
 

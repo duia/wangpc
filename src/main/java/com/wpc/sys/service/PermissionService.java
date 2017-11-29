@@ -21,7 +21,7 @@ import java.util.List;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface PermissionService extends BaseService<Permission, Long> {
+public interface PermissionService extends BaseService<Permission> {
 
     /**
      * 根据传来的资源为该资源添加对应的权限

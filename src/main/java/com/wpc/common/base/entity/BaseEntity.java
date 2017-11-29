@@ -15,7 +15,7 @@ import java.util.Map;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public class BaseEntity<T> implements Serializable {
+public abstract class BaseEntity<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -58,6 +58,16 @@ public class BaseEntity<T> implements Serializable {
 	public void setSqlMap(Map<String, String> sqlMap) {
 		this.sqlMap = sqlMap;
 	}
+
+	/**
+	 * 插入之前执行方法，子类实现
+	 */
+	public abstract void preInsert();
+
+	/**
+	 * 更新之前执行方法，子类实现
+	 */
+	public abstract void preUpdate();
 
 	@Override
 	public boolean equals(Object obj) {

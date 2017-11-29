@@ -25,7 +25,7 @@ import java.util.List;
  * @Date:
  */
 @Service
-public class PermissionServiceImpl extends BaseServiceImpl<Permission, Long> implements PermissionService {
+public class PermissionServiceImpl extends BaseServiceImpl<Permission> implements PermissionService {
 
     @Autowired
     private PermissionDao permissionDao;

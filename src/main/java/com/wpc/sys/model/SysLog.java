@@ -149,4 +149,13 @@ public class SysLog extends BaseEntity<SysLog> {
 		return this.exception;
 	}
 
+	@Override
+	public void preInsert() {
+
+	}
+
+	@Override
+	public void preUpdate() {
+
+	}
 }

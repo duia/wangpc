@@ -20,7 +20,7 @@ import java.util.List;
  * @Date:
  */
 @Service("userService")
-public class UserServiceImpl extends BaseServiceImpl<User, Long> implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User> implements UserService {
 
     @Autowired
     private UserDao userDao;

@@ -15,7 +15,7 @@ import com.wpc.common.base.service.BaseService;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface RolePermissionService extends BaseService<RolePermission, Long> {
+public interface RolePermissionService extends BaseService<RolePermission> {
 
     /**
      * 保存角色权限关系

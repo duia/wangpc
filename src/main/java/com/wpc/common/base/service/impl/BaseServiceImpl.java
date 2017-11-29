@@ -3,7 +3,7 @@ package com.wpc.common.base.service.impl;
 import java.util.List;
 
 import com.wpc.common.base.dao.BaseDao;
-import com.wpc.common.base.entity.DataEntity;
+import com.wpc.common.base.entity.BaseEntity;
 import com.wpc.common.base.service.BaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import com.wpc.common.datatables.DataTablesResponse;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseService<T>{
+public abstract class BaseServiceImpl<T extends BaseEntity<T>> implements BaseService<T>{
 
     /**
      * 日志对象

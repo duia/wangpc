@@ -15,6 +15,6 @@ import com.wpc.common.base.service.BaseService;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface SysLogService extends BaseService<SysLog, Long> {
+public interface SysLogService extends BaseService<SysLog> {
 	
 }

@@ -28,6 +28,8 @@ public class Menu extends TreeEntity<Menu> {
 	private String icon;
 	// 是否在菜单中显示
 	private String isActive;
+
+	private Long userId;
 		
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
@@ -77,4 +79,11 @@ public class Menu extends TreeEntity<Menu> {
 		return this.isActive;
 	}
 
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 }

@@ -1,9 +1,8 @@
 package com.wpc.common.base.service;
 
-import java.io.Serializable;
 import java.util.List;
 
-import com.wpc.common.base.entity.DataEntity;
+import com.wpc.common.base.entity.BaseEntity;
 import com.wpc.common.datatables.DataTablesRequest;
 import com.wpc.common.datatables.DataTablesResponse;
 
@@ -14,7 +13,7 @@ import com.wpc.common.datatables.DataTablesResponse;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public interface BaseService<T extends DataEntity<T>> {
+public interface BaseService<T extends BaseEntity<T>> {
 
     void save(T t);
 

@@ -25,7 +25,7 @@ import java.util.List;
  * @Date:
  */
 @Service
-public class ElementServiceImpl extends BaseServiceImpl<Element, Long> implements ElementService {
+public class ElementServiceImpl extends BaseServiceImpl<Element> implements ElementService {
 
     @Autowired
     private MenuDao menuDao;

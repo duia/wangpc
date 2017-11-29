@@ -42,6 +42,7 @@ public class DataEntity<T> extends BaseEntity<T> {
 	/**
 	 * 插入之前执行方法，需要手动调用
 	 */
+	@Override
 	public void preInsert(){
 		User user = SessionUtil.getUser();
 		if (null != user){
@@ -53,6 +54,7 @@ public class DataEntity<T> extends BaseEntity<T> {
 	/**
 	 * 更新之前执行方法，需要手动调用
 	 */
+	@Override
 	public void preUpdate(){
 		User user = SessionUtil.getUser();
 		if (null != user){

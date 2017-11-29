@@ -16,7 +16,7 @@ import com.wpc.sys.service.RolePermissionService;
  * @Date:
  */
 @Service
-public class RolePermissionServiceImpl extends BaseServiceImpl<RolePermission, Long> implements RolePermissionService {
+public class RolePermissionServiceImpl extends BaseServiceImpl<RolePermission> implements RolePermissionService {
 
     @Autowired
     private RolePermissionDao rolePermissionDao;

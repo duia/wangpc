@@ -16,7 +16,7 @@ import com.wpc.sys.service.SysLogService;
  * @Date:
  */
 @Service
-public class SysLogServiceImpl extends BaseServiceImpl<SysLog, Long> implements SysLogService {
+public class SysLogServiceImpl extends BaseServiceImpl<SysLog> implements SysLogService {
 
     @Autowired
     private SysLogDao sysLogDao;
