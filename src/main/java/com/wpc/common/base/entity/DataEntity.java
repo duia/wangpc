@@ -19,7 +19,7 @@ import java.util.Date;
  * @Blog: http://www.wpcfree.com
  * @Date:
  */
-public abstract class DataEntity<T> extends BaseEntity<T> {
+public class DataEntity<T> extends BaseEntity<T> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	protected Date createDate;	// 创建日期
 	protected Long updateBy;	// 更新者
 	protected Date updateDate;	// 更新日期
-	protected String delFlag; 	// 删除标记（0：正常；1：删除；2：审核）
+	protected String delFlag; 	// 删除标记（-1：删除）
 
 	public DataEntity() {
 		super();
@@ -42,7 +42,6 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	/**
 	 * 插入之前执行方法，需要手动调用
 	 */
-	@Override
 	public void preInsert(){
 		User user = SessionUtil.getUser();
 		if (null != user){
@@ -54,7 +53,6 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 	/**
 	 * 更新之前执行方法，需要手动调用
 	 */
-	@Override
 	public void preUpdate(){
 		User user = SessionUtil.getUser();
 		if (null != user){

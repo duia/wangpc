@@ -63,4 +63,5 @@ public class TreeEntity<T> extends DataEntity<T> {
 	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
+
 }

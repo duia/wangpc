@@ -5,7 +5,11 @@ import com.wpc.common.base.entity.TreeEntity;
 import java.util.List;
 
 /**
- * Created by 
+ * 功能描述: dao层接口基础扩展类，封装了一些对树形数据操作的方法
+ * @Author: 王鹏程
+ * @E-mail: wpcfree@qq.com @QQ: 376205421
+ * @Blog: http://www.wpcfree.com
+ * @Date:
  */
 public interface TreeBaseDao<T extends TreeEntity<T>> extends BaseDao<T> {
 

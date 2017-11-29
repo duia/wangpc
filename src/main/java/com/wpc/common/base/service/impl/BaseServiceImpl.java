@@ -12,6 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.wpc.common.datatables.DataTablesRequest;
 import com.wpc.common.datatables.DataTablesResponse;
 
+/**
+ * 功能描述: service层接口实现类的基础类，封装了一些基本的方法的实现
+ * @Author: 王鹏程
+ * @E-mail: wpcfree@qq.com @QQ: 376205421
+ * @Blog: http://www.wpcfree.com
+ * @Date:
+ */
 public abstract class BaseServiceImpl<T extends DataEntity<T>> implements BaseService<T>{
 
     /**

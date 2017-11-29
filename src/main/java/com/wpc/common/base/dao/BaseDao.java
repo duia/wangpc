@@ -2,13 +2,17 @@ package com.wpc.common.base.dao;
 
 import java.util.List;
 
-import com.wpc.common.base.entity.DataEntity;
+import com.wpc.common.base.entity.BaseEntity;
 import com.wpc.common.datatables.DataTablesRequest;
 
 /**
- * Created by 
+ * 功能描述: dao层接口基础类，封装了一些基本的方法
+ * @Author: 王鹏程
+ * @E-mail: wpcfree@qq.com @QQ: 376205421
+ * @Blog: http://www.wpcfree.com
+ * @Date:
  */
-public interface BaseDao<T extends DataEntity<T>> {
+public interface BaseDao<T extends BaseEntity<T>> {
 
     void save(T t);
 
