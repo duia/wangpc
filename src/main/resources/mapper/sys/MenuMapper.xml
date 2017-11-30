@@ -268,31 +268,48 @@
 		<if test="condition.orderColumn != null and condition.orderColumn != ''">ORDER BY ${condition.orderColumn} ${condition.orderDir}</if>
 	</sql>
 
-			<!-- 分页，供datatables插件查询使用  -->
+	<!-- 分页，供datatables插件查询使用  -->
 	<sql id="limit">
 		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
 	</sql>
 
+	<select id="findByParentIdsLike" resultMap="BaseResultMap">
+		SELECT
+			a.id,
+			a.parent_id AS "parent.id",
+			a.parent_ids
+		FROM sys_menu a
+		WHERE a.del_flag != #{DEL_FLAG_DELETE} AND a.parent_ids LIKE #{parentIds}
+		ORDER BY a.sort
+	</select>
+
+	<update id="updateParentIds">
+		UPDATE sys_menu SET
+			parent_id = #{parent.id},
+			parent_ids = #{parentIds}
+		WHERE id = #{id}
+	</update>
+
 	<select id="getLeftMenu" resultMap="MenuAndChildren">
 		SELECT
-			m.id,
-			m.menu_name,
-			m.menu_code,
-			m.href,
-			m.icon,
-			m.parent_id,
-			m.is_active,
-			m.sort,
-			m.remarks,
-			mc.id c_id,
-			mc.menu_name c_menu_name,
-			mc.href c_href,
-			mc.icon c_icon,
-			mc.menu_code c_menu_code,
-			mc.parent_id c_parent_id,
-			mc.is_active c_is_active,
-			mc.sort c_sort,
-			mc.remarks c_remarks
+		m.id,
+		m.menu_name,
+		m.menu_code,
+		m.href,
+		m.icon,
+		m.parent_id,
+		m.is_active,
+		m.sort,
+		m.remarks,
+		mc.id c_id,
+		mc.menu_name c_menu_name,
+		mc.href c_href,
+		mc.icon c_icon,
+		mc.menu_code c_menu_code,
+		mc.parent_id c_parent_id,
+		mc.is_active c_is_active,
+		mc.sort c_sort,
+		mc.remarks c_remarks
 		FROM
 		auth_menu m
 		LEFT JOIN
@@ -306,25 +323,25 @@
 
 	<select id="findMenusByUserId" resultMap="BaseResultMap">
 		SELECT DISTINCT
-			m.id,
-			m.parent_id  AS "parent.id",
-			m.parent_ids,
-			m.menu_name,
-			m.menu_code,
-			m.href,
-			m.target,
-			m.icon,
-			m.is_active,
-			m.sort,
-			m.create_by,
-			m.create_date,
-			m.update_by,
-			m.update_date,
-			m.remarks,
-			m.del_flag,
-			pa.menu_name AS "parent.menu_name"
+		m.id,
+		m.parent_id  AS "parent.id",
+		m.parent_ids,
+		m.menu_name,
+		m.menu_code,
+		m.href,
+		m.target,
+		m.icon,
+		m.is_active,
+		m.sort,
+		m.create_by,
+		m.create_date,
+		m.update_by,
+		m.update_date,
+		m.remarks,
+		m.del_flag,
+		pa.menu_name AS "parent.menu_name"
 		FROM sys_menu m
- 		LEFT JOIN sys_menu pa ON pa.id = m.parent_id
+		LEFT JOIN sys_menu pa ON pa.id = m.parent_id
 		LEFT JOIN sys_permission p ON (p.resource_id = m.id AND p.permission_type = 'menu')
 		JOIN sys_role_permission rp ON rp.permission_id = p.id
 		JOIN sys_role r ON (r.id = rp.role_id AND r.useable='1')
@@ -332,16 +349,6 @@
 		JOIN sys_user u ON u.id = ur.user_id AND u.id = #{userId}
 		WHERE m.del_flag != #{DEL_FLAG_DELETE} AND r.del_flag != #{DEL_FLAG_DELETE} AND u.del_flag != #{DEL_FLAG_DELETE}
 		ORDER BY m.sort
-	</select>
-
-	<select id="findByParentIdsLike" resultMap="BaseResultMap">
-		SELECT
-		a.id,
-		a.parent_id AS "parent.id",
-		a.parent_ids
-		FROM sys_menu a
-		WHERE a.del_flag != #{DEL_FLAG_DELETE} AND a.parent_ids LIKE #{parentIds}
-		ORDER BY a.sort
 	</select>
 
 </mapper>

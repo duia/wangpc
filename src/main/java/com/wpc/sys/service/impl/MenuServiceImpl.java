@@ -58,34 +58,15 @@ public class MenuServiceImpl extends TreeBaseServiceImpl<Menu> implements MenuSe
     @Override
     public Long saveOrUpdateMenu(Menu menu) {
 
-        // 获取父节点实体
-        menu.setParent(this.findById(menu.getParent().getId()));
-
-        // 获取修改前的parentIds，用于更新子节点的parentIds
-        String oldParentIds = menu.getParentIds();
-
-        // 设置新的父节点串
-        menu.setParentIds(menu.getParent().getParentIds()+menu.getParent().getId()+",");
-
         if (null != menu.getId() && menu.getId() != 0L) {
-            menu.preUpdate();
             super.update(menu);
             permissionService.addOrUpdateMenuPermission(menu);
-            // 更新子节点 parentIds
-            Menu m = new Menu();
-            m.setParentIds("%,"+menu.getId()+",%");
-            List<Menu> list = menuDao.findByParentIdsLike(m);
-            for (Menu e : list){
-                e.setParentIds(e.getParentIds().replace(oldParentIds, menu.getParentIds()));
-                menuDao.update(e);
-            }
             //修改时需要关联所有的按钮权限
             for(Element element : elementService.queryElementByMenuId(menu.getId())){
                 permissionService.addOrUpdateElementPermission(element);
             }
         } else {
-            menu.preInsert();
-            menuDao.save(menu);
+            super.save(menu);
             permissionService.addOrUpdateMenuPermission(menu);
             //首次保存要关联保存一下四个默认的按钮
             elementService.addDefaultElements(menu);
