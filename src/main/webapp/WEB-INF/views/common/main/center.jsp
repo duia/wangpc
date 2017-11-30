@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <div data-options="region:'center'">
-    <div id="tt" class="easyui-tabs" data-options="tools:'#tab-tools'" style="height:100%;">
+    <div id="tt" class="easyui-tabs " data-options="tools:'#tab-tools'" style="width:100%; height:100%; overflow: hidden;">
         <%--<div title="<i class='fa fa-home fa-lg'></i> 欢迎使用" style="padding:20px;overflow:hidden;" id="home">
             <!-- <h1>Welcome to using The jQuery EasyUI!</h1> -->
             <div class="easyui-calendar" style="width:250px;height:250px;"></div>

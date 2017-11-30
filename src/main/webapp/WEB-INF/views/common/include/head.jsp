@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="taglib.jsp" %>
 <!DOCTYPE html>
-<html style="overflow-x:auto;overflow-y:auto;">
+<html style="overflow-x:hidden;overflow-y:auto;width: 100%;">
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
@@ -23,3 +23,4 @@
     <link href="/static/plugins/zTree_v3-master/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
     <link href="/static/plugins/jquery-validation-1.14.0/css/validation.css" rel="stylesheet" />
 </head>
+<body style="padding: 1px;">

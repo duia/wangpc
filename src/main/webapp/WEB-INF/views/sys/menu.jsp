@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../common/include/head.jsp"/>
 <style>
@@ -17,7 +17,6 @@
     padding-left: 5px;
 }
 </style>
-<body>
     <div class="row">
         <div class="col-md-4 ui-sortable">
             <div data-sortable-id="tree-view-0" class="panel panel-inverse">
@@ -344,5 +343,3 @@
 	
 })();
 </script>
-</body>
-</html>

@@ -8,7 +8,7 @@
             $('#tt').tabs('select', name);
         } else {
             var content = '<iframe allowtransparency="true" scrolling="auto" frameborder="0"  src="'+url+'" ' +
-                'style="overflow: hidden; width:100%; height:'+($('.tabs-panels').height()-5)+'px;"></iframe>';
+                'style="width:100%; height: 100%;"></iframe>';
             $.get(url, function(data){
                 if (data.indexOf("action=\"/login\"") !== -1){
                     alert('未登录或登录超时。请重新登录，谢谢！');

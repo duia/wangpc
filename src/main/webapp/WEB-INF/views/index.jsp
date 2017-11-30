@@ -19,6 +19,12 @@
 	<script src="/static/plugins/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js"></script>
 	<script src="/static/plugins/zTree_v3-master/js/jquery.ztree.all.min.js"></script>
 	<script src="/static/js/main/main.js"></script>
+	<style>
+		#tt .panel>.panel-body {
+			overflow: hidden;
+			margin: 2px 0;
+		}
+	</style>
 	<script>
         $(function () {
             // 如果在框架或在对话框中，则弹出提示并跳转到首页
@@ -30,7 +36,7 @@
         });
 	</script>
 </head>
-<body class="easyui-layout">
+<body class="easyui-layout" style="width: 100%; height: 100%; overflow: hidden;">
 
 <!-- <div id="bonfire-pageloader">
     <div class="bonfire-pageloader-icon">
