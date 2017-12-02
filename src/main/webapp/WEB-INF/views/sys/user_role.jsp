@@ -1,5 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../../common/include/head.jsp"/>
+﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:include page="../common/include/head.jsp"/>
 <body>
     <div class="row">
         <div class="col-md-4 ui-sortable">
@@ -109,7 +109,7 @@
 </div>
 <<}>>
 </script>
-<jsp:include page="../../common/include/foot.jsp"/>
+<jsp:include page="../common/include/foot.jsp"/>
 <script>
 (function(){
 
@@ -146,7 +146,7 @@
    	    TimeFn = setTimeout(function(){
    	        //do function在此处写单击事件要执行的代码
    	        console.log(treeNode.id);
-   	        $.post('/role/userByRole', {
+   	        $.post('/sys/role/userByRole', {
    	        	roleId: treeNode.id
    	        }, function(data){
    	        	var html = template('usertemp', {'users':data});
@@ -165,7 +165,7 @@
 		var roles = [];
 		roles.push({ id:0, pId:null, roleName:'<i class="fa fa-users"></i> 所有角色', open:true});
 		$.ajax({
-			url:'/role/allRoles',
+			url:'/sys/role/allRoles',
 	    	data:{},
 	    	type:'post',
 	    	success:function(result){
@@ -183,7 +183,7 @@
    	$("#name").autocomplete({
    		source: function(request, response){
    			$.ajax({
-   				url: '/user/likeName',
+   				url: '/sys/user/likeName',
    				type: 'post',
    				data: {
    					name: request.term
@@ -217,7 +217,7 @@
    			alert('请先选择人员！');
    			return;
    		}
-   		$.post('/role/addUserRole', {
+   		$.post('/sys/role/addUserRole', {
    			userId: userId,
    			roleId: selectedNodes.id
    		}, function(data){
@@ -229,5 +229,3 @@
     
 })();
 </script>
-</body>
-</html>

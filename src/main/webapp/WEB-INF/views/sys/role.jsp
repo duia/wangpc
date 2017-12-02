@@ -1,5 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../../common/include/head.jsp"/>
+﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:include page="../common/include/head.jsp"/>
 <body>
 	<div class="panel panel-inverse">
 	    <div class="panel-heading">
@@ -52,7 +52,7 @@
 			</table>
 		</div>
 	</div>
-<jsp:include page="../../common/include/foot.jsp"/>
+<jsp:include page="../common/include/foot.jsp"/>
 <script>
 (function(){
 
@@ -123,5 +123,3 @@
     
 })();
 </script>
-</body>
-</html>

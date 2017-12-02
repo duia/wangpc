@@ -48,7 +48,6 @@ public class UserController {
 	 *
 	 * 分页查询列表
 	 */
-	@RequiresRoles("admin")
 	@RequestMapping(value="/searchPage", method=RequestMethod.POST)
 	@ResponseBody
 	public DataTablesResponse<User> searchPage(ModelMap model, HttpServletRequest request, @RequestBody DataTablesRequest query) {

@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.wpc.sys.model.Department;
 import com.wpc.sys.service.DepartmentService;
 
+import java.util.List;
+
 /**
  * @version 1.0
  * @author 
@@ -48,6 +50,16 @@ public class DepartmentController {
 	@ResponseBody
 	public DataTablesResponse<Department> searchPage(ModelMap model, HttpServletRequest request, @RequestBody DataTablesRequest query) {
 		return departmentService.searchPage(query);
+	}
+
+	/**
+	 *
+	 * 查询所有部门列表
+	 */
+	@RequestMapping(value="/queryAll", method=RequestMethod.POST)
+	@ResponseBody
+	public List<Department> queryAll() {
+		return departmentService.queryAll();
 	}
 
 	/**

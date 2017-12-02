@@ -6,21 +6,165 @@
 
 (function(){
 
+    /********部门相关start********/
+
+    var curMenu = null, zNodes = [], zTree = null;
+    var setting = {
+        view: {
+            showLine: true,
+            showTitle: false,
+            showIcon: false,
+            selectedMulti: false,
+            dblClickExpand: false,
+            nameIsHTML: false
+        },
+        data: {
+            key: {
+                name: "name",
+                icon: null,
+                url: null
+            },
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "parentId",
+                rootPId: 0
+            }
+        },
+
+        /*edit: {
+         enable: true
+         },*/
+        callback: {
+            beforeExpand: beforeExpand,
+            onExpand: onExpand,
+            onClick: onClick
+        }
+    };
+
+    var getAllDepartments = function () {
+        $.ajax({
+            // url:'/static/data/menu.json',
+            // type:'get',
+            url:'/sys/department/queryAll',
+            type:'post',
+            data:{},
+            dataType:'json',
+            async: false,
+            success:function(departments){
+                zNodes = departments;
+            }
+        });
+    }
+
+    var curExpandNode = null;
+    function beforeExpand(treeId, treeNode) {
+        var pNode = curExpandNode ? curExpandNode.getParentNode():null;
+        var treeNodeP = treeNode.parentTId ? treeNode.getParentNode():null;
+        for(var i=0, l=!treeNodeP ? 0:treeNodeP.children.length; i<l; i++ ) {
+            if (treeNode !== treeNodeP.children[i]) {
+                zTree.expandNode(treeNodeP.children[i], false);
+            }
+        }
+        while (pNode) {
+            if (pNode === treeNode) {
+                break;
+            }
+            pNode = pNode.getParentNode();
+        }
+        if (!pNode) {
+            singlePath(treeNode);
+        }
+
+    }
+    function singlePath(newNode) {
+        if (newNode === curExpandNode) return;
+
+        var rootNodes, tmpRoot, tmpTId, i, j, n;
+
+        if (!curExpandNode) {
+            tmpRoot = newNode;
+            while (tmpRoot) {
+                tmpTId = tmpRoot.tId;
+                tmpRoot = tmpRoot.getParentNode();
+            }
+            rootNodes = zTree.getNodes();
+            for (i=0, j=rootNodes.length; i<j; i++) {
+                n = rootNodes[i];
+                if (n.tId != tmpTId) {
+                    zTree.expandNode(n, false);
+                }
+            }
+        } else if (curExpandNode && curExpandNode.open) {
+            if (newNode.parentTId === curExpandNode.parentTId) {
+                zTree.expandNode(curExpandNode, false);
+            } else {
+                var newParents = [];
+                while (newNode) {
+                    newNode = newNode.getParentNode();
+                    if (newNode === curExpandNode) {
+                        newParents = null;
+                        break;
+                    } else if (newNode) {
+                        newParents.push(newNode);
+                    }
+                }
+                if (newParents!=null) {
+                    var oldNode = curExpandNode;
+                    var oldParents = [];
+                    while (oldNode) {
+                        oldNode = oldNode.getParentNode();
+                        if (oldNode) {
+                            oldParents.push(oldNode);
+                        }
+                    }
+                    if (newParents.length>0) {
+                        zTree.expandNode(oldParents[Math.abs(oldParents.length-newParents.length)-1], false);
+                    } else {
+                        zTree.expandNode(oldParents[oldParents.length-1], false);
+                    }
+                }
+            }
+        }
+        curExpandNode = newNode;
+    }
+
+    function onExpand(event, treeId, treeNode) {
+        curExpandNode = treeNode;
+    }
+    function onClick(e, treeId, treeNode) {
+        console.log(treeNode)
+        if(treeNode.children){
+            zTree.expandNode(treeNode, null, null, null, true);
+        }else{
+            treeNode.href && addPanel(treeNode.menuName, treeNode.href);
+        }
+
+    }
+
+    getAllDepartments();
+    // 初始化
+    $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+    zTree = $.fn.zTree.getZTreeObj("treeDemo");
+
+    /********部门相关end**********/
+
     $("#toggle-advanced-search").click(function(){
         $("i",this).toggleClass("fa-angle-double-down fa-angle-double-up");
         $("#div-advanced-search").slideToggle("fast");
     });
 
-    var table = $('#department_table').DataTable({
+    var table = $('#user_table').DataTable({
+        //ajax: "/static/data/objects.txt",
         processing: true,
         serverSide: true,
         ajax:{
-            url:'/sys/department/searchPage',
+            url:'/sys/user/searchPage',
             type:'post',
             data:function (data) {
                 data.condition = {
-                    /* 条件1:'123',//添加额外参数
-                     条件2:'123456' */
+                    /* username:'123',//添加额外参数
+                     password:'123456' */
                 }
                 return JSON.stringify(data);
             },
@@ -39,21 +183,24 @@
                 return '<input type="checkbox" name="checklist" value="' + row.id + '" /><label style="margin-left: 10px;">' + row.id + '</label>';
             }
         },{
-            title: '字段2',
-            data: ""
+            title: '用户名',
+            data: "username"
         },{
-            title: '字段3',
-            data: ""
+            title: '登陆账号',
+            data: "loginName"
         },{
-            title: '字段4',
-            data: ""
+            title: '邮箱',
+            data: "email"
+        },{
+            title: '更新时间',
+            data: "updateDate"
         },{
             title: '操作',
             data: null,
             render: function (data, type, row, metad) {
                 var html = [];
-                html.push('<button type="button" data-id="'+data.id+'" class="btn btn-primary btn-sm updateDepartmentBtn">修改</button>');
-                html.push('<button type="button" class="btn btn-danger btn-sm deleteDepartmentBtn">删除</button>');
+                html.push('<button type="button" data-id="'+data.id+'" class="btn btn-primary btn-sm updateUserBtn">修改</button>');
+                html.push('<button type="button" class="btn btn-danger btn-sm deleteUserBtn">删除</button>');
                 return html.join(' ');
             }
         }],
@@ -79,47 +226,55 @@
         }
     });
 
-    $('#saveDepartment').on('click', function(){
-        $('#departmentform').submit();
+    $('#btn-add').on('click', function () {
+        $('#myModal .modal-body').empty().html(template('userformHtml', {}));
+        formAddValidate();
+        $('#myModal').modal('show');
     });
 
-    $('#departmentform').validate({
-        submitHandler: function(form) {
-            console.log('a');
-            $.ajax({
-                url:'/sys/department/addOrUpdate',
-                data:$('#departmentform').serialize(),
-                type:'post',
-                success:function(result){
-                    if(result.code == '200'){
-                        console.log('ok');
-                        $('#myModal').modal('hide');
-                        //table.draw(false);
-                        table.ajax.reload(null, false);
-                    }else{
-                        alert(result.msg);
+    $('#saveUser').on('click', function(){
+        $('#userform').submit();
+    });
+
+    var formAddValidate = function () {
+        $('#userform').validate({
+            submitHandler: function(form) {
+                $.ajax({
+                    url:'/sys/user/addOrUpdate',
+                    data:$('#userform').serialize(),
+                    type:'post',
+                    success:function(result){
+                        if(result.code == '200'){
+                            $('#myModal').modal('hide')
+                            //table.draw(false);
+                            table.ajax.reload(null, false);
+                        }else{
+                            alert(result.msg);
+                        }
                     }
-                }
-            });
-        }
-    });
+                });
+            }
+        });
+    }
 
-    $('#department_table').delegate('.updateDepartmentBtn', 'click', function(e){
-        $.post('/sys/department/findById', {
+    $('#user_table').delegate('.updateUserBtn', 'click', function(e){
+        $.post('/sys/user/findById', {
             id: $(e.target).attr('data-id')
         }, function (data) {
-            BootstrapDialog.alert('修改用户'+data.result.account);
+            $('#myModal .modal-body').empty().html(template('userformHtml', data.result));
+            formAddValidate();
+            $('#myModal').modal('show');
         });
     });
 
-    $('#department_table').delegate('.deleteDepartmentBtn', 'click', function(e){
+    $('#user_table').delegate('.deleteUserBtn', 'click', function(e){
         BootstrapDialog.show({
             message: '删除用户',
             buttons: [{
                 label: '删除',
                 cssClass: 'btn-primary',
                 action: function(dialogItself){
-                    $.post('/sys/department/delete', {
+                    $.post('/user/delete', {
                         id: 0
                     }, function(data){
                         if(verIfy(data)){

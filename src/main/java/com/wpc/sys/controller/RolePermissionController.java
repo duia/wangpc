@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * author wpc
  */
 @Controller
-@RequestMapping("/role_permission")
+@RequestMapping("/sys/role_permission")
 public class RolePermissionController {
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class RolePermissionController {
 	 */
 	@RequestMapping
 	public String rolePermission(ModelMap model) {
-		return "admin/sys/sys_role_permission";
+		return "sys/role_permission";
 	}
 	
 	/**

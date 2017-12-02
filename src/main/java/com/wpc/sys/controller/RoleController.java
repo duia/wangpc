@@ -43,7 +43,7 @@ public class RoleController {
 	 */
 	@RequestMapping
 	public String role(ModelMap model) {
-		return "admin/sys/sys_role";
+		return "sys/role";
 	}
 	
 	/**

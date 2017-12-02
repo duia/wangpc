@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
  * author wpc
  */
 @Controller
-@RequestMapping("/user_role")
+@RequestMapping("/sys/user_role")
 public class UserRoleController {
 	
 	@Resource
@@ -38,7 +38,7 @@ public class UserRoleController {
 	 */
 	@RequestMapping
 	public String userRole(ModelMap model) {
-		return "admin/sys/sys_user_role";
+		return "sys/user_role";
 	}
 	
 	/**

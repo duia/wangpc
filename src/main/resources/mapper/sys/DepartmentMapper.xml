@@ -26,6 +26,9 @@
 		<result property="updateDate" column="update_date"/>
 		<result property="remarks" column="remarks"/>
 		<result property="delFlag" column="del_flag"/>
+	</resultMap>
+
+	<resultMap id="BaseParentResultMap" extends="BaseResultMap" type="com.wpc.sys.model.Department">
 		<association property="parent" javaType="com.wpc.sys.model.Department">
 			<id property="id" column="parent.id"/>
 			<result property="parentId" column="parent_id"/>
@@ -326,7 +329,7 @@
 		<if test="start != null and length != null">LIMIT #{start}, #{length}</if>
 	</sql>
 
-	<select id="findByParentIdsLike" resultMap="BaseResultMap">
+	<select id="findByParentIdsLike" resultMap="BaseParentResultMap">
 		SELECT
 			id,
 			parent_id AS "parent.id",

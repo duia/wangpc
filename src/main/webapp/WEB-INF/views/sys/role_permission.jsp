@@ -1,5 +1,5 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../../common/include/head.jsp"/>
+﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:include page="../common/include/head.jsp"/>
 <body>
     <div class="row">
         <div class="col-md-4 ui-sortable">
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-<jsp:include page="../../common/include/foot.jsp"/>
+<jsp:include page="../common/include/foot.jsp"/>
 <script>
 (function(){
 
@@ -120,7 +120,7 @@
 		var roles = [];
 		roles.push({ id:0, pId:null, roleName:'<i class="fa fa-users"></i> 所有角色', open:true});
 		$.ajax({
-			url:'/role/allRoles',
+			url:'/sys/role/allRoles',
 	    	data:{},
 	    	type:'post',
 	    	success:function(result){
@@ -136,7 +136,7 @@
 	}
    	
    	var getPermissions = function(rid){
-   		rid && $.post('/permission/getPermissions', {
+   		rid && $.post('/sys/permission/getPermissions', {
    			rid: rid
    		}, function(data){
    			var permissions = $.map(data, function(item, index){
@@ -169,7 +169,7 @@
 			alert('请先选择权限！');
 			return;
 		}
-		$.post('/permission/saveRolePermissions', {
+		$.post('/sys/permission/saveRolePermissions', {
 			roleId: selectedNodes.id,
 			pers: pers
 		}, function(data){
