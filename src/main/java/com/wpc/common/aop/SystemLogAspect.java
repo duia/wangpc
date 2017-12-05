@@ -69,8 +69,8 @@ public class SystemLogAspect extends BaseAnnotationAspectj {
     @Around("controllerAspect()")
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Object modelAndView = joinPoint.proceed();
-        if (modelAndView != null){
-            logger.info("ViewName: " + modelAndView.toString());
+        if (modelAndView != null && modelAndView instanceof String){
+            logger.info("ViewName: " + modelAndView);
         }
         return modelAndView;
     }
