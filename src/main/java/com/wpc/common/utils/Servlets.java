@@ -208,8 +208,8 @@ public class Servlets {
 		String xRequestedWith = request.getHeader("X-Requested-With");
 
 		// 如果是异步请求或是手机端，则直接返回信息
-		return ((accept != null && accept.indexOf("application/json") != -1 
-			|| (xRequestedWith != null && xRequestedWith.indexOf("XMLHttpRequest") != -1)));
+		return ((accept != null && accept.contains("application/json")
+			|| (xRequestedWith != null && xRequestedWith.contains("XMLHttpRequest"))));
 	}
 	
 	/**

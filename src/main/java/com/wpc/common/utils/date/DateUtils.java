@@ -12,7 +12,13 @@ import java.util.Date;
  * @Author:wangpengcheng
  * @date:2014年8月4日
  */
-public class DateUtils {
+public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
+
+	private static String[] parsePatterns = {
+			"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM",
+			"yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM",
+			"yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM"};
+
 	private static final String[] weeks = {"星期日","星期一","星期二","星期三","星期四","星期五","星期六"};
 	/**
 	 * 根据指定格式获取当前时间
@@ -633,6 +639,23 @@ public class DateUtils {
 		}
     	return value;
     }
+
+	/**
+	 * 日期型字符串转化为日期 格式
+	 * { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm",
+	 *   "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm",
+	 *   "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm" }
+	 */
+	public static Date parseDate(Object str) {
+		if (str == null){
+			return null;
+		}
+		try {
+			return parseDate(str.toString(), parsePatterns);
+		} catch (ParseException e) {
+			return null;
+		}
+	}
 
 	/**
 	 * 获取过去的天数
