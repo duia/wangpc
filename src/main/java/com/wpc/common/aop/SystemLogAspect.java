@@ -55,15 +55,7 @@ public class SystemLogAspect extends BaseAnnotationAspectj {
      */
     @Before("controllerAspect()")
     public void doBefore() throws Exception {
-
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-
-        if (logger.isDebugEnabled()){
-            long beginTime = System.currentTimeMillis();//1、开始时间
-            startTimeThreadLocal.set(beginTime);		//线程绑定变量（该数据只有当前请求的线程可见）
-            logger.debug("开始计时: {}  URI: {}", new SimpleDateFormat("hh:mm:ss.SSS")
-                    .format(beginTime), request.getRequestURI());
-        }
+        outStartLog();
     }
 
     @Around("controllerAspect()")
@@ -83,10 +75,10 @@ public class SystemLogAspect extends BaseAnnotationAspectj {
     @AfterReturning("controllerAspect()")
     public void doAfter(JoinPoint joinPoint) {
         try {
+            // 打印JVM信息。
+            outEndLog();
             // 保存日志
             saveLog(joinPoint);
-            // 打印JVM信息。
-            outLog();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,9 +94,9 @@ public class SystemLogAspect extends BaseAnnotationAspectj {
     @AfterThrowing(pointcut = "controllerAspect()", throwing = "ex")
     public void doAfterThrowing(JoinPoint joinPoint, Exception ex) {
         try {
+            outEndLog();
             // 保存日志
             saveLog(joinPoint, ex);
-            outLog();
         } catch (Exception e) {
             e.printStackTrace();
         }
