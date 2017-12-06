@@ -3,7 +3,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.wpc.common.annotation.SysLogAnn;
 import com.wpc.common.datatables.DataTablesResponse;
+import com.wpc.common.enums.OperType;
 import com.wpc.common.msg.AjaxResult;
 import com.wpc.sys.model.User;
 import com.wpc.sys.service.UserService;
@@ -48,6 +50,7 @@ public class UserController {
 	 *
 	 * 分页查询列表
 	 */
+	@SysLogAnn(operType = OperType.SYSTEM)
 	@RequestMapping(value="/searchPage", method=RequestMethod.POST)
 	@ResponseBody
 	public DataTablesResponse<User> searchPage(ModelMap model, HttpServletRequest request, @RequestBody DataTablesRequest query) {

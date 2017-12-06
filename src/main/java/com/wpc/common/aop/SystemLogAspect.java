@@ -12,6 +12,7 @@ import com.wpc.common.utils.date.DateFormatUtils;
 import com.wpc.common.utils.exception.Exceptions;
 import com.wpc.common.utils.net.IpUtils;
 import com.wpc.common.SessionUtil;
+import com.wpc.sys.service.SysLogService;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -37,7 +38,7 @@ public class SystemLogAspect extends BaseAnnotationAspectj {
 
     //注入Service用于把日志保存数据库
     @Autowired
-    private SysLogDao SysLogDao;
+    private SysLogService sysLogService;
 
     //Service层切点
     @Pointcut("execution(* com.wpc..service.*.*(..))")
@@ -213,9 +214,8 @@ public class SystemLogAspect extends BaseAnnotationAspectj {
                 return;
             }
             // 保存日志信息
-            DataSourceContextHolder.setDataSourceType("mysql");
 //            int i = 1/0;
-            SysLogDao.save(log);
+            sysLogService.save(log);
 //            System.out.println(log);
         }
     }

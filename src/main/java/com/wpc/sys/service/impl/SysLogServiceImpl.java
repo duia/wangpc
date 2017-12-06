@@ -1,5 +1,6 @@
 package com.wpc.sys.service.impl;
 
+import com.wpc.common.annotation.DataSourceAnn;
 import com.wpc.common.base.service.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,10 @@ public class SysLogServiceImpl extends BaseServiceImpl<SysLog> implements SysLog
 
     @Autowired
     private SysLogDao sysLogDao;
-    
+
+    @DataSourceAnn(name = "mysql")
+    @Override
+    public void save(SysLog sysLog) {
+        super.save(sysLog);
+    }
 }

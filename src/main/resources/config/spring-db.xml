@@ -152,8 +152,8 @@
 	<bean id ="dataSource" class= "com.wpc.common.datasource.DynamicDataSource" >
 		<property name ="targetDataSources">
 			<map key-type ="java.lang.String">
-				<entry key= "admin" value-ref ="h2"/>
-				<entry key= "sys" value-ref ="mysql"/>
+				<entry key= "h2" value-ref ="h2"/>
+				<entry key= "mysql" value-ref ="mysql"/>
 			</map >
 		</property >
 		<property name ="defaultTargetDataSource" ref= "mysql"/>      <!-- 默认使用的数据源 -->
