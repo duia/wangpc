@@ -10,7 +10,7 @@
 <body>
 <div class="panel panel-default">
 	<div class="panel-body">
-		<form role="form" action="/socket/login" style="margin-bottom: 10px;">
+		<form role="form" action="/socket/login" method="post" style="margin-bottom: 10px;">
 			<div class="form-group">
 				<label for="exampleInputEmail1">选择用户</label>
 				<select class="form-control" name="uid">

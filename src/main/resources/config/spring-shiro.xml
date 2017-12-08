@@ -59,6 +59,10 @@
                 /formulas/** = anon
                 /docs/** = anon
                 /lang/** = anon
+                <!-- webSocket -->
+                /socket/** = anon
+                /echo = anon
+                /sockjs/echo = anon
                 <!-- anon 允许访问 -->
                 /login = authc
                 /logout = logout

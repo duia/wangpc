@@ -81,7 +81,7 @@ public class BaseAnnotationAspectj {
 			long beginTime = System.currentTimeMillis();//1、开始时间
 			startTimeThreadLocal.set(beginTime);		//线程绑定变量（该数据只有当前请求的线程可见）
 			logger.debug("开始计时: {}  URI: {}", new SimpleDateFormat("HH:mm:ss.SSS")
-					.format(beginTime), request.getRequestURI());
+					.format(beginTime), null != request ? request.getRequestURI() : "");
 		}
 	}
 
@@ -93,7 +93,7 @@ public class BaseAnnotationAspectj {
 			long endTime = System.currentTimeMillis(); 	//2、结束时间
 			logger.debug("计时结束：{}  耗时：{}  URI: {}  最大内存: {}m  已分配内存: {}m  已分配内存中的剩余空间: {}m  最大可用内存: {}m",
 					new SimpleDateFormat("HH:mm:ss.SSS").format(endTime), DateFormatUtils.formatDateTime(endTime - beginTime),
-					null != request?request.getRequestURI():"", Runtime.getRuntime().maxMemory()/1024/1024,
+					null != request ? request.getRequestURI() : "", Runtime.getRuntime().maxMemory()/1024/1024,
 					Runtime.getRuntime().totalMemory()/1024/1024, Runtime.getRuntime().freeMemory()/1024/1024,
 					(Runtime.getRuntime().maxMemory()-Runtime.getRuntime().totalMemory()+Runtime.getRuntime().freeMemory())/1024/1024);
 			//删除线程变量中的数据，防止内存泄漏

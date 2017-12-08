@@ -45,7 +45,7 @@
 </div>
 <script src="/static/js/common/sockjs-1.1.1.min.js"></script>
 <script src="/static/js/common/stomp.js"></script>
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script type="text/javascript" src="/static/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
 
      var stompClient = null;

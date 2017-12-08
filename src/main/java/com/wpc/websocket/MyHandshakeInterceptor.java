@@ -16,12 +16,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.wpc.common.SessionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.server.HandshakeInterceptor;
 
 /**
  * <dl>
@@ -41,7 +43,7 @@ import org.springframework.web.socket.WebSocketHandler;
  * @version 1.0
  * 
  */
-public class MyHandshakeInterceptor implements org.springframework.web.socket.server.HandshakeInterceptor {
+public class MyHandshakeInterceptor implements HandshakeInterceptor {
 
 	private static final Logger logger = LoggerFactory.getLogger(MyHandshakeInterceptor.class);
 					
@@ -55,19 +57,13 @@ public class MyHandshakeInterceptor implements org.springframework.web.socket.se
 	@Override
 	public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response,
 					WebSocketHandler webSocketHandler, Map<String, Object> map) throws Exception {
-		logger.info("Websocket:用户[ID:"+ ((ServletServerHttpRequest) request).getServletRequest()
-						.getSession(false).getAttribute("uid") + "]已经建立连接");
-		if (request instanceof ServletServerHttpRequest) {
-			ServletServerHttpRequest servletRequest = (ServletServerHttpRequest) request;
-			HttpSession session = servletRequest.getServletRequest().getSession(false);
-			// 标记用户
-			Long uid = (Long) session.getAttribute("uid");
-			if (uid != null) {
-				map.put("uid", uid);
-			} else {
-				return false;
-			}
+		logger.info("Websocket:用户[ID:"+ SessionUtil.getUser().getId() + "]已经建立连接");
+		// 标记用户
+		Long uid = SessionUtil.getUser().getId();
+		if (uid == null) {
+			return false;
 		}
+		map.put("uid", uid);
 		return true;
 	}
 

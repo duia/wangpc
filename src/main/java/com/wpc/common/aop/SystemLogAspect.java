@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wpc.common.annotation.SysLogAnn;
 import com.wpc.common.datasource.DataSourceContextHolder;
 import com.wpc.common.enums.OperType;
+import com.wpc.common.utils.Servlets;
 import com.wpc.sys.dao.SysLogDao;
 import com.wpc.sys.model.SysLog;
 import com.wpc.sys.model.User;
@@ -166,7 +167,7 @@ public class SystemLogAspect extends BaseAnnotationAspectj {
      * 保存日志
      */
     private void saveLog(JoinPoint joinPoint, Exception ex) throws Exception {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = Servlets.getRequest();
         //读取session中的用户
         User user = SessionUtil.getUser();
         SysLogAnn logAnn = getSystemLog(joinPoint);
