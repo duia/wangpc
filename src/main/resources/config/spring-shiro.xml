@@ -164,6 +164,7 @@
         <property name="sessionIdCookie" ref="sessionIdCookie"/>
         <!-- 定义sessionIdCookie模版可以进行操作的启用 -->
         <property name="sessionIdCookieEnabled" value="true"/>
+        <property name="sessionIdUrlRewritingEnabled" value="false" />
     </bean>
     <!-- 配置session的定时验证检测程序类，以让无效的session释放 -->
     <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.ExecutorServiceSessionValidationScheduler">
