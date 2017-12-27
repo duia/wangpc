@@ -7,46 +7,28 @@
 <title>webSocket测试</title>
 </head>
 <body>
-<div id="content" class="content">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<div class="page-header" id="tou">
-	    	webSocket及时聊天Demo程序
-			</div>
-			<div class="well" id="msg">
-			</div>
-			<div class="col-lg">
-				<div class="input-group">
-			    	<input type="text" class="form-control" placeholder="发送信息..." id="message">
-			      	<span class="input-group-btn">
-			        	<button class="btn btn-default" type="button" id="send" >发送</button>
-			      	</span>
-			    </div><!-- /input-group -->
-			</div><!-- /.col-lg-6 -->
-		</div>
-	</div>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+	Javascript and reload this page!</h2></noscript>
+<div>
 	<div>
-		<div>
-			<button id="connect" onclick="connect();">Connect</button>
-			<button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
-		</div>
-		<div id="conversationDiv">
-			<p>
-				<label>notice content?</label>
-			</p>
-			<p>
-				<textarea id="name" rows="5"></textarea>
-			</p>
-			<button id="sendName" onclick="sendName();">Send</button>
-			<button id="sendName2" onclick="sendName2();">Send2</button>
-			<p id="response"></p>
-		</div>
+		<button id="connect" onclick="connect();">Connect</button>
+		<button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+	</div>
+	<div id="conversationDiv">
+		<label>What is your name?</label><input type="text" id="name" />
+		<button onclick="sendName();">Send</button>
+		<button onclick="sendName2();">Send-User</button>
+		<p id="response"></p>
 	</div>
 </div>
+<script src="/static/js/jquery-2.1.3.min.js"></script>
 <script src="/static/js/common/sockjs-1.1.1.min.js"></script>
 <script src="/static/js/common/stomp.js"></script>
-<script type="text/javascript" src="/static/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
+
+    $(document).ready(function(){
+        connect();
+    });
 
      var stompClient = null;
      function setConnected(connected) {
@@ -61,41 +43,44 @@
          stompClient = Stomp.over(socket);
          stompClient.connect({}, function (frame) {
              setConnected(true);
-             console.log('notice socket connected!');
+//             console.log('Connected: ' + frame);
              stompClient.subscribe('/topic/notice', function (data) {
-                 $('#msg').append(data.body+'<br>');
+                 showGreeting(data.body);
              });
-             /* stompClient.subscribe('/user/topic/notice', function (data) {
-                 $('#msg').append(data.body+'<br>');
-                 $.gritter.add({
-                     title: data.body,
-                     image: '${imageServicePath}/'+'${sessionScope.login_user.smallImg}',
-                     sticky: false,
-                     time: 5000,
-                     speed:800,
-                     class_name: 'my-sticky-class'
-                 });
-             }); */
+             stompClient.subscribe('/user/topic/notice', function (data) {
+                 showGreeting(data.body);
+             });
+             stompClient.subscribe('/topic/queryUsers', function (data) {
+                 showGreeting(data.body);
+             });
          });
      }
+
      // 断开socket连接
      function disconnect() {
          if (stompClient != null) {
              stompClient.disconnect();
          }
          setConnected(false);
-         console.log("Disconnected");
+//         console.log("Disconnected");
      }
      // 向‘/app/change-notice’服务端发送消息
      function sendName() {
          var value = document.getElementById('name').value;
-         stompClient.send("/app/change-notice", {}, value);
+         stompClient.send("/app/queryUsers", {}, value);
      }
      function sendName2() {
          var value = document.getElementById('name').value;
          stompClient.send("/app/user-change-notice", {}, value);
      }
-     connect();
+
+     function showGreeting(message) {
+         var response = document.getElementById('response');
+         var p = document.createElement('p');
+         p.style.wordWrap = 'break-word';
+         p.appendChild(document.createTextNode(message));
+         response.appendChild(p);
+     }
 
 </script>
 </body>

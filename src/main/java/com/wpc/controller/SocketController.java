@@ -12,6 +12,9 @@
  */
 package com.wpc.controller;
 
+import com.wpc.sys.model.User;
+import com.wpc.sys.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SendToUser;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.List;
 
 /**
  * <dl>
@@ -43,6 +47,9 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/socket")
 public class SocketController {
+
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
@@ -69,6 +76,12 @@ public class SocketController {
 	@SendToUser("/topic/notice")
 	public String greeting2(String value, Principal principal) {
 		return value + principal.getName();
+	}
+
+	@MessageMapping("/queryUsers")
+	@SendTo("/topic/queryUsers")
+	public List<User> queryUsers(String value) {
+		return userService.queryAll();
 	}
 
 }

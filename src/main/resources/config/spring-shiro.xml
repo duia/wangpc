@@ -64,6 +64,9 @@
                 /echo = anon
                 /sockjs/echo = anon
                 <!-- anon 允许访问 -->
+                /register = anon
+                /getJPGCode = anon
+                /getGifCode = anon
                 /login = authc
                 /logout = logout
                 <!-- authc 需要授权 -->

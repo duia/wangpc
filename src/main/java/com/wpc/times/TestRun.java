@@ -12,11 +12,6 @@
  */
 package com.wpc.times;
 
-import org.springframework.web.socket.TextMessage;
-
-import com.wpc.common.utils.date.DateUtils;
-import com.wpc.websocket.MyWebSocketHandler;
-
 /**
  * <dl>
  * Class Description
@@ -43,7 +38,7 @@ public class TestRun {
 			System.out.println("程序处理中...");
 			Thread.sleep(3000);
 //			MailSenderUtil.send();
-			MyWebSocketHandler.sendMessageToUsers(new TextMessage(DateUtils.getCurrentTime()+":"+"哈哈哈"));
+//			MyWebSocketHandler.sendMessageToUsers(new TextMessage(DateUtils.getCurrentTime()+":"+"哈哈哈"));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
