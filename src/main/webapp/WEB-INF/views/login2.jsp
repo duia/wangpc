@@ -29,7 +29,7 @@
     <h1>登陆</h1>
     <%--<h1>本项目请使用Tomcat，请勿使用Jetty</h1>--%>
     <form id="_form" action="" method="post">
-        <input type="text" name="loginName" class="username" placeholder="账户">
+        <input type="text" name="loginName" class="loginName" placeholder="账户">
         <input type="password" name="password" class="password" placeholder="密码">
         <div style="text-align: left; margin-left: 10px;">
             <label><input type="checkbox" checked="checked"  id="rememberMe" style="width: 10px; height: 10px;">记住我</label>
@@ -66,14 +66,14 @@
         //登录操作
         $('#login').click(function(){
 
-            var username = $('.username').val();
+            var loginName = $('.loginName').val();
             var password = $('.password').val();
-            if(username == '') {
+            if(loginName == '') {
                 $('.error').fadeOut('fast', function(){
                     $('.error').css('top', '27px').show();
                 });
                 $('.error').fadeIn('fast', function(){
-                    $('.username').focus();
+                    $('.loginName').focus();
                 });
                 return false;
             }
@@ -86,38 +86,39 @@
                 });
                 return false;
             }
-            var data = {pswd:pswd,email:username,rememberMe:$("#rememberMe").is(':checked')};
+            var data = {password:password, loginName:loginName, rememberMe:$("#rememberMe").is(':checked')};
             var load = layer.load();
 
             $.ajax({
-                url:"${basePath}/u/submitLogin.shtml",
-                data:data,
-                type:"post",
-                dataType:"json",
-                beforeSend:function(){
+                url: '/login',
+                data: data,
+                type: "post",
+//                dataType: "json",
+                beforeSend: function(){
                     layer.msg('开始登录，请注意后台控制台。');
                 },
                 success:function(result){
                     layer.close(load);
-                    if(result && result.status != 200){
-                        layer.msg(result.message,function(){});
+                    if(result && result.code != 200){
+                        layer.msg(result.msg,function(){});
                         $('.password').val('');
                         return;
                     }else{
                         layer.msg('登录成功！');
                         setTimeout(function(){
                             //登录返回
-                            window.location.href= result.back_url || "${basePath}/";
+                            window.location.href= result.result || "/";
                         },1000)
                     }
                 },
                 error:function(e){
+                    layer.close(load);
                     console.log(e,e.message);
                     layer.msg('请看后台Java控制台，是否报错，确定已经配置数据库和Redis',new Function());
                 }
             });
         });
-        $('.page-container form .username, .page-container form .password').keyup(function(){
+        $('.page-container form .loginName, .page-container form .password').keyup(function(){
             $(this).parent().find('.error').fadeOut('fast');
         });
         //注册

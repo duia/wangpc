@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.wpc.common.SessionUtil;
+import com.wpc.common.msg.AjaxResult;
 import com.wpc.common.security.shiro.MyFormAuthenticationFilter;
 import com.wpc.common.security.shiro.ShiroRealm.Principal;
 import com.wpc.common.utils.image.CaptchaUtils;
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.awt.image.BufferedImage;
 
@@ -95,6 +97,44 @@ public class LoginController {
         }
         
         return "login2";
+    }
+
+    @RequestMapping(value = "/loginAjax", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResult doLoginAjax(HttpServletRequest request) {
+        logger.info("======用户进入了ShiroController的/doLogin.html");
+
+        Principal principal = SessionUtil.getPrincipal();
+        if (principal != null) {
+            AjaxResult result = AjaxResult.success();
+            SavedRequest savedRequest = WebUtils.getSavedRequest(request);
+            // 获取保存的URL
+            if (savedRequest == null || savedRequest.getRequestUrl() == null) {
+                result.setResult("/");
+            } else {
+                //String url = savedRequest.getRequestUrl().substring(12, savedRequest.getRequestUrl().length());
+                result.setResult(savedRequest.getRequestUrl());
+            }
+            return result;
+        }
+
+        String message = (String)request.getAttribute(formAuthenticationFilter.getMessageParam());
+        String exception = (String)request.getAttribute(MyFormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
+
+        if (StringUtils.isBlank(message) || StringUtils.equals(message, "null")){
+            message = "用户或密码错误, 请重试.";
+        }
+
+        AjaxResult result = AjaxResult.warn();
+        result.setMsg(message);
+        result.setResult(exception);
+
+        if (logger.isDebugEnabled()){
+            logger.debug("login fail, active session size: {}, message: {}, exception: {}",
+                    sessionDAO.getActiveSessions().size(), message, exception);
+        }
+
+        return result;
     }
 
     /**
