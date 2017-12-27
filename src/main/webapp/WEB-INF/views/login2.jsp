@@ -28,22 +28,22 @@
 <div class="page-container">
     <h1>登陆</h1>
     <%--<h1>本项目请使用Tomcat，请勿使用Jetty</h1>--%>
-    <form id="_form" action="" method="post">
+    <form id="_form" action="/login" method="POST">
         <input type="text" name="loginName" class="loginName" placeholder="账户">
         <input type="password" name="password" class="password" placeholder="密码">
         <div style="text-align: left; margin-left: 10px;">
             <label><input type="checkbox" checked="checked"  id="rememberMe" style="width: 10px; height: 10px;">记住我</label>
             <%--<p><b style='color:red;'>如果重启Tomcat，还是登录状态，是因为这里勾选了“记住我”。</b></p>--%>
         </div>
-        <button type="button" id="login">登录</button>
+        <button type="submit" id="login">登录</button>
         <button type="button" id="register" class="register">注册</button>
-        <div class="connect" >
+        <%--<div class="connect" >
             <p>有问题请这样解决:</p>
             <p>
                 <a class="" style="width: auto; color: rgb(255, 255, 255);" target="_blank" href="http://www.sojson.com/shiro">点我看本项目介绍，<br><br>（登录密码请看这里。）</a>
                 <a class="" style="width: auto; color: rgb(255, 255, 255);" target="_blank" href="http://jq.qq.com/?_wv=1027&k=YpqCNd">各种不会 QQ群：259217951</a>
             </p>
-        </div>
+        </div>--%>
 
         <div class="error"><span>+</span></div>
     </form>
@@ -55,6 +55,10 @@
 <script  src="/static/plugins/layer/layer.js"></script>
 <script >
     (function(window, document, $) {
+
+        var msg = '${message}';
+        msg && layer.msg(msg, new Function());
+
         //回车事件绑定
         document.onkeydown=function(event){
             var e = event || window.event || arguments.callee.caller.arguments[0];
@@ -86,11 +90,12 @@
                 });
                 return false;
             }
-            var data = {password:password, loginName:loginName, rememberMe:$("#rememberMe").is(':checked')};
-            var load = layer.load();
+            $('#_form').submit();
+//            var data = {password:password, loginName:loginName, rememberMe:$("#rememberMe").is(':checked')};
+//            var load = layer.load();
 
-            $.ajax({
-                url: '/login',
+            /*$.ajax({
+                url: '/loginAjax',
                 data: data,
                 type: "post",
 //                dataType: "json",
@@ -98,17 +103,18 @@
                     layer.msg('开始登录，请注意后台控制台。');
                 },
                 success:function(result){
+                    console.log(result)
                     layer.close(load);
-                    if(result && result.code != 200){
-                        layer.msg(result.msg,function(){});
-                        $('.password').val('');
-                        return;
-                    }else{
+                    if(result && result.code == 200){
                         layer.msg('登录成功！');
                         setTimeout(function(){
                             //登录返回
                             window.location.href= result.result || "/";
                         },1000)
+                    }else{
+                        layer.msg(result.msg,function(){});
+                        $('.password').val('');
+                        return;
                     }
                 },
                 error:function(e){
@@ -116,7 +122,7 @@
                     console.log(e,e.message);
                     layer.msg('请看后台Java控制台，是否报错，确定已经配置数据库和Redis',new Function());
                 }
-            });
+            });*/
         });
         $('.page-container form .loginName, .page-container form .password').keyup(function(){
             $(this).parent().find('.error').fadeOut('fast');

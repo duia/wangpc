@@ -99,44 +99,6 @@ public class LoginController {
         return "login2";
     }
 
-    @RequestMapping(value = "/loginAjax", method = RequestMethod.POST)
-    @ResponseBody
-    public AjaxResult doLoginAjax(HttpServletRequest request) {
-        logger.info("======用户进入了ShiroController的/doLogin.html");
-
-        Principal principal = SessionUtil.getPrincipal();
-        if (principal != null) {
-            AjaxResult result = AjaxResult.success();
-            SavedRequest savedRequest = WebUtils.getSavedRequest(request);
-            // 获取保存的URL
-            if (savedRequest == null || savedRequest.getRequestUrl() == null) {
-                result.setResult("/");
-            } else {
-                //String url = savedRequest.getRequestUrl().substring(12, savedRequest.getRequestUrl().length());
-                result.setResult(savedRequest.getRequestUrl());
-            }
-            return result;
-        }
-
-        String message = (String)request.getAttribute(formAuthenticationFilter.getMessageParam());
-        String exception = (String)request.getAttribute(MyFormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
-
-        if (StringUtils.isBlank(message) || StringUtils.equals(message, "null")){
-            message = "用户或密码错误, 请重试.";
-        }
-
-        AjaxResult result = AjaxResult.warn();
-        result.setMsg(message);
-        result.setResult(exception);
-
-        if (logger.isDebugEnabled()){
-            logger.debug("login fail, active session size: {}, message: {}, exception: {}",
-                    sessionDAO.getActiveSessions().size(), message, exception);
-        }
-
-        return result;
-    }
-
     /**
      * 获取验证码（Gif版本）
      * @param response
