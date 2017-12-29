@@ -45,12 +45,12 @@ public class LoginController {
         return "login2";
     }
     
-    @RequestMapping(value = "/logout")
-    public String doLogout() {
-        logger.info("======用户"+ SessionUtil.getUser().getLoginName()+"退出了系统");
-        SecurityUtils.getSubject().logout();
-        return "login2";
-    }
+//    @RequestMapping(value = "/logout")
+//    public String doLogout() {
+//        logger.info("======用户"+ SessionUtil.getUser().getLoginName()+"退出了系统");
+//        SecurityUtils.getSubject().logout();
+//        return "login2";
+//    }
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public String register() {
@@ -59,7 +59,6 @@ public class LoginController {
   
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String doLogin(HttpServletRequest request, Model model) {
-        logger.info("======用户进入了ShiroController的/doLogin.html");
 
         Principal principal = SessionUtil.getPrincipal();
         if (principal != null) {
