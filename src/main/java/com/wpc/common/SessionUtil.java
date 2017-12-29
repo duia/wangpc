@@ -1,15 +1,17 @@
 package com.wpc.common;
 
-import com.wpc.common.cache.AbstractCache;
-import com.wpc.common.cache.WpcCache;
 import com.wpc.common.security.shiro.ShiroRealm.Principal;
+import com.wpc.common.utils.JedisUtils;
 import com.wpc.sys.dao.UserDao;
 import com.wpc.sys.model.Menu;
 import com.wpc.sys.model.User;
 import com.wpc.sys.service.MenuService;
 import com.wpc.sys.service.impl.MenuServiceImpl;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.UnavailableSecurityManagerException;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.InvalidSessionException;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -21,13 +23,16 @@ public class SessionUtil {
     private static MenuService menuService = SpringContextHolder.getBean(MenuServiceImpl.class);
 
     private static UserDao userDao = SpringContextHolder.getBean(UserDao.class);
-    private static AbstractCache ache = SpringContextHolder.getBean(WpcCache.class);
 
     public static final String USER_CACHE = "userCache";
     public static final String USER_CACHE_ID_ = "id_";
     public static final String USER_CACHE_LOGIN_NAME_ = "ln_";
 
     public static final String CACHE_AUTH_INFO = "authInfo";
+
+    public static final String HASH_ALGORITHM = "MD5";
+    public static final int HASH_INTERATIONS = 1024;
+    public static final int SALT_SIZE = 8;
 
     public static Session getSession(){
         try{
@@ -74,16 +79,19 @@ public class SessionUtil {
     }
 
     public static Object getAuthInfo(String key, Object defaultValue) {
-        Object obj = ache.get(key);
+//        Object obj = JedisUtils.hashObjectGet(CACHE_AUTH_INFO, key);
+        Object obj = getSession().getAttribute(key);
         return obj==null?defaultValue:obj;
     }
 
     public static void putAuthInfo(String key, Object value) {
-        ache.set(key, value);
+//        JedisUtils.hashObjectSet(CACHE_AUTH_INFO, key, value);
+        getSession().setAttribute(key, value);
     }
 
     public static void removeAuthInfo(String key) {
-        ache.delete(key);
+//        JedisUtils.mapObjectRemove(CACHE_AUTH_INFO, key);
+        getSession().removeAttribute(key);
     }
 
     /**
@@ -109,14 +117,14 @@ public class SessionUtil {
      * @return 取不到返回null
      */
     public static User get(Long id){
-        User user = (User)ache.hGet(USER_CACHE, USER_CACHE_ID_ + id);
+        User user = (User)JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_ID_ + id);
         if (user ==  null){
             user = userDao.findById(id);
             if (user == null){
                 return null;
             }
-            ache.hSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            ache.hSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }
@@ -127,14 +135,14 @@ public class SessionUtil {
      * @return 取不到返回null
      */
     public static User getByLoginName(String loginName){
-        User user = (User)ache.hGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
+        User user = (User)JedisUtils.hashObjectGet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + loginName);
         if (user == null){
             user = userDao.getUserByLoginName(loginName);
             if (user == null){
                 return null;
             }
-            ache.hSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
-            ache.hSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
+            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
+            JedisUtils.hashObjectSet(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
         }
         return user;
     }
@@ -144,8 +152,31 @@ public class SessionUtil {
      * @param user
      */
     public static void clearCache(User user){
-        ache.delete(USER_CACHE, USER_CACHE_ID_ + user.getId());
-        ache.delete(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
+        JedisUtils.mapObjectRemove(USER_CACHE, USER_CACHE_ID_ + user.getId());
+        JedisUtils.mapObjectRemove(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName());
+    }
+
+    /**
+     * 生成安全的密码，生成随机的16位salt并经过1024次 sha-1 hash
+     */
+    public static String entryptPassword(String plainPassword) {
+        String plain = StringEscapeUtils.unescapeHtml4(plainPassword);
+        String salt = new SecureRandomNumberGenerator().nextBytes(SALT_SIZE).toHex();
+        String hash = new SimpleHash(HASH_ALGORITHM, plain, salt, HASH_INTERATIONS).toHex();
+        return salt + hash;
+    }
+
+    /**
+     * 验证密码
+     * @param plainPassword 明文密码
+     * @param password 密文密码
+     * @return 验证成功返回true
+     */
+    public static boolean validatePassword(String plainPassword, String password) {
+        String plain = StringEscapeUtils.unescapeHtml4(plainPassword);
+        String salt = password.substring(0,SALT_SIZE * 2);
+        String hashPassword = new SimpleHash(HASH_ALGORITHM, plain, salt, HASH_INTERATIONS).toHex();
+        return password.equals(salt + hashPassword);
     }
 
     /**

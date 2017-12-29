@@ -34,7 +34,7 @@ public class Global {
 	/**
 	 * 属性文件加载对象
 	 */
-	private static PropertiesLoader loader = new PropertiesLoader("config/param.properties");
+	private static PropertiesLoader loader = new PropertiesLoader("config/param.properties", "config/redis.properties");
 
 	/**
 	 * 显示/隐藏

@@ -3,15 +3,14 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.wpc.common.SessionUtil;
 import com.wpc.common.annotation.SysLogAnn;
 import com.wpc.common.datatables.DataTablesResponse;
 import com.wpc.common.enums.OperType;
 import com.wpc.common.msg.AjaxResult;
 import com.wpc.sys.model.User;
 import com.wpc.sys.service.UserService;
-import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,8 +33,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@Autowired
-	PasswordService passwordService;
+//	@Autowired
+//	PasswordService passwordService;
 	
 	/**
 	 * 页面跳转
@@ -64,10 +63,12 @@ public class UserController {
 	@ResponseBody
 	public AjaxResult addOrUpdate(ModelMap model, User user) {
 		if(user.getId()!=null && user.getId()!=0){
-			user.setPassword(passwordService.encryptPassword("123456"));
+//			user.setPassword(passwordService.encryptPassword("123456"));
+			user.setPassword(SessionUtil.entryptPassword("123456"));
 			userService.update(user);
 		}else{
-			user.setPassword(passwordService.encryptPassword(user.getPassword()));
+//			user.setPassword(passwordService.encryptPassword(user.getPassword()));
+			user.setPassword(SessionUtil.entryptPassword(user.getPassword()));
 			userService.save(user);
 		}
 		return AjaxResult.success();

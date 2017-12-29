@@ -76,15 +76,14 @@
     </bean>
 
     <!-- 項目自定义的Realm认证登录 授权 -->
-    <bean id="shiroDbRealm" class="com.wpc.common.security.shiro.ShiroRealm">
-        <!--<property name="credentialsMatcher" ref="credentialsMatcher"/>-->
-        <property name="credentialsMatcher" ref="passwordMatcher"/>
-        <property name="passwordService" ref="passwordService"/>
-        <property name="cachingEnabled" value="true"/>
-        <property name="authenticationCachingEnabled" value="true"/>
+    <bean id="shiroRealm" class="com.wpc.common.security.shiro.ShiroRealm">
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
+        <!--<property name="credentialsMatcher" ref="passwordMatcher"/>-->
+        <property name="cachingEnabled" value="false"/>
+        <!--<property name="authenticationCachingEnabled" value="true"/>
         <property name="authenticationCacheName" value="authenticationCache"/>
         <property name="authorizationCachingEnabled" value="true"/>
-        <property name="authorizationCacheName" value="authorizationCache"/>
+        <property name="authorizationCacheName" value="authorizationCache"/>-->
     </bean>
 
     <!-- 用户授权信息Cache -->
@@ -93,7 +92,7 @@
 
     <!-- Shiro's main business-tier object for web-enabled applications -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <property name="realm" ref="shiroDbRealm"/>
+        <property name="realm" ref="shiroRealm"/>
         <property name="cacheManager" ref="cacheManager"/>
         <!-- 定义要使用的session管理器 -->
         <property name="sessionManager" ref="sessionManager"/>
@@ -101,8 +100,11 @@
     </bean>
 
     <!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 -->
-    <!--<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"/>-->
-    <bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher">
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashAlgorithmName" value="MD5"/>
+        <property name="hashIterations" value="1024"/>
+    </bean>
+    <!--<bean id="passwordMatcher" class="org.apache.shiro.authc.credential.PasswordMatcher">
         <property name="passwordService" ref="passwordService"/>
     </bean>
     <bean id="passwordService" class="org.apache.shiro.authc.credential.DefaultPasswordService">
@@ -112,7 +114,7 @@
     </bean>
     <bean id="hashService" class="org.apache.shiro.crypto.hash.DefaultHashService"/>
     <bean id="hashFormat" class="org.apache.shiro.crypto.hash.format.Shiro1CryptFormat"/>
-    <bean id="hashFormatFactory" class="org.apache.shiro.crypto.hash.format.DefaultHashFormatFactory"/>
+    <bean id="hashFormatFactory" class="org.apache.shiro.crypto.hash.format.DefaultHashFormatFactory"/>-->
     <!--以上三个bean实测不可删除-->
 
     <!-- 定义Session ID生成管理器 -->

@@ -586,7 +586,92 @@ public class JedisUtils {
 		}
 		return result;
 	}
-	
+
+	/**
+	 * 向Hash缓存中添加值
+	 * @param key 键
+	 * @param filed 键
+	 * @param value 值
+	 * @return
+	 */
+	public static long hashSet(String key, String filed, String value) {
+		long result = 0;
+		Jedis jedis = null;
+		try {
+			jedis = getResource();
+			result = jedis.hset(key, filed, value);
+			logger.debug("hashPut {}{} = {}", key, filed, value);
+		} catch (Exception e) {
+			logger.warn("hashPut {}{} = {}", key, filed, value, e);
+		} finally {
+			returnResource(jedis);
+		}
+		return result;
+	}
+
+	/**
+	 * 向Map缓存中添加值
+	 * @param key 键
+	 * @param value 值
+	 * @return
+	 */
+	public static long hashObjectSet(String key, String filed, Object value) {
+		long result = 0;
+		Jedis jedis = null;
+		try {
+			jedis = getResource();
+			result = jedis.hset(getBytesKey(key), getBytesKey(filed), toBytes(value));
+			logger.debug("mapObjectPut {} = {}", key, value);
+		} catch (Exception e) {
+			logger.warn("mapObjectPut {} = {}", key, value, e);
+		} finally {
+			returnResource(jedis);
+		}
+		return result;
+	}
+
+	/**
+	 * 向Hash缓存中获取值
+	 * @param key 键
+	 * @param filed 键
+	 * @return
+	 */
+	public static String hashGet(String key, String filed) {
+		String result = null;
+		Jedis jedis = null;
+		try {
+			jedis = getResource();
+			result = jedis.hget(key, filed);
+			logger.debug("hashGet {}{} = {}", key, filed, result);
+		} catch (Exception e) {
+			logger.warn("hashGet {}{} = {}", key, filed, result, e);
+		} finally {
+			returnResource(jedis);
+		}
+		return result;
+	}
+
+	/**
+	 * 向Hash缓存中获取值
+	 * @param key 键
+	 * @param filed 键
+	 * @return
+	 */
+	public static Object hashObjectGet(String key, String filed) {
+		Object result = 0;
+		Jedis jedis = null;
+		try {
+			jedis = getResource();
+			result = toObject(jedis.hget(getBytesKey(key), getBytesKey(filed)));
+			logger.debug("hashObjectGet {}{} = {}", key, filed, result);
+		} catch (Exception e) {
+			logger.warn("hashObjectGet {}{} = {}", key, filed, result, e);
+		} finally {
+			returnResource(jedis);
+		}
+		return result;
+	}
+
 	/**
 	 * 移除Map缓存中的值
 	 * @param key 键
@@ -670,7 +755,7 @@ public class JedisUtils {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 删除缓存
 	 * @param key 键
@@ -768,6 +853,8 @@ public class JedisUtils {
 		Jedis jedis = null;
 		try {
 			jedis = jedisPool.getResource();
+//			jedis.auth("X4K2iGmTpZtL1vUE4MPDYqBXXos");
+			jedis.select(Integer.parseInt(Global.getConfig("redis.session.db")));
 //			logger.debug("getResource.", jedis);
 		} catch (JedisException e) {
 			logger.warn("getResource.", e);

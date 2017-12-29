@@ -18,13 +18,13 @@ import com.wpc.sys.model.Role;
 import com.wpc.sys.model.User;
 import com.wpc.common.SessionUtil;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.authc.credential.PasswordService;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +47,11 @@ public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     private SessionDAO sessionDAO;
 
-    private PasswordService passwordService;
+//    private PasswordService passwordService;
 
-    public void setPasswordService(PasswordService passwordService) {
-        this.passwordService = passwordService;
-    }
+//    public void setPasswordService(PasswordService passwordService) {
+//        this.passwordService = passwordService;
+//    }
 
     /*
      * 认证回调函数,登录时调用. 获取认证信息
@@ -65,23 +65,23 @@ public class ShiroRealm extends AuthorizingRealm {
             logger.debug("login submit, active session size: {}, username: {}", activeSessionSize, token.getUsername());
         }
 
-        User user = userDao.getUserByLoginName(token.getUsername());
+        User user = SessionUtil.getByLoginName(token.getUsername());
         if (user == null) {
             throw new UnknownAccountException();//没找到帐号
         }
-//        if(Boolean.TRUE.equals(user.getLoginFlag())) {
-//            throw new LockedAccountException(); //帐号锁定
-//        }
+        if(Global.NO.equals(user.getLoginFlag())) {
+            throw new LockedAccountException(); //帐号锁定
+        }
         return new SimpleAuthenticationInfo(
                 new Principal(user),
-//                passwordService.encryptPassword(user.getPassword()),
-                user.getPassword(),
+                user.getPassword().substring(16),
+                ByteSource.Util.bytes(user.getPassword().substring(0,16)),
                 getName());
     }
 
     /*
-         * 授权
-         */
+     * 授权
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         // 根据用户配置用户与权限  
@@ -109,7 +109,7 @@ public class ShiroRealm extends AuthorizingRealm {
         permissions.add("user");
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         // 从数据库中获取用户
-        User user = userDao.getUserByLoginName(principal.getLoginName());
+        User user = SessionUtil.getByLoginName(principal.getLoginName());
         if (null == user) {
             return null;
         }
@@ -152,15 +152,16 @@ public class ShiroRealm extends AuthorizingRealm {
         if (principals == null) {
             return null;
         }
+        Principal principal = (Principal) getAvailablePrincipal(principals);
 
         AuthorizationInfo info = null;
 
-        info = (AuthorizationInfo)SessionUtil.getAuthInfo(SessionUtil.CACHE_AUTH_INFO);
+        info = (AuthorizationInfo)SessionUtil.getAuthInfo(principal.getLoginName());
 
         if (info == null) {
             info = doGetAuthorizationInfo(principals);
             if (info != null) {
-                SessionUtil.putAuthInfo(SessionUtil.CACHE_AUTH_INFO, info);
+                SessionUtil.putAuthInfo(principal.getLoginName(), info);
             }
         }
 
