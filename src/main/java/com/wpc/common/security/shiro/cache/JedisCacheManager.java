@@ -20,7 +20,7 @@ import java.util.Set;
 
 /**
  * 自定义授权缓存管理类
- * @author ThinkGem
+ * @author 王鹏程
  * @version 2014-7-20
  */
 public class JedisCacheManager implements CacheManager {

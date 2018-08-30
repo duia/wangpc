@@ -996,6 +996,7 @@ com.wiris.js.JsPluginViewer.prototype = {
 		return con.responseText;
 	}
 	,callService: function(mml,servicename) {
+        console.log(mml)
 		var con;
 		var height = 0;
 		var width = 0;
@@ -1017,6 +1018,7 @@ com.wiris.js.JsPluginViewer.prototype = {
 		return con.responseText;
 	}
 	,callShowimage: function(mml,img) {
+        console.log(mml)
 		var con;
 		var height = 0;
 		var width = 0;
@@ -1069,6 +1071,7 @@ com.wiris.js.JsPluginViewer.prototype = {
 		}
 	}
 	,callCreateImage: function(mml,img) {
+		console.log(mml)
 		var con;
 		var height = 0;
 		var width = 0;
@@ -1250,6 +1253,7 @@ com.wiris.js.JsPluginViewer.prototype = {
 			this.extension = "";
 			this.localpath = "/../app";
 			this.absoluteURL = "";
+			conosole.log("-----------");
 		} else if(this.tech == "nodejs") {
 			this.extension = "";
 			this.localpath = "/../integration";

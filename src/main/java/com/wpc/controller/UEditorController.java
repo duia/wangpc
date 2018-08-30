@@ -17,11 +17,11 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.wpc.common.utils.ueditor.ActionEnter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wpc.core.ueditor.ActionEnter;
 import com.wpc.model.Title;
 
 /**
@@ -67,8 +67,8 @@ public class UEditorController {
 	public void config(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setHeader("Content-Type", "text/html");
+		//修改入口路径 可以指定图片保存路径
 		String rootPath = request.getServletContext().getRealPath("/");
-		System.out.println(rootPath);
 		String exec = new ActionEnter(request, rootPath).exec();
 		PrintWriter writer = response.getWriter();
 		writer.write(exec);
